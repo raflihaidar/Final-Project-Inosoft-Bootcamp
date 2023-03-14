@@ -13,7 +13,107 @@
             crossorigin="anonymous"
         />
     </head>
-    <body>
+    <body style="background-color: aliceblue">
+        <div class="container shadow-lg" style="background-color: white">
+            <div class="d-flex justify-content-between mt-2 pt-4">
+                <div class="mt-2 d-flex">
+                    <div>
+                        <a
+                            class="me-3"
+                            href="#"
+                            style="text-decoration: none; color: silver"
+                            >Open</a
+                        >
+                    </div>
+                    <div
+                        style="
+                            border-bottom: 2px solid green;
+                            width: 110px;
+                            text-align: center;
+                        "
+                    >
+                        <a
+                            href="index.html"
+                            style="
+                                text-decoration: none;
+                                color: green;
+                                text-align: center;
+                            "
+                            >Completed</a
+                        >
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div>
+                        <form class="d-flex" role="search">
+                            <input
+                                class="form-control me-2"
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search"
+                            />
+                            <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+                        </form>
+                    </div>
+                    <div>
+                        <div class="input mb-3">
+                            <label class="form-control" for="inputGroupFile01"
+                                >Export</label
+                            >
+                            <input
+                                hidden
+                                type="file"
+                                class=""
+                                id="inputGroupFile01"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table">
+                <thead class="text-bg-secondary">
+                    <tr>
+                        <th>Instruction ID</th>
+                        <th>Link To</th>
+                        <th>Instruction Type</th>
+                        <th>Issued To</th>
+                        <th>Issued Date</th>
+                        <th>Attention Of</th>
+                        <th>Quotation No.</th>
+                        <th>Customer PO</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LI-2022-0058</td>
+                        <td>-</td>
+                        <td>Icon mobil LI</td>
+                        <td>ALPHA - ALPHATRANS PTE LTD</td>
+                        <td>22/09/2022</td>
+                        <td>Vts</td>
+                        <td>q01</td>
+                        <td>CP023456</td>
+                        <td>Cancelled</td>
+                    </tr>
+                    <tr>
+                        <td>LI-2022-0058</td>
+                        <td>-</td>
+                        <td>Icon mobil LI</td>
+                        <td>ALPHA - ALPHATRANS PTE LTD</td>
+                        <td>22/09/2022</td>
+                        <td>Vts</td>
+                        <td>q01</td>
+                        <td>CP023456</td>
+                        <td>Complete</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    ...
+                </tfoot>
+            </table>
+        </div>
+
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
             integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
