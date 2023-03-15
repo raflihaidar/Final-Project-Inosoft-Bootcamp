@@ -1,0 +1,18 @@
+/* Custom */
+
+.bdrtop {
+    border-top: 1px solid silver;
+}
+.bdrbottom {
+    border-bottom: 1px solid silver;
+}
+.bdrleft {
+    border-left: 1px solid silver;
+}
+.bdrright {
+    border-right: 1px solid silver;
+}
+
+.bdr-pts {
+    border-left: 1px dashed #e4e4e4;
+}
