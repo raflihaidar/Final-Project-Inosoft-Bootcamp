@@ -22,9 +22,9 @@
                 text-decoration: none;
                 color: black;
             }
-            .bi1:hover {
+            .bi1 a:hover {
                 border: 1px solid green;
-                width: 5%;
+                padding: 10px;
                 border-radius: 5px;
             }
 
@@ -37,6 +37,14 @@
             }
 
             #collapseExample4 .card {
+                border: none;
+            }
+
+            #collapseExample5 .card {
+                border: none;
+            }
+
+            #collapseExample6 .card {
                 border: none;
             }
 
@@ -73,10 +81,31 @@
                         </li>
                     </ol>
                 </nav>
-                <div style="text-align: right">
-                    <button type="button" class="btn btn-outline-dark">
-                        Export
-                    </button>
+                <div class="d-flex flex-row-reverse">
+                    <div>
+                        <button
+                            type="button"
+                            class="btn"
+                            style="
+                                background-color: white;
+                                border: 1px solid #e4e4e4;
+                            "
+                        >
+                            <b> Export </b>
+                        </button>
+                    </div>
+                    <div class="me-3">
+                        <button
+                            type="button"
+                            class="btn"
+                            style="
+                                background-color: white;
+                                border: 1px solid #e4e4e4;
+                            "
+                        >
+                            <b> Send Email </b>
+                        </button>
+                    </div>
                 </div>
             </header>
         </div>
@@ -98,36 +127,36 @@
                                 </div>
                                 <div class="col">
                                     <span>LI No.</span>
-                                    <p><b>LI-2022-0058</b></p>
+                                    <p><b>LI-2022-0060</b></p>
                                 </div>
                                 <div class="col">
                                     <span>Attention Of</span>
-                                    <p><b>Vts</b></p>
+                                    <p><b>MR Customer X</b></p>
                                 </div>
                             </div>
-                            <div class="row ms-3 mt-4">
+                            <div class="row ms-3 mt-5">
                                 <div class="col">
                                     <span>Issued To</span>
                                     <p><b>ALPHA - ALPHATRANS PTE LTD</b></p>
                                 </div>
                                 <div class="col">
                                     <span>Vendor Reference No.</span>
-                                    <p><b>q01</b></p>
+                                    <p><b>Q12345</b></p>
                                 </div>
                                 <div class="col">
                                     <span>Vendor Address</span>
-                                    <p><b> jakarta </b></p>
+                                    <p><b>Big Street 1 </b></p>
                                 </div>
                             </div>
-                            <div class="row ms-3 mt-3">
+                            <div class="row ms-3 mt-5">
                                 <div class="col">
                                     <span>Invoice To</span>
-                                    <p><b>TESTTT</b></p>
+                                    <p><b>MITA</b></p>
                                 </div>
                                 <div class="col"><span>Base</span></div>
                                 <div class="col">
                                     <span>Delivery Date</span>
-                                    <p><b>09/09/2022</b></p>
+                                    <p><b>26/09/2022</b></p>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +164,12 @@
                             <div class="row bdr-pts mt-3">
                                 <div class="col">
                                     <span>Customer</span>
-                                    <p><b>AAR - C.V. ANUGRAH ALAM RAYA</b></p>
+                                    <p>
+                                        <b
+                                            >ACCLTD - AUTHENTIC CONSTRUCTION
+                                            COMPANY LIMITED</b
+                                        >
+                                    </p>
                                 </div>
                                 <div class="col">
                                     <span>Status</span>
@@ -145,10 +179,10 @@
                                     >
                                         <a
                                             href=""
-                                            class="btn btn-secondary disabled"
+                                            class="btn text-bg-success disabled"
                                             >Completed</a
                                         >
-                                        <a
+                                        <!-- <a
                                             href="#"
                                             data-bs-toggle="popover"
                                             data-bs-placement="top"
@@ -171,91 +205,175 @@
                                                 color: white;
                                             "
                                             >i</a
-                                        >
+                                        > -->
                                     </p>
                                 </div>
                                 <div class="mb-5">
                                     <span>Customer PO</span>
+                                    <p><b>CPO23456</b></p>
                                 </div>
                                 <div class="mb-4">
                                     <span>Customer Ref</span>
+                                    <p><b>CREF23456</b></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
                 <section>
-                    <div class="d-flex pt-3 mb-3 bdrtop bdrbottom" style="">
-                        <div class="me-3">
-                            <p><b>Item</b></p>
+                    <div>
+                        <div class="d-flex pt-3 bdrtop">
+                            <div class="me-3">
+                                <p><b>Item</b></p>
+                            </div>
+                            <div class="form-check me-3">
+                                <label
+                                    class="form-check-label"
+                                    for="flexRadioDefault13"
+                                >
+                                    Yes
+                                </label>
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="flexRadioDefault13"
+                                    id="flexRadioDefault13"
+                                    checked
+                                />
+                            </div>
+                            <div class="form-check">
+                                <input
+                                    class="form-check-input"
+                                    disabled
+                                    type="radio"
+                                    name="flexRadioDefault"
+                                    id="flexRadioDefault1"
+                                />
+                                <label
+                                    class="form-check-label"
+                                    for="flexRadioDefault1"
+                                >
+                                    No
+                                </label>
+                            </div>
+                            <div style="margin-left: auto; margin-top: -7px">
+                                <button
+                                    class="btn btn6 btn-outline-success"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapseExample5"
+                                    aria-expanded="false"
+                                    aria-controls="collapseExample"
+                                >
+                                    <i class="bi bi-chevron-down"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="form-check me-3">
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                name="flexRadioDefault5"
-                                id="flexRadioDefault15"
-                                disabled
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexRadioDefault15"
-                            >
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label
-                                class="form-check-label"
-                                for="flexRadioDefault13"
-                            >
-                                No
-                            </label>
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                name="flexRadioDefault3"
-                                id="flexRadioDefault13"
-                                checked
-                            />
-                        </div>
-                    </div>
-                    <div class="d-flex mb-3 bdrbottom">
-                        <div class="me-3">
-                            <p><b>Transport</b></p>
-                        </div>
-                        <div class="form-check me-3">
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault1"
-                                disabled
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexRadioDefault1"
-                            >
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label
-                                class="form-check-label"
-                                for="flexRadioDefault12"
-                            >
-                                No
-                            </label>
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                name="flexRadioDefault12"
-                                id="flexRadioDefault12"
-                                checked
-                            />
+                        <div class="collapse" id="collapseExample5">
+                            <div class="card card-body">
+                                <table class="table bdrleft bdrright">
+                                    <thead class="text-bg-secondary">
+                                        <tr>
+                                            <th>Item Description</th>
+                                            <th class="text-end">Lot No.</th>
+                                            <th class="text-end">Qty (PCS)</th>
+                                            <th class="text-end">
+                                                Estimate Footage
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Tubing, 4 1/2"", 12 PPF, 13CR80,
+                                                JFE BEAR, R1
+                                            </td>
+                                            <td class="text-end">
+                                                PO-200013-A
+                                            </td>
+                                            <td class="text-end">5.00</td>
+                                            <td class="text-end">64.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div>
+                        <div class="d-flex pt-3 bdrtop">
+                            <div class="me-3">
+                                <p><b>Transport</b></p>
+                            </div>
+                            <div class="form-check me-3">
+                                <label
+                                    class="form-check-label"
+                                    for="flexRadioDefault12"
+                                >
+                                    Yes
+                                </label>
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="flexRadioDefault12"
+                                    id="flexRadioDefault12"
+                                    checked
+                                />
+                            </div>
+                            <div class="form-check">
+                                <input
+                                    class="form-check-input"
+                                    disabled
+                                    type="radio"
+                                    name="flexRadioDefault"
+                                    id="flexRadioDefault1"
+                                />
+                                <label
+                                    class="form-check-label"
+                                    for="flexRadioDefault1"
+                                >
+                                    No
+                                </label>
+                            </div>
+                            <div style="margin-left: auto; margin-top: -7px">
+                                <button
+                                    class="btn btn7 btn-outline-success"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapseExample6"
+                                    aria-expanded="false"
+                                    aria-controls="collapseExample"
+                                >
+                                    <i class="bi bi-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="collapse" id="collapseExample6">
+                            <div class="card card-body">
+                                <table class="table bdrleft bdrright">
+                                    <thead class="text-bg-secondary">
+                                        <tr>
+                                            <th>Transport Mode</th>
+                                            <th>Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>sea</td>
+                                            <td>FCL - Container</td>
+                                            <td>Sea transportation</td>
+                                        </tr>
+                                        <tr>
+                                            <td>land</td>
+                                            <td>Truck</td>
+                                            <td>Land transportation</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-3 bdrtop">
                         <div class="d-flex">
                             <div class="me-3">
                                 <p><b>Scope of Work</b></p>
@@ -263,15 +381,15 @@
                             <div class="form-check me-3">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault1"
+                                    for="flexRadioDefault18"
                                 >
                                     Yes
                                 </label>
                                 <input
                                     class="form-check-input"
                                     type="radio"
-                                    name="flexRadioDefault"
-                                    id="flexRadioDefault1"
+                                    name="flexRadioDefault18"
+                                    id="flexRadioDefault18"
                                     checked
                                 />
                             </div>
@@ -315,9 +433,156 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td style="border-bottom: #e4e4e4">
+                                                <b>Custom</b>
+                                            </td>
+
+                                            <td style="border-bottom: #e4e4e4">
+                                                <b>Scopes</b>
+                                            </td>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                <button
+                                                    class="btn btn-secondary disabled"
+                                                >
+                                                    MHE & Equipment
+                                                </button>
+                                            </td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                test
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td>
+                                                <button
+                                                    class="btn btn-secondary disabled"
+                                                >
+                                                    Other
+                                                </button>
+                                            </td>
+                                            <td>test</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                <b>Documents</b>
+                                            </td>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                <button
+                                                    class="btn btn-secondary disabled"
+                                                >
+                                                    Copy of BL
+                                                </button>
+                                            </td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                test
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                <button
+                                                    class="btn btn-secondary disabled"
+                                                >
+                                                    Surrender BL
+                                                </button>
+                                            </td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                test
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                <button
+                                                    class="btn btn-secondary disabled"
+                                                >
+                                                    Original BL
+                                                </button>
+                                            </td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                test
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                <button
+                                                    class="btn btn-secondary disabled"
+                                                >
+                                                    Invoice
+                                                </button>
+                                            </td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                test
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                <button
+                                                    class="btn btn-secondary disabled"
+                                                >
+                                                    Packing List
+                                                </button>
+                                            </td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                test
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                <button
+                                                    class="btn btn-secondary disabled"
+                                                >
+                                                    Storage Compound
+                                                </button>
+                                            </td>
+                                            <td style="border-bottom: #e4e4e4">
+                                                test
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td></td>
-                                            <td>No Data</td>
-                                            <td></td>
+                                            <td>
+                                                <button
+                                                    class="btn btn-secondary disabled"
+                                                >
+                                                    Other
+                                                </button>
+                                            </td>
+                                            <td>test</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -330,34 +595,34 @@
                                 <p><b>Cost Detail</b></p>
                             </div>
                             <div class="form-check me-3">
-                                <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    name="flexRadioDefault"
-                                    id="flexRadioDefault1"
-                                    disabled
-                                />
                                 <label
                                     class="form-check-label"
                                     for="flexRadioDefault1"
                                 >
                                     Yes
                                 </label>
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="flexRadioDefault"
+                                    id="flexRadioDefault1"
+                                    checked
+                                />
                             </div>
                             <div class="form-check">
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="flexRadioDefault14"
+                                    id="flexRadioDefault14"
+                                    disabled
+                                />
                                 <label
                                     class="form-check-label"
                                     for="flexRadioDefault14"
                                 >
                                     No
                                 </label>
-                                <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    name="flexRadioDefault14"
-                                    id="flexRadioDefault14"
-                                    checked
-                                />
                             </div>
                             <div style="margin-left: auto; margin-top: -7px">
                                 <button
@@ -393,15 +658,53 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>No Data</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>Sea trans</td>
+                                            <td>1</td>
+                                            <td>SHP</td>
+                                            <td>1,500.00</td>
+                                            <td>10</td>
+                                            <td>USD</td>
+                                            <td>150.00</td>
+                                            <td>1,500.00</td>
+                                            <td>1,650.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Land trans</td>
+                                            <td>1</td>
+                                            <td>SHP</td>
+                                            <td>500.00</td>
+                                            <td>10</td>
+                                            <td>USD</td>
+                                            <td>50.00</td>
+                                            <td>500.00</td>
+                                            <td>550.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td
+                                                style="border-bottom: #e4e4e4"
+                                            ></td>
+                                            <td class="table-active">
+                                                USD(total)
+                                            </td>
+                                            <td class="table-active">200.00</td>
+                                            <td class="table-active">
+                                                2,000.00
+                                            </td>
+                                            <td class="table-active">
+                                                2,200.00
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -438,7 +741,32 @@
                     <div class="mb-3 pt-3 bdrtop">
                         <div class="d-flex justify-content-between" style="">
                             <div>
-                                <p><b>Confirmation</b></p>
+                                <p>
+                                    <b>Confirmation</b>
+                                    <span class="badge bg-primary rounded-pill"
+                                        >1</span
+                                    >
+                                </p>
+                            </div>
+                            <div
+                                class="input mb-3"
+                                style="width: 170px; margin-left: auto"
+                            >
+                                <label
+                                    class="form-control"
+                                    for="inputGroupFile03"
+                                    style="
+                                        background-color: rgb(33, 132, 76);
+                                        color: white;
+                                    "
+                                    >+ Add Confirmation</label
+                                >
+                                <input
+                                    hidden
+                                    type="file"
+                                    class=""
+                                    id="inputGroupFile03"
+                                />
                             </div>
                             <div style="">
                                 <button
@@ -466,10 +794,32 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td>No Data</td>
-                                            <td></td>
+                                            <td>
+                                                <button
+                                                    class="btn btn-sm btn-light"
+                                                >
+                                                    icon LC-2022-0060-A
+                                                </button>
+                                            </td>
+                                            <td>Logistic Completed</td>
+                                            <td>02/11/2022</td>
+                                            <td>
+                                                <p
+                                                    style="
+                                                        border-radius: 50px;
+                                                        text-align: center;
+                                                        width: 80%;
+                                                        background-color: rgb(
+                                                            201,
+                                                            236,
+                                                            201
+                                                        );
+                                                        color: green;
+                                                    "
+                                                >
+                                                    Submitted
+                                                </p>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -608,6 +958,8 @@
             addToggleIconListener(".btn3");
             addToggleIconListener(".btn4");
             addToggleIconListener(".btn5");
+            addToggleIconListener(".btn6");
+            addToggleIconListener(".btn7");
 
             var popoverTriggerList = [].slice.call(
                 document.querySelectorAll('[data-bs-toggle="popover"]')
