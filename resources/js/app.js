@@ -25,6 +25,8 @@ Vue.component(
 );
 
 Vue.component("hello-component", require("./components/Hello.vue").default);
+Vue.component("navbar", require("./components/Navbar.vue").default);
+Vue.component("completed", require("./components/CompletedInstruction.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,6 +35,8 @@ Vue.component("hello-component", require("./components/Hello.vue").default);
  */
 
 import Vue from "vue";
+// import Vuex from "vuex";
+// import store from "./store"
 import VueRouter from "vue-router";
 import { routes } from "./routes";
 
@@ -42,7 +46,9 @@ const router = new VueRouter({
     routes,
 });
 
+// Vue.use(Vuex);
 const app = new Vue({
     el: "#app",
+    // store,
     router,
 });
