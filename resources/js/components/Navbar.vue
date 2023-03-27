@@ -1,6 +1,6 @@
 <template>
   <div class="sb-nav-fixed">
-    <nav id="warna" class="sb-topnav navbar navbar-expand navbar-dark">
+    <nav id="warna" class="sb-topnav navbar navbar-expand navbar-dark shadow">
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" ><i
                 class="fas fa-bars"></i></button>
@@ -26,7 +26,7 @@
         </form>
     </nav>
     <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
+        <div class="shadow" id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark warna" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
