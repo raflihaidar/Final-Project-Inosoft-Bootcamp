@@ -13,6 +13,15 @@ Vue.component(
     require("./components/DetailsRafli.vue").default
 );
 Vue.component("navbar-component", require("./components/Navbar.vue").default);
+Vue.component("modal-vendor", require("./components/ModalVendor.vue").default);
+Vue.component(
+    "modal-sendEmail",
+    require("./components/ModalSendEmail.vue").default
+);
+Vue.component(
+    "modal-terminate",
+    require("./components/ModalTerminate.vue").default
+);
 
 Vue.use(VueRouter);
 const router = new VueRouter({
