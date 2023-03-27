@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Repositories;
+namespace App\Repositories;
 
 use App\Helpers\MongoModel;
 use App\Helpers\UploadHelper;
-use App\Http\Services\InstructionService;
+use App\Services\InstructionService;
 use Carbon\Carbon;
 
 class VendorInvoiceRepository
