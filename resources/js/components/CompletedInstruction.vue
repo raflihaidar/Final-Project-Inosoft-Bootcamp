@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-4">
+  <div class="card mb-4 shadow">
     <div class="card-body">
       
       <ul class="nav nav-tabs">
@@ -136,13 +136,12 @@
               <td> {{ item[6] }}</td>
               <td> {{ item[7] }}</td>
               <td>
-                <button id="btn-cancel" v-if="item[8]=='Completed'" class="btn btn-success badge badge-pill bg-success">{{ item[8] }}</button>
+                <p id="btn-cancel" v-if="item[8]=='Completed'" class="btn btn-success badge badge-pill bg-success" v-on:click="pushComplete(item[0])">{{ item[8] }}</p>
                 <!-- <button style="font-size: x-small;" id="btn-cancel" v-if="item[8]=='Completed'" class="btn btn-success btn-sm">{{ item[8] }}</button> -->
                 
-                  <p style="margin-bottom: 0px; position:relative" v-else>
-                    <button id="btn-cancel" class="btn btn-secondary badge badge-pill bg-secondary">{{ item[8] }}
-                  <a href="#" data-bs-toggle="popover" data-bs-placement="top"
-                                        data-bs-content="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas" 
+                  <span style="margin-bottom: 0px; position:relative" v-else>
+                    <p id="btn-cancel" class="btn btn-secondary badge badge-pill bg-secondary"  v-on:click="pushCancel(item[0])">{{ item[8] }}
+                      <a data-bs-toggle="popover" data-bs-placement="top"
                                         style="
                                                 position: absolute;
                                                 margin-left: 10px;
@@ -155,10 +154,10 @@
                                                 text-align: center;
                                                 text-decoration: none;
                                                 color: white;
-                                            ">i</a>
-                
-                </button>
-              </p>
+                                            ">i
+                        </a>
+                     </p>
+                  </span>
               </td>
               <!-- <td v-for="(rowItem, rowIndex) in item" v-bind:key="rowIndex">                           
                 {{ rowItemb }}                       
@@ -216,6 +215,14 @@ export default {
 
     
   methods:{
+    pushComplete(index){
+        this.$router.push({path: "/detailcomplete", query: {InstructionID: index}})
+    },
+
+    pushCancel(index){
+        this.$router.push({path: "/detailcancel", query: {InstructionID: index}})
+    },
+
     addToggleIconListener(buttonClass) {
         const button = document.querySelector(buttonClass);
             button.addEventListener("click", function () {
