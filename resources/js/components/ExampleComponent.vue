@@ -5,10 +5,10 @@
                 <div class="card">
                     <div class="card-header">Example Component</div>
 
-                    <div class="card-body">I'm an example component.</div>
-                </div>
-                <div>
-                    <h1>{{ message }}</h1>
+                    <div class="card-body">
+                        I'm an example component.
+                        <router-link to="/hello">to hello</router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -17,13 +17,8 @@
 
 <script>
 export default {
-    data: function () {
-        return {
-            message: "Halo aku yoga bhay",
-        };
-    },
     mounted() {
-        console.log("Component mounted.");
-    },
-};
+        console.log('Component mounted.')
+    }
+}
 </script>

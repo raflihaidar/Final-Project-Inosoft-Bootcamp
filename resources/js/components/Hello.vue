@@ -1,5 +1,7 @@
 <template>
-  <h1>ini detail complete</h1>
+    <div>
+        <navbar></navbar>
+    </div>
 </template>
 
 <script>

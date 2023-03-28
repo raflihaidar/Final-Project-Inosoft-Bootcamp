@@ -1,5 +1,5 @@
 <template>
-  <h1>ini detail complete</h1>
+  <h1>ini detail cancel</h1>
 </template>
 
 <script>

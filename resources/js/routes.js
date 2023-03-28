@@ -1,27 +1,35 @@
 import Example from "./components/ExampleComponent.vue";
-import Index from "./components/Index.vue";
-import Cancel from "./components/DetailCancel.vue";
-import Completed from "./components/DetailCompleted.vue";
+import Hello from "./components/Hello.vue";
+
+import completedInstruction from "./components/CompletedInstruction.vue";
+import openInstruction from "./components/OpenInstruction.vue";
+import detailCompleted from "./components/DetailCompleted.vue";
+import detailCancelled from "./components/DetailCancelled.vue";
+import navbar from "./components/Navbar.vue";
 
 export const routes = [
     {
-        path: "/example",
-        name: "example",
-        component: Example,
-    },
-    {
         path: "/",
-        name: "index",
-        component: Index,
+        component: navbar,
+        children: [
+            {
+                path: "/open",
+                component: openInstruction,
+            },
+            {
+                path: "/completed",
+                component: completedInstruction,
+            },
+        ],
     },
     {
-        path: "/cancel",
-        name: "cancel",
-        component: Cancel,
+        path: "/detailcomplete",
+        name: detailCompleted,
+        component: detailCompleted
     },
     {
-        path: "/completed",
-        name: "completed",
-        component: Completed,
+        path: "/detailcancel",
+        name: detailCancelled,
+        component: detailCancelled
     },
 ];

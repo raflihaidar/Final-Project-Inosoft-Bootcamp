@@ -16,14 +16,14 @@
 </template>
 
 <script>
-export default {
-    data: function () {
-        return {
-            message: "Halo aku yoga bhay",
-        };
-    },
-    mounted() {
-        console.log("Component mounted.");
-    },
-};
+// export default {
+//     data: function () {
+//         return {
+//             message: "Halo aku yoga bhay",
+//         };
+//     },
+//     mounted() {
+//         console.log("Component mounted.");
+//     },
+// };
 </script>
