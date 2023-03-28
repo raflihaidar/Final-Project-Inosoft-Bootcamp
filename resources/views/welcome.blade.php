@@ -13,6 +13,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
+    <style>
+        .btn-outline-success {
+            color: #00bfbf;
+            border-color: #00bfbf;
+        }
+
+        .btn-outline-success:hover {
+            color: #fff;
+            background-color: #00bfbf;
+            border-color: #00bfbf;
+        }
+        
+    </style>
     <!-- Styles -->
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -292,6 +305,8 @@
         .grid-cols-1 {
             grid-template-columns: repeat(1, minmax(0, 1fr))
         }
+
+        
 
         @media (min-width:640px) {
             .sm\:rounded-lg {
