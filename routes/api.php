@@ -4,6 +4,7 @@ use App\Models\Instruction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstructionController;
+use App\Http\Controllers\VendorInvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,28 +23,28 @@ Route::group([
 ],  function(){
         Route::get('/', [InstructionController::class,'showInstructions']); // menampilkan semua data instruction        
 
-        Route::post('/add', 'App\Http\Controllers\InstructionController@storeData'); //menambah data instruction baru
-        Route::post('/edit/{id}', 'App\Http\Controllers\InstructionController@editData'); //mengedit data instruction
-        Route::post('/add_draft', 'App\Http\Controllers\InstructionController@draftData'); //menambah data instruction sebagai draft
-        Route::post('/terminate', 'App\Http\Controllers\InstructionController@setTerminated'); //mengubah status menjadi terminated
-        Route::post('/set_on_progress', 'App\Http\Controllers\InstructionController@setOnProgress'); //mengubah status menjadi on progress
-        Route::post('/delete', 'App\Http\Controllers\InstructionController@deleteInstruction'); // menghapus instruction
-        Route::post('/delete/costdetail', 'App\Http\Controllers\InstructionController@deleteCostDetail'); // menghapus cost detail
+        Route::post('/add', [InstructionController::class,'storeData']); //menambah data instruction baru
+        Route::post('/edit/{id}', [InstructionController::class,'editData']); //mengedit data instruction
+        Route::post('/add_draft', [InstructionController::class,'draftData']); //menambah data instruction sebagai draft
+        Route::post('/terminate', [InstructionController::class,'setTerminated']); //mengubah status menjadi terminated
+        Route::post('/set_on_progress', [InstructionController::class,'setOnProgress']); //mengubah status menjadi on progress
+        Route::post('/delete', [InstructionController::class,'deleteInstruction']); // menghapus instruction
+        Route::post('/delete/costdetail', [InstructionController::class,'deleteCostDetail']); // menghapus cost detail
+
+        Route::get('/test', [InstructionController::class,'test']);
+        Route::get('/draft', [InstructionController::class,'getDraft']); //menampilkan data instruction yang memiliki status on draft
+        Route::get('/onprogress', [InstructionController::class,'getOnProgress']); //menampilkan data instruction yang memiliki status on progress
+        Route::get('/completed', [InstructionController::class,'getCompleted']); //menampilkan data instruction yang memiliki status completed
+        Route::get('/terminated', [InstructionController::class,'getTerminated']); //menampilkan data instruction yang memiliki status terminated
+        Route::get('/search', [InstructionController::class,'search'])->name('search');   
+        Route::get('/{id}', [InstructionController::class,'detailInstruction']); // menampilkan detail data instruction
 
         // invoice of instruction
-        Route::get('/allInvoices/{id}', 'App\Http\Controllers\VendorInvoiceController@getAllInstructionInvoice')->name('allInvoices'); //mengambil semua invoices dari instruction id tertentu
-        Route::post("/addVendorInvoice", 'App\Http\Controllers\VendorInvoiceController@addVendorInvoice')->name('addVendorInvoice'); //menambah vendor invoice
-        Route::post("/receiveVendorInvoice/{id}", 'App\Http\Controllers\VendorInvoiceController@receiveVendorInvoice')->name('receiveVendorInvoice'); //menerima vendor invoice
-        Route::put('/updateInvoice/{id}', 'App\Http\Controllers\VendorInvoiceController@updateInvoice')->name('updateInvoice');
-        Route::post('/deleteSupDocument', 'App\Http\Controllers\VendorInvoiceController@removeSupportingDocument')->name('deleteSupDocument');
-        Route::delete('/deleteAttachment/{id}', 'App\Http\Controllers\VendorInvoiceController@removeAttachment')->name('deleteAttachment');
-        Route::delete('/deleteInvoice/{id}', 'App\Http\Controllers\VendorInvoiceController@destroy')->name('deleteInvoice');
-
-        Route::get('/test', 'App\Http\Controllers\InstructionController@test');
-        Route::get('/draft', 'App\Http\Controllers\InstructionController@getDraft'); //menampilkan data instruction yang memiliki status on draft
-        Route::get('/onprogress', 'App\Http\Controllers\InstructionController@getOnProgress'); //menampilkan data instruction yang memiliki status on progress
-        Route::get('/completed', 'App\Http\Controllers\InstructionController@getCompleted'); //menampilkan data instruction yang memiliki status completed
-        Route::get('/terminated', 'App\Http\Controllers\InstructionController@getTerminated'); //menampilkan data instruction yang memiliki status terminated
-        Route::get('/search', 'App\Http\Controllers\InstructionController@search')->name('search');   
-        Route::get('/{id}', 'App\Http\Controllers\InstructionController@detailInstruction'); // menampilkan detail data instruction
+        Route::get('/allInvoices/{id}', [VendorInvoiceController::class,'getAllInstructionInvoice'])->name('allInvoices'); //mengambil semua invoices dari instruction id tertentu
+        Route::post("/addVendorInvoice", [VendorInvoiceController::class,'addVendorInvoice'])->name('addVendorInvoice'); //menambah vendor invoice
+        Route::post("/receiveVendorInvoice/{id}", [VendorInvoiceController::class,'receiveVendorInvoice'])->name('receiveVendorInvoice'); //menerima vendor invoice
+        Route::put('/updateInvoice/{id}', [VendorInvoiceController::class,'updateInvoice'])->name('updateInvoice');
+        Route::post('/deleteSupDocument', [VendorInvoiceController::class,'removeSupportingDocument'])->name('deleteSupDocument');
+        Route::delete('/deleteAttachment/{id}', [VendorInvoiceController::class,'removeAttachment'])->name('deleteAttachment');
+        Route::delete('/deleteInvoice/{id}', [VendorInvoiceController::class,'destroy'])->name('deleteInvoice');
     });
