@@ -36,7 +36,6 @@
                                 Terminate
                             </button>
                             <button class="bg-white">Modify</button>
-                            <modal-terminate />
                         </div>
                     </div>
                 </nav>
@@ -54,41 +53,55 @@
                             <p class="mb-0">LI No.</p>
                             <p class="fw-bold fs-5">LI-2022-0058</p>
                         </div>
-                        <div class="col-2">
-                            <p class="mb-0">Transfer No</p>
-                            <button class="btn btn-light rounded-3 fs-6 disabled shadow-sm">
-                                PJEV 2022-0058
-                            </button>
+                        <div class="col-4">
+                            <p class="mb-0">Attention Of</p>
+                            <p class="fw-bold fs-5">Evie Transfer</p>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 border-custom">
                             <p class="mb-0">Customer</p>
-                            <p class="fw-bold fs-5">Logistic Instruction</p>
-                        </div>
-                        <div class="col-2">
-                            <p class="mb-0">Customer PO</p>
-                            <p class="fw-bold fs-5"></p>
+                            <p class="fw-bold fs-5">ABSCT - ABSOLUTE COMPLETION TECHNOLOGIES PTE LTD</p>
                         </div>
                         <div class="col-2">
                             <p class="mb-0">Status</p>
                             <div class="btn bg-info rounded-pill px-4 py-0" style="--bs-bg-opacity: .5">In Progress</div>
                         </div>
                     </section>
-                    <section class=" row">
+                    <section class="row">
                         <div class="col-2">
-                            <p class="mb-0">Attention Of</p>
+                            <p class="mb-0">Issued To</p>
                             <p class="fw-bold fs-5">Priyesh Thattarath</p>
                         </div>
                         <div class="col-2">
-                            <p class="mb-0">Assigned Vendor</p>
-                            <p class="fw-bold fs-5">AGILITY (ABU DHABI) PJSC</p>
+                            <p class="mb-0">Vendor Refrence No.</p>
+                            <p class="fw-bold fs-5">3034</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="mb-0">Vendor Address</p>
+                            <p class="fw-bold fs-5">Evie Test</p>
+                        </div>
+                        <div class="col-2 border-custom">
+                            <p class="mb-0">Customer PO</p>
+                            <p class="fw-bold fs-5">PO - 003</p>
+                        </div>
+                    </section>
+                    <section class="row">
+                        <div class="col-2">
+                            <p class="mb-0">Invoice To</p>
+                            <p class="fw-bold fs-5">Inosoft</p>
                         </div>
                         <div class="col-2">
-                            <p class="mb-0">Type</p>
-                            <p class="fw-bold fs-5">Logistic Instruction</p>
+                            <p class="mb-0">Base</p>
+                            <p class="fw-bold fs-5">
+                            </p>
                         </div>
-                        <div class="col-6">
-                            <p class="mb-0">Vendor Address</p>
-                            <p class="fw-bold fs-5">AGILITY (ABU DHABI) PJSC Branch, Musallah Industrial Area, Street No. 10
+                        <div class="col-4">
+                            <p class="mb-0">Delivery Data</p>
+                            <p class="fw-bold fs-5">04/01/04
+                            </p>
+                        </div>
+                        <div class="col-2 border-custom">
+                            <p class="mb-0">Customer Ref</p>
+                            <p class="fw-bold fs-5">REF - 003
                             </p>
                         </div>
                     </section>
@@ -96,8 +109,8 @@
                 <!-- HEADER END -->
 
                 <!-- ITEM RADIO START -->
-                <div class="border-top border-bottom py-3">
-                    <div class="flex gap-3">
+                <div class="border-top py-3">
+                    <div class="flex gap-3 mb-3">
                         <label class="fw-bold">Item</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexItemRadio" id="flexItemRadio">
@@ -113,8 +126,8 @@
                         </div>
                     </div>
 
-                    <table class="table">
-                        <thead>
+                    <table class="table border">
+                        <thead class="bg-secondary text-white fw-semibold">
                             <tr>
                                 <th>Item Description</th>
                                 <th>Lot No</th>
@@ -138,14 +151,15 @@
                                 <td><input type="text" class="form-control"></td>
                                 <td><input type="text" class="form-control"></td>
                                 <td>
-                                    <button class="bg-light">
+                                    <button class="btn btn-light">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                             class="bi bi-dash" viewBox="0 0 16 16">
                                             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
                                         </svg>
                                     </button>
                                 </td>
-                                <td><button>
+                                <td>
+                                    <button class="btn btn-light" type="button">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                             class="bi bi-plus" viewBox="0 0 16 16">
                                             <path
@@ -160,8 +174,8 @@
                 <!-- ITEM RADIO END -->
 
                 <!-- TRANSPORT RADIO START -->
-                <div class="border-top border-bottom py-3">
-                    <div class="flex gap-3">
+                <div class="border-top py-3">
+                    <div class="flex gap-3 mb-3">
                         <label class="fw-bold">Transport</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexTransportRadio" id="flexTransportRadio">
@@ -177,8 +191,8 @@
                         </div>
                     </div>
 
-                    <table class="table">
-                        <thead>
+                    <table class="table border">
+                        <thead class="bg-secondary text-white fw-semibold">
                             <tr>
                                 <th>Item Description</th>
                                 <th>Type</th>
@@ -224,14 +238,14 @@
                                 </td>
                                 <td><input type="text" class="form-control"></td>
                                 <td>
-                                    <button class="bg-light">
+                                    <button class="btn btn-light">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                             class="bi bi-dash" viewBox="0 0 16 16">
                                             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
                                         </svg>
                                     </button>
                                 </td>
-                                <td><button>
+                                <td><button class="btn btn-light">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                             class="bi bi-plus" viewBox="0 0 16 16">
                                             <path
@@ -246,8 +260,8 @@
                 <!-- TRANSPORT RADIO END -->
 
                 <!-- SCOPE OF WORK START -->
-                <div class="border-top border-bottom py-3">
-                    <div class="flex gap-3 ">
+                <div class="border-top py-3">
+                    <div class="flex gap-3 mb-3 ">
                         <label class="fw-bold">Scope of Work</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexTransportRadio" id="flexTransportRadio">
@@ -263,8 +277,8 @@
                         </div>
                     </div>
 
-                    <table class="table">
-                        <thead>
+                    <table class="table border">
+                        <thead class="bg-secondary text-white fw-semibold">
                             <tr>
                                 <th>Scope of Work</th>
                                 <th>Scope</th>
@@ -282,7 +296,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <button class="bg-light">
+                                    <button class="btn btn-light">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                             class="bi bi-dash" viewBox="0 0 16 16">
                                             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
@@ -299,7 +313,7 @@
 
                 <!-- COST DETAIL START -->
                 <div>
-                    <div class="flex gap-3 border-top border-bottom py-3">
+                    <div class="flex gap-3 border-top py-3 mb-3">
                         <label class="fw-bold">Cost Detail</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexItemRadio" id="flexItemRadio">
@@ -368,7 +382,7 @@
                                         <p class="fw-semibold mb-0">RRN-2021-0054-DN.pdf</p>
                                         <p>By james</p>
                                     </div>
-                                    <button class="btn btn-primary d-flex align-items-center">
+                                    <button class="btn btn-success d-flex align-items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                             class="bi bi-plus-lg align-middle" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"
@@ -387,34 +401,18 @@
                     </table>
                 </div>
                 <!-- COST DETAIL END -->
-
-                <!-- VENDOR INVOICE START-->
-                <!-- <div class="d-flex justify-content-between align-items-center">
-                    <p class="fs-5 fw-bold">Vendor Invoice</p>
-                    <button class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal"
-                        data-bs-target="#modalVendor">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-plus-lg align-middle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5H2a.5.5 0 0 1 0-1h5V2.5A.5.5 0 0 1 8 2z" />
-                        </svg>
-                        <span>Add Vendor Invoice</span>
-                    </button>
-                </div> -->
-                <!-- VENDOR INVOICE END -->
-                <!-- <modal-vendor /> -->
             </div>
         </div>
 
         <!-- FOR INTERNAL ONLY START -->
-        <div class="bg-primary px-4 py-2 w-100mb-2">
+        <div class="bg-success px-4 py-2 w-100mb-2">
             <p class="text-white fw-semibold">For Internal Only</p>
         </div>
         <div class="grid">
             <div class="row">
                 <div class="border-end col-5 ps-3">
                     <p>Attachment</p>
-                    <button class="btn btn-primary d-flex align-items-center">
+                    <button class="btn btn-success d-flex align-items-center" type="file">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-plus-lg align-middle" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
@@ -426,7 +424,8 @@
 
                 <div class="col-7 ps-3">
                     <p>Internal Note</p>
-                    <button class="btn btn-primary d-flex align-items-center">
+                    <button class="btn btn-success d-flex align-items-center" data-bs-toggle="modal"
+                        data-bs-target="#modalInternalNote">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-plus-lg align-middle" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
@@ -438,12 +437,19 @@
             </div>
         </div>
         <!-- FOR INTERNAL ONLY END -->
+        <!-- MODAL -->
+        <modal-terminate />
+        <modal-internalNote />
     </div>
 </template>
 
+<style>
+.border-custom {
+    border-left: 1px dotted gray;
+}
+</style>
+
 <script>
-import ModalVendor from './ModalVendor.vue'
 export default {
-    components: { ModalVendor },
 }
 </script>

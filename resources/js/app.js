@@ -22,6 +22,10 @@ Vue.component(
     "modal-terminate",
     require("./components/ModalTerminate.vue").default
 );
+Vue.component(
+    "modal-internalNote",
+    require("./components/ModalInternalNote.vue").default
+);
 
 Vue.use(VueRouter);
 const router = new VueRouter({
