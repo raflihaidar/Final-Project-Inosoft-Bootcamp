@@ -225,3 +225,4 @@ class VendorInvoiceController extends Controller
         ],200);
     }
 }
+
