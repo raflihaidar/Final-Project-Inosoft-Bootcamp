@@ -8,8 +8,7 @@
                <a class="close" href="#">&times;</a>
                <div class="content">
 
-                   <p>We love helping small businesses succeed, and by letting us know who you are, we will include you in our mailing list so that you can keep up to date on what is happening in Central Alberta.</p>
-                   <p>Don't forget to follow us on Social Media as well!</p>
+                   
 
                    <label for="template">Select Template:</label>
                    <select id="template" v-model="selectedTemplate" @change="updateSelectedTemplateItems">
