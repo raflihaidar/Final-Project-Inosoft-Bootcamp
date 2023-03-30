@@ -25,6 +25,10 @@ Vue.component("navbar", require("./components/Navbar.vue").default);
 Vue.component("completed", require("./components/CompletedInstruction.vue").default);
 Vue.component("detail-completed", require("./components/DetailCompleted.vue").default);
 Vue.component("detail-cancelled", require("./components/DetailCancelled.vue").default);
+Vue.component("button-component", require("./components/ButtonComponent.vue").default);
+Vue.component("cost-detail", require("./components/CostDetailComponent.vue").default);
+Vue.component("scope-of-work", require("./components/ScopeOfWorkComponent.vue").default);
+Vue.component("input-field", require("./components/InputFieldComponent.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
