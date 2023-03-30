@@ -7,7 +7,7 @@
 
                     <div class="card-body">
                         I'm an example component.
-                        <router-link to="/hello">to hello</router-link>
+                        <router-link to="/details_rafli">to hello</router-link>
                     </div>
                 </div>
             </div>
