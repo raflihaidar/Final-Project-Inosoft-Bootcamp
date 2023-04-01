@@ -1,6 +1,4 @@
-import Example from "./components/ExampleComponent.vue";
 import DetailsRafli from "./components/DetailsRafli.vue";
-
 import completedInstruction from "./components/CompletedInstruction.vue";
 import openInstruction from "./components/OpenInstruction.vue";
 import detailCompleted from "./components/DetailCompleted.vue";
@@ -25,12 +23,12 @@ export const routes = [
     {
         path: "/detailcomplete",
         name: detailCompleted,
-        component: detailCompleted
+        component: detailCompleted,
     },
     {
         path: "/detailcancel",
         name: detailCancelled,
-        component: detailCancelled
+        component: detailCancelled,
     },
     {
         path: "/details_rafli",
