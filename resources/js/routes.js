@@ -1,5 +1,5 @@
 import Example from "./components/ExampleComponent.vue";
-import Hello from "./components/Hello.vue";
+import DetailsRafli from "./components/DetailsRafli.vue";
 
 import completedInstruction from "./components/CompletedInstruction.vue";
 import openInstruction from "./components/OpenInstruction.vue";
@@ -31,5 +31,10 @@ export const routes = [
         path: "/detailcancel",
         name: detailCancelled,
         component: detailCancelled
+    },
+    {
+        path: "/details_rafli",
+        name: "details rafli",
+        component: DetailsRafli,
     },
 ];
