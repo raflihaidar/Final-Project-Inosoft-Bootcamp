@@ -47,11 +47,11 @@ Vue.component("input-field", require("./components/InputFieldComponent.vue").def
  */
 
 
-import Vue from "vue";
-// import Vuex from "vuex";
-// import store from "./store"
-import VueRouter from "vue-router";
-import { routes } from "./routes";
+// import Vue from "vue";
+// // import Vuex from "vuex";
+// // import store from "./store"
+// import VueRouter from "vue-router";
+// import { routes } from "./routes";
 
 Vue.use(VueRouter);
 const router = new VueRouter({
