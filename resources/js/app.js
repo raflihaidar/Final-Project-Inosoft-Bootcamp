@@ -1,13 +1,5 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import { routes } from "./routes";
-
 require("./bootstrap");
 window.Vue = require("vue").default;
-Vue.component(
-    "example-component",
-    require("./components/ExampleComponent.vue").default
-);
 Vue.component(
     "details-rafli",
     require("./components/DetailsRafli.vue").default
@@ -25,20 +17,36 @@ Vue.component(
     "modal-internalNote",
     require("./components/ModalInternalNote.vue").default
 );
-
-Vue.component(
-    "example-component",
-    require("./components/ExampleComponent.vue").default
-);
 Vue.component("hello-component", require("./components/Hello.vue").default);
 Vue.component("navbar", require("./components/Navbar.vue").default);
-Vue.component("completed", require("./components/CompletedInstruction.vue").default);
-Vue.component("detail-completed", require("./components/DetailCompleted.vue").default);
-Vue.component("detail-cancelled", require("./components/DetailCancelled.vue").default);
-Vue.component("button-component", require("./components/ButtonComponent.vue").default);
-Vue.component("cost-detail", require("./components/CostDetailComponent.vue").default);
-Vue.component("scope-of-work", require("./components/ScopeOfWorkComponent.vue").default);
-Vue.component("input-field", require("./components/InputFieldComponent.vue").default);
+Vue.component(
+    "completed",
+    require("./components/CompletedInstruction.vue").default
+);
+Vue.component(
+    "detail-completed",
+    require("./components/DetailCompleted.vue").default
+);
+Vue.component(
+    "detail-cancelled",
+    require("./components/DetailCancelled.vue").default
+);
+Vue.component(
+    "button-component",
+    require("./components/ButtonComponent.vue").default
+);
+Vue.component(
+    "cost-detail",
+    require("./components/CostDetailComponent.vue").default
+);
+Vue.component(
+    "scope-of-work",
+    require("./components/ScopeOfWorkComponent.vue").default
+);
+Vue.component(
+    "input-field",
+    require("./components/InputFieldComponent.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -47,11 +55,13 @@ Vue.component("input-field", require("./components/InputFieldComponent.vue").def
  */
 
 
+
 // import Vue from "vue";
 // // import Vuex from "vuex";
 // // import store from "./store"
 // import VueRouter from "vue-router";
 // import { routes } from "./routes";
+
 
 Vue.use(VueRouter);
 const router = new VueRouter({
