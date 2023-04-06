@@ -197,7 +197,6 @@
 
 export default {
 
-
   computed: {
     // ...mapGetters({
     //   list :'example/getData'
