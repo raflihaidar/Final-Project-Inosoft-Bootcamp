@@ -89,7 +89,7 @@ textarea {
 }
 
 .green {
-    color: green;
+    color: rgb(112, 255, 112);
 }
 
 .black {
