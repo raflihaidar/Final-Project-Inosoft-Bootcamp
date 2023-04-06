@@ -5368,12 +5368,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5552,16 +5558,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 // import { mapGetters } from 'vuex'
 
-var performSearch = function performSearch(items, term) {
-  var results = items.filter(function (item) {
-    return item.join(" ").toLowerCase().includes(term.toLowerCase());
-  });
-  return results;
-};
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl);
-});
+// var popoverTriggerList = [].slice.call(
+//   document.querySelectorAll('[data-bs-toggle="popover"]')
+// );
+// var popoverList = popoverTriggerList.map(function (
+//   popoverTriggerEl
+// ) {
+//   return new bootstrap.Popover(popoverTriggerEl);
+// });
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   computed: {
     // ...mapGetters({
@@ -5569,10 +5574,9 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     // })
   },
   mounted: function mounted() {
-    // this.$store.dispatch("example/getAllData");
+    this.fetchData();
+    // this.fetchTemplates();
 
-    // data sementara
-    this.items = _toConsumableArray(this.list);
     var completed = document.getElementById("completed");
     var open = document.getElementById("open");
     completed.addEventListener("click", function () {
@@ -5581,6 +5585,52 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     });
   },
   methods: {
+    fetchData: function fetchData() {
+      var _this = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response, _response;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              if (!(_this.search.length === 0)) {
+                _context.next = 7;
+                break;
+              }
+              _context.next = 3;
+              return axios.get("http://127.0.0.1:8000/api/instruction/");
+            case 3:
+              response = _context.sent;
+              _this.items = response.data.data;
+              _context.next = 11;
+              break;
+            case 7:
+              _context.next = 9;
+              return axios.get("http://127.0.0.1:8000/api/instruction/search/", {
+                params: {
+                  key: _this.search
+                }
+              });
+            case 9:
+              _response = _context.sent;
+              _this.items = _response.data.data;
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }))();
+    },
+    // fetchTemplates() {
+    //   axios.get('http://127.0.0.1:8000/api/instruction')
+    //     .then(response => {
+    //       console.log(response.data.data);
+    //       this.items=response.data.data;
+    //       // this.items=response.data.data;
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
+    // },
     pushComplete: function pushComplete(index) {
       this.$router.push({
         path: "/detailcomplete",
@@ -5619,15 +5669,6 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
         icon2.classList.remove("bi-caret-down-fill");
       });
     },
-    getData: function getData() {
-      this.items = _toConsumableArray(this.list);
-      var completed = document.getElementById("completed");
-      var open = document.getElementById("open");
-      completed.addEventListener("click", function () {
-        completed.classList.toggle("nav-link active");
-        open.classList.toggle("nav-link active");
-      });
-    },
     ExportExcel: function ExportExcel(tableID) {
       var filename = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
       var downloadLink;
@@ -5647,10 +5688,6 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
         downloadLink.download = filename;
         downloadLink.click();
       }
-    },
-    onSearch: function onSearch(e) {
-      this.term = e.target.value;
-      this.items = performSearch(this.list, this.term);
     },
     sortRecordsAsc: function sortRecordsAsc(index) {
       this.addToggleIconListener(".btn1");
@@ -5686,10 +5723,8 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return {
       term: '',
       fields: ["Instruction ID", "Link To", "Instruction Type", "Issued To", "Issued Date", "Attention Of", "Quotation No.", "Customer PO", "Status"],
-      list: [["LI-2022-0060", "aaaaaaaaaaaaaaaaaaaa", "LI", "ALPHA - ALPHATRANS PTE LTD", "22/09/2022", "MR Customer X", "Q12345", "CPO23456", "Completed"], ["LI-2022-0035", "dddddddddddddddddddddd", "SI", "AMARIT AND ASSOCIATES LOGISTICS CO.LTD", "02/11/2022", "Tes", "", "", "Completed"], ["LI-2022-0058", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "LI", "ALPHA - ALPHATRANS PTE LTD", "22/09/2022", "Vts", "q01", "", "Cancelled"], ["LI-2022-0058 R03", "ccccccccccccccccccccccccccccccccc", "SI", "AMARIT AND ASSOCIATES LOGISTICS CO.LTD", "25/11/2022", "Test", "", "", "Cancelled"]],
       items: [],
-      sortIndex: null,
-      sortDirection: null
+      search: ""
     };
   }
 });
@@ -8150,6 +8185,33 @@ window.addEventListener('DOMContentLoaded', function (event) {
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      //   search: "",
+      //   items: [],
+    };
+  },
+  created: function created() {
+    // Panggil method fetchData saat pertama kali dijalankan
+    // this.fetchData();
+  },
+  methods: {
+    //     async fetchData() {
+    //   if (this.search.length === 0) {
+    //     // Jika input kosong, ambil data dari API show
+    //     const response = await axios.get("/api/instruction/");
+    //     this.items = response.data.data;
+    //   } else {
+    //     // Jika input tidak kosong, ambil data dari API search
+    //     const response = await axios.get("/api/instruction/search/", {
+    //       params: {
+    //         key: this.search,
+    //       },
+    //     });
+    //     this.items = response.data.data;
+    //   }
+    // }
+  },
   mounted: function mounted() {
     var completed = document.getElementById("completed");
     var open = document.getElementById("open");
@@ -13745,7 +13807,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.btn[data-v-3d2d2ea4]:hover{\r\n  color: #00bfbf !important;\n}\n.table-hovers tbody tr:hover td[data-v-3d2d2ea4], .table-hover tbody tr:hover th[data-v-3d2d2ea4] {\r\n  color: #00bfbf !important;\n}\ntd[data-v-3d2d2ea4]{\r\n  font-weight: 600;\r\n  color: #949494;\n}\n.teal[data-v-3d2d2ea4] {\r\n    color: #00bfbf;\n}\n.bg-secondary[data-v-3d2d2ea4] {\r\n    --bs-bg-opacity: 1;\r\n    background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;\n}\n.bg-success[data-v-3d2d2ea4] {\r\n    --bs-bg-opacity: 1;\r\n    background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;\n}\n.mid[data-v-3d2d2ea4] {\r\n    text-align: center;\n}\n#warna[data-v-3d2d2ea4] {\r\n    background-color: #585759;\n}\n.warna[data-v-3d2d2ea4] {\r\n    background-color: #585759;\n}\n#biru[data-v-3d2d2ea4] {\r\n    color: #14cedb;\n}\n#putih[data-v-3d2d2ea4] {\r\n    background-color: white;\r\n    color: black;\n}\n#tcomplete th[data-v-3d2d2ea4],\r\ntd[data-v-3d2d2ea4] {\r\n    font-size: small;\r\n    text-align: left;\n}\n.batas[data-v-3d2d2ea4] {\r\n    margin-top: 30px;\n}\n.cursor-pointer[data-v-3d2d2ea4] {\r\n    cursor: pointer;\n}\n.icon[data-v-3d2d2ea4] {\r\n    padding-right: 5px;\n}\n#btn-cancel[data-v-3d2d2ea4] {\r\n    --bs-btn-padding-y: none;\r\n    padding-left: 30px;\r\n    padding-right: 30px;\r\n    border-radius: 50px;\n}\n.sort-up[data-v-3d2d2ea4] {\r\n    position: absolute;\r\n    margin-top: -8px;\n}\n.sort-down[data-v-3d2d2ea4] {\r\n    position: absolute;\r\n    margin-top: 8px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.btn[data-v-3d2d2ea4]:hover {\r\n  color: #00bfbf !important;\n}\n.table-hovers tbody tr:hover td[data-v-3d2d2ea4],\r\n.table-hover tbody tr:hover th[data-v-3d2d2ea4] {\r\n  color: #00bfbf !important;\n}\ntd[data-v-3d2d2ea4] {\r\n  font-weight: 600;\r\n  color: #949494;\n}\n.teal[data-v-3d2d2ea4] {\r\n  color: #00bfbf;\n}\n.bg-secondary[data-v-3d2d2ea4] {\r\n  --bs-bg-opacity: 1;\r\n  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;\n}\n.bg-success[data-v-3d2d2ea4] {\r\n  --bs-bg-opacity: 1;\r\n  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;\n}\n.mid[data-v-3d2d2ea4] {\r\n  text-align: center;\n}\n#warna[data-v-3d2d2ea4] {\r\n  background-color: #585759;\n}\n.warna[data-v-3d2d2ea4] {\r\n  background-color: #585759;\n}\n#biru[data-v-3d2d2ea4] {\r\n  color: #14cedb;\n}\n#putih[data-v-3d2d2ea4] {\r\n  background-color: white;\r\n  color: black;\n}\n#tcomplete th[data-v-3d2d2ea4],\r\ntd[data-v-3d2d2ea4] {\r\n  font-size: small;\r\n  text-align: center;\n}\n.batas[data-v-3d2d2ea4] {\r\n  margin-top: 30px;\n}\n.cursor-pointer[data-v-3d2d2ea4] {\r\n  cursor: pointer;\n}\n.icon[data-v-3d2d2ea4] {\r\n  padding-right: 5px;\n}\n#btn-cancel[data-v-3d2d2ea4] {\r\n  --bs-btn-padding-y: none;\r\n  padding-left: 30px;\r\n  padding-right: 30px;\r\n  border-radius: 50px;\n}\n.sort-up[data-v-3d2d2ea4] {\r\n  position: absolute;\r\n  margin-top: -8px;\n}\n.sort-down[data-v-3d2d2ea4] {\r\n  position: absolute;\r\n  margin-top: 8px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -33158,9 +33220,28 @@ var render = function () {
               _vm._m(0),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.search,
+                    expression: "search",
+                  },
+                ],
                 staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Search" },
-                on: { input: _vm.onSearch },
+                attrs: { type: "text", id: "search", placeholder: "Search" },
+                domProps: { value: _vm.search },
+                on: {
+                  input: [
+                    function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.search = $event.target.value
+                    },
+                    _vm.fetchData,
+                  ],
+                },
               }),
             ]),
           ]
@@ -33184,9 +33265,7 @@ var render = function () {
                 staticClass: "fa-solid fa-file-export",
                 attrs: { id: "biru" },
               }),
-              _vm._v(
-                "                   \n          Export              \n        "
-              ),
+              _vm._v("\n          Export\n        "),
             ]
           ),
         ]),
@@ -33251,7 +33330,7 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("th", [
-                  _vm._v("Link To \n              "),
+                  _vm._v("Link To\n              "),
                   _c(
                     "div",
                     {
@@ -33641,97 +33720,128 @@ var render = function () {
               { staticClass: "cursor-pointer" },
               _vm._l(_vm.items, function (item, index) {
                 return _c("tr", { key: index }, [
-                  _c("td", [_vm._v(" " + _vm._s(item[0]))]),
+                  item.status == "Completed" || item.status == "Cancelled"
+                    ? _c("td", [_vm._v(" " + _vm._s(item.instruction_id))])
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c("td", [_vm._v(" " + _vm._s(item[1]))]),
+                  item.status == "Completed" || item.status == "Cancelled"
+                    ? _c("td", [_vm._v(" " + _vm._s(item.link_to))])
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c("td", { staticClass: "mid" }, [
-                    item[2] == "LI"
-                      ? _c("i", { staticClass: "bi bi-truck icon" })
-                      : _c("i", { staticClass: "bi bi-person-fill-gear icon" }),
-                    _vm._v(
-                      "\n              " + _vm._s(item[2]) + "\n            "
-                    ),
-                  ]),
+                  item.status == "Completed" || item.status == "Cancelled"
+                    ? _c("td", { staticClass: "mid" }, [
+                        item.instruction_type == "Logistic Instruction"
+                          ? _c("i", { staticClass: "bi bi-truck icon" })
+                          : _c("i", {
+                              staticClass: "bi bi-person-fill-gear icon",
+                            }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(item.instruction_type) +
+                            "\n            "
+                        ),
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c("td", [_vm._v(" " + _vm._s(item[3]))]),
+                  item.status == "Completed" || item.status == "Cancelled"
+                    ? _c("td", [_vm._v(" " + _vm._s(item.invoice_to))])
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c("td", [_vm._v(" " + _vm._s(item[4]))]),
+                  item.status == "Completed" || item.status == "Cancelled"
+                    ? _c("td", [
+                        _vm._v(" " + _vm._s(item.attachment[0].created_at)),
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c("td", [_vm._v(" " + _vm._s(item[5]))]),
+                  item.status == "Completed" || item.status == "Cancelled"
+                    ? _c("td", [_vm._v(" " + _vm._s(item.attention_of))])
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c("td", [_vm._v(" " + _vm._s(item[6]))]),
+                  item.status == "Completed" || item.status == "Cancelled"
+                    ? _c("td", [_vm._v(" " + _vm._s(item.quotation_no))])
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c("td", [_vm._v(" " + _vm._s(item[7]))]),
+                  item.status == "Completed" || item.status == "Cancelled"
+                    ? _c("td", [_vm._v(" " + _vm._s(item.customer_po))])
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c("td", [
-                    item[8] == "Completed"
-                      ? _c(
-                          "p",
-                          {
-                            staticClass:
-                              "btn btn-success badge badge-pill bg-success",
-                            attrs: { id: "btn-cancel" },
-                            on: {
-                              click: function ($event) {
-                                return _vm.pushComplete(item[0])
-                              },
-                            },
-                          },
-                          [_vm._v(_vm._s(item[8]))]
-                        )
-                      : _c(
-                          "span",
-                          {
-                            staticStyle: {
-                              "margin-bottom": "0px",
-                              position: "relative",
-                            },
-                          },
-                          [
-                            _c(
+                  item.status == "Completed" || item.status == "Cancelled"
+                    ? _c("td", [
+                        item.status == "Completed"
+                          ? _c(
                               "p",
                               {
                                 staticClass:
-                                  "btn btn-secondary badge badge-pill bg-secondary",
+                                  "btn btn-success badge badge-pill bg-success",
                                 attrs: { id: "btn-cancel" },
                                 on: {
                                   click: function ($event) {
-                                    return _vm.pushCancel(item[0])
+                                    return _vm.pushComplete(item.instruction_id)
                                   },
                                 },
                               },
+                              [_vm._v(_vm._s(item.status))]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        item.status == "Cancelled"
+                          ? _c(
+                              "span",
+                              {
+                                staticStyle: {
+                                  "margin-bottom": "0px",
+                                  position: "relative",
+                                },
+                              },
                               [
-                                _vm._v(
-                                  _vm._s(item[8]) + "\n                    "
-                                ),
                                 _c(
-                                  "a",
+                                  "p",
                                   {
-                                    staticStyle: {
-                                      position: "absolute",
-                                      "margin-left": "10px",
-                                      "margin-top": "-1px",
-                                      "background-color": "#0F6EC4",
-                                      "border-radius": "50%",
-                                      width: "15px",
-                                      "font-size": "12px",
-                                      "text-align": "center",
-                                      "text-decoration": "none",
-                                      color: "white",
-                                    },
-                                    attrs: {
-                                      "data-bs-toggle": "popover",
-                                      "data-bs-placement": "top",
+                                    staticClass:
+                                      "btn btn-secondary badge badge-pill bg-secondary",
+                                    attrs: { id: "btn-cancel" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.pushCancel(
+                                          item.instruction_id
+                                        )
+                                      },
                                     },
                                   },
-                                  [_vm._v("i\n                      ")]
+                                  [
+                                    _vm._v(
+                                      _vm._s(item.status) +
+                                        "\n                  "
+                                    ),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticStyle: {
+                                          position: "absolute",
+                                          "margin-left": "10px",
+                                          "margin-top": "-1px",
+                                          "background-color": "#0F6EC4",
+                                          "border-radius": "50%",
+                                          width: "15px",
+                                          "font-size": "12px",
+                                          "text-align": "center",
+                                          "text-decoration": "none",
+                                          color: "white",
+                                        },
+                                        attrs: {
+                                          "data-bs-toggle": "popover",
+                                          "data-bs-placement": "top",
+                                        },
+                                      },
+                                      [_vm._v("i\n                  ")]
+                                    ),
+                                  ]
                                 ),
                               ]
-                            ),
-                          ]
-                        ),
-                  ]),
+                            )
+                          : _vm._e(),
+                      ])
+                    : _vm._e(),
                 ])
               }),
               0
@@ -54242,11 +54352,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-<<<<<<< HEAD
 module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\xampp\\\\htdocs\\\\Final-Project-Inosoft-Bootcamp"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\xampp\\\\htdocs\\\\Final-Project-Inosoft-Bootcamp","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
-=======
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
->>>>>>> 5eb2c0ea9b941e0b52baf928e6d7d9fe7fc2465d
 
 /***/ })
 

@@ -233,7 +233,34 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-export default {   
+export default {
+    data() {
+    return {
+    //   search: "",
+    //   items: [],
+    };
+  },
+  created() {
+    // Panggil method fetchData saat pertama kali dijalankan
+    // this.fetchData();
+  },
+    methods: {
+    //     async fetchData() {
+    //   if (this.search.length === 0) {
+    //     // Jika input kosong, ambil data dari API show
+    //     const response = await axios.get("/api/instruction/");
+    //     this.items = response.data.data;
+    //   } else {
+    //     // Jika input tidak kosong, ambil data dari API search
+    //     const response = await axios.get("/api/instruction/search/", {
+    //       params: {
+    //         key: this.search,
+    //       },
+    //     });
+    //     this.items = response.data.data;
+    //   }
+    // }
+    },   
     mounted(){
     let completed = document.getElementById("completed");
       let open = document.getElementById("open");
