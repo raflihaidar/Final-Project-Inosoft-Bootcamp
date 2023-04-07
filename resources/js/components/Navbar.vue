@@ -181,17 +181,47 @@
                         <li id="biru" class="breadcrumb-item active">3rd Party Instruction</li>
                     </ol>
                     
-                    <ul class="nav">
+                    <!-- <ul class="nav">
                         <li class="nav-item">
                             <router-link to="/open" class="aw teal" id="open">Open</router-link>
                         </li>
                         <li class="nav-item" >
                             <router-link to="/completed" class="aw customCompleted teal2" id="completed">Completed</router-link>
                         </li>
-                    </ul>
-                    
+                    </ul> -->
+
+                    <div class="card mb-4 shadow">
+                        <div class="card-body">
+                            <ul class="tabs nav nav-tabs">
+                                <li class="nav-item">
+                                    <a role="button" class="aw teal nav-link active" id="open" v-on:click="pushOpen()">Open</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a role="button" class="aw customCompleted teal2 nav-link" id="completed" v-on:click="pushComplete()">Completed</a>
+                                </li>
+                                <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">
+                                            <i id="biru" class="fas fa-search">
+                                            </i>
+                                        </span>
+                                        <input class="form-control"  type="text" v-model="search" id="search" placeholder="Search" @input="fetchData" />
+                                    </div>
+                                </form>
+
+                                <li class="nav-item" style="float: right;">
+                                    <button style="border-color:#d4d4d4; font-weight:bold" id="putih" class="export btn btn-outline-secondary btn-sm"
+                                    v-on:click="ExportExcel('tcomplete', 'Tab-complete')"><i id="biru" class="fa-solid fa-file-export"></i>
+                                    Export
+                                    </button>
+                                </li>
+                            </ul>
+                                <router-view  :items="list"/>
+                        </div>
+                    </div>
+
                     <!-- tempat tabel -->
-                    <router-view />
+                    
 
                 </div>
             </main>
@@ -236,8 +266,8 @@ window.addEventListener('DOMContentLoaded', event => {
 export default {
     data() {
     return {
-    //   search: "",
-    //   items: [],
+      search: "",
+      list: [],
     };
   },
   created() {
@@ -245,29 +275,86 @@ export default {
     // this.fetchData();
   },
     methods: {
-    //     async fetchData() {
-    //   if (this.search.length === 0) {
-    //     // Jika input kosong, ambil data dari API show
-    //     const response = await axios.get("/api/instruction/");
-    //     this.items = response.data.data;
-    //   } else {
-    //     // Jika input tidak kosong, ambil data dari API search
-    //     const response = await axios.get("/api/instruction/search/", {
-    //       params: {
-    //         key: this.search,
-    //       },
-    //     });
-    //     this.items = response.data.data;
-    //   }
-    // }
+
+    pushOpen() {
+      this.$router.push({ path: "/open" })
+      let completed = document.getElementById("completed");
+      let open = document.getElementById("open");
+        completed.classList.add("customCompleted");
+        open.classList.remove("customOpen");
+    },
+
+    pushComplete() {
+      this.$router.push({ path: "/completed" })
+      let completed = document.getElementById("completed");
+      let open = document.getElementById("open");
+        completed.classList.remove("customCompleted");
+        completed.classList.add("active");
+        open.classList.add("customOpen");
+    },
+
+    ExportExcel(tableID, filename = '') {
+      var downloadLink;
+      var dataType = 'application/vnd.ms-excel';
+      var tableSelect = document.getElementById(tableID);
+      var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+      filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+      downloadLink = document.createElement("a");
+
+      document.body.appendChild(downloadLink);
+
+      if (navigator.msSaveOrOpenBlob) {
+        var blob = new Blob(['\ufeff', tableHTML], {
+          type: dataType
+        });
+        navigator.msSaveOrOpenBlob(blob, filename);
+      }
+
+      else {
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+        downloadLink.download = filename;
+
+        downloadLink.click();
+      }
+
+    },
+
+    panggil(){
+        // saat halaman index dijalankan langsung memanggil children component tab open secara default
+        this.$router.push({ path: "/open" })
+        console.log(this.$router);  
+    },
+
+    async fetchData() {
+      if (this.search.length === 0) {
+        // Jika input kosong, ambil data dari API show
+        const response = await axios.get("http://127.0.0.1:8000/api/instruction/");
+        this.list = response.data.data;
+      } else {
+        // Jika input tidak kosong, ambil data dari API search
+        const response = await axios.get("http://127.0.0.1:8000/api/instruction/search/", {
+          params: {
+            key: this.search,
+          },
+        });
+        this.list = response.data.data;
+      }
+    },
     },   
     mounted(){
-    let completed = document.getElementById("completed");
-      let open = document.getElementById("open");
-      completed.addEventListener("click", function () {
-        completed.classList.toggle("customCompleted");
-        open.classList.toggle("customOpen");
-      });
+      
+    this.panggil();
+    this.fetchData();
+
+    // let completed = document.getElementById("completed");
+    //   let open = document.getElementById("open");
+    //   completed.addEventListener("click", function () {
+    //     completed.classList.toggle("customCompleted");
+    //     open.classList.toggle("customOpen");
+    //   });
     },
   
 }
@@ -2324,224 +2411,13 @@ progress {
     }
 }
 
-.table,
-.dataTable-table {
-    --bs-table-bg: transparent;
-    --bs-table-accent-bg: transparent;
-    --bs-table-striped-color: #212529;
-    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
-    --bs-table-active-color: #212529;
-    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-    --bs-table-hover-color: #212529;
-    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-    vertical-align: top;
-    border-color: #dee2e6;
-}
 
-.table> :not(caption)>*>*,
-.dataTable-table> :not(caption)>*>* {
-    padding: 0.5rem 0.5rem;
-    background-color: var(--bs-table-bg);
-    border-bottom-width: 1px;
-    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
-}
-
-.table>tbody,
-.dataTable-table>tbody {
-    vertical-align: inherit;
-}
-
-.table>thead,
-.dataTable-table>thead {
-    vertical-align: bottom;
-}
-
-.table> :not(:first-child),
-.dataTable-table> :not(:first-child) {
-    border-top: 2px solid currentColor;
-}
 
 .caption-top {
     caption-side: top;
 }
 
-.table-sm> :not(caption)>*>* {
-    padding: 0.25rem 0.25rem;
-}
 
-.table-bordered> :not(caption)>*,
-.dataTable-table> :not(caption)>* {
-    border-width: 1px 0;
-}
-
-.table-bordered> :not(caption)>*>*,
-.dataTable-table> :not(caption)>*>* {
-    border-width: 0 1px;
-}
-
-.table-borderless> :not(caption)>*>* {
-    border-bottom-width: 0;
-}
-
-.table-borderless> :not(:first-child) {
-    border-top-width: 0;
-}
-
-.table-striped>tbody>tr:nth-of-type(odd)>* {
-    --bs-table-accent-bg: var(--bs-table-striped-bg);
-    color: var(--bs-table-striped-color);
-}
-
-.table-active {
-    --bs-table-accent-bg: var(--bs-table-active-bg);
-    color: var(--bs-table-active-color);
-}
-
-.table-hover>tbody>tr:hover>*,
-.dataTable-table>tbody>tr:hover>* {
-    --bs-table-accent-bg: var(--bs-table-hover-bg);
-    color: var(--bs-table-hover-color);
-}
-
-.table-primary {
-    --bs-table-bg: #cfe2ff;
-    --bs-table-striped-bg: #c5d7f2;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #bacbe6;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #bfd1ec;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #bacbe6;
-}
-
-.table-secondary {
-    --bs-table-bg: #e2e3e5;
-    --bs-table-striped-bg: #d7d8da;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #cbccce;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #d1d2d4;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #cbccce;
-}
-
-.table-success {
-    --bs-table-bg: #d1e7dd;
-    --bs-table-striped-bg: #c7dbd2;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #bcd0c7;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #c1d6cc;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #bcd0c7;
-}
-
-.table-info {
-    --bs-table-bg: #cff4fc;
-    --bs-table-striped-bg: #c5e8ef;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #badce3;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #bfe2e9;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #badce3;
-}
-
-.table-warning {
-    --bs-table-bg: #fff3cd;
-    --bs-table-striped-bg: #f2e7c3;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #e6dbb9;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #ece1be;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #e6dbb9;
-}
-
-.table-danger {
-    --bs-table-bg: #f8d7da;
-    --bs-table-striped-bg: #eccccf;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #dfc2c4;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #e5c7ca;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #dfc2c4;
-}
-
-.table-light {
-    --bs-table-bg: #f8f9fa;
-    --bs-table-striped-bg: #ecedee;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #dfe0e1;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #e5e6e7;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #dfe0e1;
-}
-
-.table-dark {
-    --bs-table-bg: #212529;
-    --bs-table-striped-bg: #2c3034;
-    --bs-table-striped-color: #fff;
-    --bs-table-active-bg: #373b3e;
-    --bs-table-active-color: #fff;
-    --bs-table-hover-bg: #323539;
-    --bs-table-hover-color: #fff;
-    color: #fff;
-    border-color: #373b3e;
-}
-
-.table-responsive,
-.dataTable-wrapper .dataTable-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-@media (max-width: 575.98px) {
-    .table-responsive-sm {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .table-responsive-md {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-@media (max-width: 991.98px) {
-    .table-responsive-lg {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-@media (max-width: 1199.98px) {
-    .table-responsive-xl {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-@media (max-width: 1399.98px) {
-    .table-responsive-xxl {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
 
 .form-label {
     margin-bottom: 0.5rem;
@@ -13155,6 +13031,11 @@ td {
     text-align: left;
 }
 
+#tcomplete th,
+td {
+  font-size: small;
+  text-align: center;
+}
 
 
 .batas {
@@ -13184,5 +13065,13 @@ td {
 .sort-down {
     position: absolute;
     margin-top: 8px;
+}
+
+.export:hover {
+    color: #00000069 !important;
+}
+
+.tabs {
+    --nav-tabs-border-color:#c4dcc0;
 }
 </style>

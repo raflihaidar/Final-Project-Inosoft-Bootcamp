@@ -1,49 +1,10 @@
 <template>
-  <div class="card mb-4 shadow">
-    <div class="card-body">
-
-      <ul class="nav nav-tabs">
-
-        <!-- <li class="nav-item">
-          <router-link to="/open" class="nav-link customOpen teal" id="open">Open</router-link>
-          <a id="open" class="nav-link active" href="#">Open</a>
-        </li> -->
-
-        <li class="nav-item">
-          <!-- <router-link to="/completed" class="nav-link customCompleted" id="completed">Completed</router-link> -->
-
-          <!-- manatau butuh -->
-          <!-- <a id="completed" class="nav-link cursor-pointer" aria-current="page" v-on:click="getData()">Get</a> -->
-        </li>
-        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text" id="inputGroup-sizing-sm">
-              <i id="biru" class="fas fa-search">
-              </i>
-            </span>
-            <input class="form-control"  type="text" v-model="search" id="search" placeholder="Search" @input="fetchData" />
-          </div>
-        </form>
-
-
-        <li class="nav-item" style="float: right;">
-          <button style="border-color:#d4d4d4; font-weight:bold" id="putih" class="btn btn-outline-secondary btn-sm"
-            v-on:click="ExportExcel('tcomplete', 'Tab-complete')"><i id="biru" class="fa-solid fa-file-export"></i>
-            Export
-          </button>
-        </li>
-
-      </ul>
-
-
-      <!-- tempat tabel complete -->
-
-      <div class="overflow-auto">
+  <div class="overflow-auto">
         <!-- <div class="table-responsive ">   -->
 
         <table id="tcomplete" class="sortable batas table table-hovers text-nowrap">
 
-          <thead class="text-bg-secondary">
+          <thead style="background-color: #b6bbc1; color:white">
             <tr>
               <th>Instruction ID
                 <div class="btn-group-vertical cursor-pointer" role="group">
@@ -144,18 +105,18 @@
               <td v-if="item.status=='Completed'||item.status=='Cancelled'"> {{ item.quotation_no }}</td>
               <td v-if="item.status=='Completed'||item.status=='Cancelled'"> {{ item.customer_po }}</td>
               <td v-if="item.status=='Completed'||item.status=='Cancelled'">
-                <p id="btn-cancel" v-if="item.status == 'Completed'" class="btn btn-success badge badge-pill bg-success"
+                <p id="btn-complete" v-if="item.status == 'Completed'" class="btn badge badge-pill"
                   v-on:click="pushComplete(item.instruction_id)">{{ item.status }}</p>
                 <!-- <button style="font-size: x-small;" id="btn-cancel" v-if="item[8]=='Completed'" class="btn btn-success btn-sm">{{ item[8] }}</button> -->
 
                 <span style="margin-bottom: 0px; position:relative" v-if="item.status == 'Cancelled'">
-                  <p id="btn-cancel" class="btn btn-secondary badge badge-pill bg-secondary"
+                  <p id="btn-cancel" class="btn badge badge-pill"
                     v-on:click="pushCancel(item.instruction_id)">{{ item.status }}
                     <a data-bs-toggle="popover" data-bs-placement="top" style="
                                                   position: absolute;
                                                   margin-left: 10px;
                                                   margin-top: -1px;
-                                                  background-color:#0F6EC4
+                                                  background-color:#4594d6
                                                   border: 1px solid black;
                                                   border-radius: 50%;
                                                   width: 15px;
@@ -177,62 +138,42 @@
         </table>
 
       </div>
-    </div>
-  </div>
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
-
-
-// var popoverTriggerList = [].slice.call(
-//   document.querySelectorAll('[data-bs-toggle="popover"]')
-// );
-// var popoverList = popoverTriggerList.map(function (
-//   popoverTriggerEl
-// ) {
-//   return new bootstrap.Popover(popoverTriggerEl);
-// });
-
-
 export default {
 
-  computed: {
-    // ...mapGetters({
-    //   list :'example/getData'
-    // })
+  props: {
+    items: {
+      type: Array,
+      default: () => {
+        return [];
+      },
+    },
   },
 
   mounted() {
-    this.fetchData();
+    // this.fetchData();
     // this.fetchTemplates();
-
-    let completed = document.getElementById("completed");
-    let open = document.getElementById("open");
-    completed.addEventListener("click", function () {
-      completed.classList.toggle("nav-link active");
-      open.classList.toggle("nav-link active");
-    });
   },
 
+    methods: {
 
-  methods: {
-
-    async fetchData() {
-      if (this.search.length === 0) {
-        // Jika input kosong, ambil data dari API show
-        const response = await axios.get("http://127.0.0.1:8000/api/instruction/");
-        this.items = response.data.data;
-      } else {
-        // Jika input tidak kosong, ambil data dari API search
-        const response = await axios.get("http://127.0.0.1:8000/api/instruction/search/", {
-          params: {
-            key: this.search,
-          },
-        });
-        this.items = response.data.data;
-      }
-    },
+    // async fetchData() {
+    //   if (this.search.length === 0) {
+    //     // Jika input kosong, ambil data dari API show
+    //     const response = await axios.get("http://127.0.0.1:8000/api/instruction/");
+    //     this.items = response.data.data;
+    //   } else {
+    //     // Jika input tidak kosong, ambil data dari API search
+    //     const response = await axios.get("http://127.0.0.1:8000/api/instruction/search/", {
+    //       params: {
+    //         key: this.search,
+    //       },
+    //     });
+    //     this.items = response.data.data;
+    //   }
+    // },
     
 
     // fetchTemplates() {
@@ -279,34 +220,34 @@ export default {
     },
 
 
-    ExportExcel(tableID, filename = '') {
-      var downloadLink;
-      var dataType = 'application/vnd.ms-excel';
-      var tableSelect = document.getElementById(tableID);
-      var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    // ExportExcel(tableID, filename = '') {
+    //   var downloadLink;
+    //   var dataType = 'application/vnd.ms-excel';
+    //   var tableSelect = document.getElementById(tableID);
+    //   var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
 
-      filename = filename ? filename + '.xls' : 'excel_data.xls';
+    //   filename = filename ? filename + '.xls' : 'excel_data.xls';
 
-      downloadLink = document.createElement("a");
+    //   downloadLink = document.createElement("a");
 
-      document.body.appendChild(downloadLink);
+    //   document.body.appendChild(downloadLink);
 
-      if (navigator.msSaveOrOpenBlob) {
-        var blob = new Blob(['\ufeff', tableHTML], {
-          type: dataType
-        });
-        navigator.msSaveOrOpenBlob(blob, filename);
-      }
+    //   if (navigator.msSaveOrOpenBlob) {
+    //     var blob = new Blob(['\ufeff', tableHTML], {
+    //       type: dataType
+    //     });
+    //     navigator.msSaveOrOpenBlob(blob, filename);
+    //   }
 
-      else {
-        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    //   else {
+    //     downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
 
-        downloadLink.download = filename;
+    //     downloadLink.download = filename;
 
-        downloadLink.click();
-      }
+    //     downloadLink.click();
+    //   }
 
-    },
+    // },
 
 
     sortRecordsAsc(index) {
@@ -345,7 +286,7 @@ export default {
     },
   },
 
-  data() {
+    data() {
     return {
       term: '',
       fields: [
@@ -366,10 +307,7 @@ export default {
 }
 </script>
 
-<style scoped>
-.btn:hover {
-  color: #00bfbf !important;
-}
+<style>
 
 .table-hovers tbody tr:hover td,
 .table-hover tbody tr:hover th {
@@ -436,11 +374,32 @@ td {
   padding-right: 5px;
 }
 
+#btn-complete {
+  --bs-btn-padding-y: none;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 50px;
+  color: white;
+  background-color: #0a9d5c;
+}
+
 #btn-cancel {
   --bs-btn-padding-y: none;
   padding-left: 30px;
   padding-right: 30px;
   border-radius: 50px;
+  color: white;
+  background-color: #a2aab2;
+}
+
+#btn-complete:hover{
+  color:none;
+  background-color:#0a9d5bc9;
+}
+
+#btn-cancel:hover{
+  color:none;
+  background-color:#a2aab2c7;
 }
 
 .sort-up {
@@ -451,4 +410,5 @@ td {
 .sort-down {
   position: absolute;
   margin-top: 8px;
-}</style>
+}
+</style>
