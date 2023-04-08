@@ -1,11 +1,11 @@
 <template>
   <div class="sb-nav-fixed">
-    <nav id="warna" class="sb-topnav navbar navbar-expand navbar-dark shadow">
+    <nav id="warna" class="sb-topnav navbar navbar-expand navbar-dark">
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" ><i
-                class="fas fa-bars"></i></button>
+        <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i
+                class="fas fa-bars"></i></button> -->
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html"><i class="fa-brands fa-github"> </i> Final Project</a>
+        <a class="navbar-brand ps-3" href="index.html"><i style="margin-right:20px" class="fa-brands fa-github"></i> Final Project</a>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <!-- Navbar-->
@@ -26,172 +26,239 @@
         </form>
     </nav>
     <div id="layoutSidenav">
-        <div class="shadow" id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark warna" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-gauge"></i></div>
-                            Dashboard
-                        </a>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseMarket" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-compass"></i></div>
-                            Market Index
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseMarket" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseQH"
-                            aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-helmet-safety"></i></div>
-                            Quality & HSE
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseQH" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseCommercial" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-coins"></i></div>
-                            Commercial
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseCommercial" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseProcure" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-person-walking-luggage"></i></div>
-                            Procurement
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseProcure" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseInventory" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-warehouse"></i></div>
-                            Inventory
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseInventory" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseVendor" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group"></i></div>
-                            Vendor Management
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseVendor" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/">3rd Party Instruction</a>
-                                <!-- <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseProduction" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-gears"></i></div>
-                            Production
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseProduction" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKPI"
-                            aria-expanded="false" aria-controls="collapseKPI">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-line"></i></div>
-                            KPI & Report
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseKPI" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fa-brands fa-maxcdn"></i></div>
-                            MI Share
-                        </a>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-                            Resources
-                        </a>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-industry"></i>
-                            </div>
-                            Mill Advisor
-                        </a>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKPI"
-                            aria-expanded="false" aria-controls="collapseSetup">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-line"></i></div>
-                            Set Up
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseSetup" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-
+        <!-- tempat sidenav -->
+    <div class="shadow" id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark warna" id="sidenavAccordion">
+            <div class="sb-sidenav-menu" id="sidebarToggle">
+            <div class="nav">
+                <a class="nav-link" href="index.html">
+                    Dashboard
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-gauge"></i></div>
+                </a>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseMarket" aria-expanded="false" aria-controls="collapseLayouts">
+                    Market Index
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-regular fa-compass"></i>
                     </div>
+                </a>
+                <div class="collapse" id="collapseMarket" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
                 </div>
-                <div class="sb-sidenav-footer">
-                    <div style="text-align: center;" class="small">2023 All rights reserved</div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseQH"
+                    aria-expanded="false" aria-controls="collapseLayouts">
+                    Quality & HSE
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-helmet-safety"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseQH" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
                 </div>
-            </nav>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseCommercial" aria-expanded="false" aria-controls="collapseLayouts">
+                    Commercial
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseCommercial" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseProcure" aria-expanded="false" aria-controls="collapseLayouts">
+                    Procurement
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-person-walking-luggage"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseProcure" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseInventory" aria-expanded="false" aria-controls="collapseLayouts">
+                    Inventory
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-warehouse"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseInventory" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseVendor" aria-expanded="false" aria-controls="collapseLayouts">
+                    Vendor
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseVendor" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="/">3rd Party Instruction</a>
+                        <!-- <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseProduction" aria-expanded="false" aria-controls="collapseLayouts">
+                    Production
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseProduction" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKPI"
+                    aria-expanded="false" aria-controls="collapseKPI">
+                    KPI & Report
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseKPI" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link" href="index.html">
+                    MI Share
+                    <div class="sb-nav-link-icon"><i class="fa-brands fa-maxcdn"></i></div>
+                </a>
+                <a class="nav-link" href="index.html">
+                    Resources
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                </a>
+                <a class="nav-link" href="index.html">
+                    Mill Advisor
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-industry"></i></div>
+                </a>
+                <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKPI"
+                    aria-expanded="false" aria-controls="collapseSetup">
+                    Set Up
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                </a> -->
+                <div class="collapse" id="collapseSetup" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+
+            </div>
         </div>
+        
+        <!-- <div class="sb-sidenav-footer">
+            <div style="text-align: center;" class="small">2023 All rights reserved</div>
+        </div> -->
+    </nav>
+</div>
         <div id="layoutSidenav_content">
             <main>
                 <div class="card-header container-fluid px-4">
                     <h3 class="mt-4">3rd Party Instruction</h3>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Vendor Management</li>
-                        <li id="biru" class="breadcrumb-item active">3rd Party Instruction</li>
+                    <nav
+                    style="--bs-breadcrumb-divider: '>'"
+                    aria-label="breadcrumb"
+                >
+                    <ol class="breadcrumb" style="font-size: 0.8em">
+                        <li class="breadcrumb-item">
+                            <a
+                                id="biru"
+                                href="#"
+                                style="text-decoration: none; color: #adadad"
+                                >Vendor Management</a
+                            >
+                        </li>
+                        <li
+                            class="breadcrumb-item active"
+                            aria-current="page"
+                            id="biru"
+                        >
+                            3rd Party Instruction
+                        </li>
                     </ol>
+                </nav>
                     
-                    <ul class="nav">
+                    <!-- <ul class="nav">
                         <li class="nav-item">
                             <router-link to="/open" class="aw teal" id="open">Open</router-link>
                         </li>
                         <li class="nav-item" >
                             <router-link to="/completed" class="aw customCompleted teal2" id="completed">Completed</router-link>
                         </li>
-                    </ul>
-                    
+                    </ul> -->
+
+                    <div style="margin-top:30px;" class="card mb-4 shadow">
+                        <div class="card-body">
+                            <ul class="tabs nav nav-tabs">
+                                <li id="switch1" class="nav-item active">
+                                    <span role="button" class="active aw teal" id="open" v-on:click="pushOpen()">Open</span>
+                                </li>
+                                <li id="switch2" class="nav-item">
+                                    <span role="button" class="aw customCompleted teal2 " id="completed" v-on:click="pushComplete()">Completed</span>
+                                </li>
+                                <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">
+                                            <i id="biru" class="fas fa-search">
+                                            </i>
+                                        </span>
+                                        <input class="form-control"  type="text" v-model="search" id="search" placeholder="Search" @input="fetchData" />
+                                    </div>
+                                </form>
+
+                                <li class="nav-item" style="float: right; margin-bottom: 10px;">
+                                    <button style="border-color:#d4d4d4; font-weight:bold" id="putih" class="export btn btn-outline-secondary btn-sm"
+                                    v-on:click="ExportExcel('tcomplete', 'Tab-complete')"><i id="biru" class="fa-solid fa-file-export"></i>
+                                    Export
+                                    </button>
+                                </li>
+                            </ul>
+                                <router-view  :items="list"/>
+                        </div>
+                    </div>
+
                     <!-- tempat tabel -->
-                    <router-view />
+                    
 
                 </div>
             </main>
@@ -224,23 +291,116 @@ window.addEventListener('DOMContentLoaded', event => {
         // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
         //     document.body.classList.toggle('sb-sidenav-toggled');
         // }
-        sidebarToggle.addEventListener('click', event => {
+        sidebarToggle.addEventListener('mouseover', event => {
             event.preventDefault();
-            document.body.classList.toggle('sb-sidenav-toggled');
-            localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+            document.body.classList.remove('sb-sidenav-toggled');
+        });
+        sidebarToggle.addEventListener('mouseleave', event => {
+            event.preventDefault();
+            document.body.classList.add('sb-sidenav-toggled');
         });
     }
 
 });
 
-export default {   
-    mounted(){
-    let completed = document.getElementById("completed");
+export default {
+    data() {
+    return {
+      search: "",
+      list: [],
+    };
+  },
+  created() {
+    // Panggil method fetchData saat pertama kali dijalankan
+    // this.fetchData();
+  },
+    methods: {
+
+    pushOpen() {
+      this.$router.push({ path: "/open" })
+      let completed = document.getElementById("completed");
       let open = document.getElementById("open");
-      completed.addEventListener("click", function () {
-        completed.classList.toggle("customCompleted");
-        open.classList.toggle("customOpen");
-      });
+        completed.classList.add("customCompleted");
+        open.classList.remove("customOpen");
+      let open2 = document.getElementById("switch1");
+      let completed2 = document.getElementById("switch2");
+        completed2.classList.remove("active");
+        open2.classList.add("active");
+    },
+
+    pushComplete() {
+      this.$router.push({ path: "/completed" })
+      let completed = document.getElementById("completed");
+      let open = document.getElementById("open");
+        completed.classList.remove("customCompleted");
+        open.classList.add("customOpen");
+      let open2 = document.getElementById("switch1");
+      let completed2 = document.getElementById("switch2");
+        completed2.classList.add("active");
+        open2.classList.remove("active");
+    },
+
+    ExportExcel(tableID, filename = '') {
+      var downloadLink;
+      var dataType = 'application/vnd.ms-excel';
+      var tableSelect = document.getElementById(tableID);
+      var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+      filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+      downloadLink = document.createElement("a");
+
+      document.body.appendChild(downloadLink);
+
+      if (navigator.msSaveOrOpenBlob) {
+        var blob = new Blob(['\ufeff', tableHTML], {
+          type: dataType
+        });
+        navigator.msSaveOrOpenBlob(blob, filename);
+      }
+
+      else {
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+        downloadLink.download = filename;
+
+        downloadLink.click();
+      }
+
+    },
+
+    panggil(){
+        // saat halaman index dijalankan langsung memanggil children component tab open secara default
+        this.$router.push({ path: "/open" })
+    },
+
+    async fetchData() {
+      if (this.search.length === 0) {
+        // Jika input kosong, ambil data dari API show
+        const response = await axios.get("http://127.0.0.1:8000/api/instruction/");
+        this.list = response.data.data;
+      } else {
+        // Jika input tidak kosong, ambil data dari API search
+        const response = await axios.get("http://127.0.0.1:8000/api/instruction/search/", {
+          params: {
+            key: this.search,
+          },
+        });
+        this.list = response.data.data;
+      }
+    },
+    },   
+    mounted(){
+    document.body.classList.add('sb-sidenav-toggled');  
+    this.panggil();
+    this.fetchData();
+
+    // let completed = document.getElementById("completed");
+    //   let open = document.getElementById("open");
+    //   completed.addEventListener("click", function () {
+    //     completed.classList.toggle("customCompleted");
+    //     open.classList.toggle("customOpen");
+    //   });
     },
   
 }
@@ -249,29 +409,37 @@ export default {
 <style scope>    
 .teal {
     color: #00bfbf;
-    font-weight: bold;
-    margin-right: 20px;
+    font-weight:500;
+    font-size: large;
+    margin-right: 30px;
     margin-left: 20px;
 }
 
 .teal2 {
     color: #00bfbf;
-    font-weight: bold;
+    font-weight:500;
+    font-size: large;
 }
- 
+
+.nav li.active {
+    border-bottom: #00bfbf 3px solid;
+}
+
 .aw:hover{
   color: #00bfbf !important;
 }
 
 .customCompleted {
- font-weight: bold;
- color: #adadad;
+    font-weight:500;
+    font-size: large;
+    color: #adadad;
 }
 
 .customOpen {
     color: #adadad;
-    font-weight: bold;
-    margin-right: 20px;
+    font-weight:500;
+    font-size: large;
+    margin-right: 30px;
     margin-left: 20px;
   }
   
@@ -2297,224 +2465,13 @@ progress {
     }
 }
 
-.table,
-.dataTable-table {
-    --bs-table-bg: transparent;
-    --bs-table-accent-bg: transparent;
-    --bs-table-striped-color: #212529;
-    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
-    --bs-table-active-color: #212529;
-    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-    --bs-table-hover-color: #212529;
-    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-    vertical-align: top;
-    border-color: #dee2e6;
-}
 
-.table> :not(caption)>*>*,
-.dataTable-table> :not(caption)>*>* {
-    padding: 0.5rem 0.5rem;
-    background-color: var(--bs-table-bg);
-    border-bottom-width: 1px;
-    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
-}
-
-.table>tbody,
-.dataTable-table>tbody {
-    vertical-align: inherit;
-}
-
-.table>thead,
-.dataTable-table>thead {
-    vertical-align: bottom;
-}
-
-.table> :not(:first-child),
-.dataTable-table> :not(:first-child) {
-    border-top: 2px solid currentColor;
-}
 
 .caption-top {
     caption-side: top;
 }
 
-.table-sm> :not(caption)>*>* {
-    padding: 0.25rem 0.25rem;
-}
 
-.table-bordered> :not(caption)>*,
-.dataTable-table> :not(caption)>* {
-    border-width: 1px 0;
-}
-
-.table-bordered> :not(caption)>*>*,
-.dataTable-table> :not(caption)>*>* {
-    border-width: 0 1px;
-}
-
-.table-borderless> :not(caption)>*>* {
-    border-bottom-width: 0;
-}
-
-.table-borderless> :not(:first-child) {
-    border-top-width: 0;
-}
-
-.table-striped>tbody>tr:nth-of-type(odd)>* {
-    --bs-table-accent-bg: var(--bs-table-striped-bg);
-    color: var(--bs-table-striped-color);
-}
-
-.table-active {
-    --bs-table-accent-bg: var(--bs-table-active-bg);
-    color: var(--bs-table-active-color);
-}
-
-.table-hover>tbody>tr:hover>*,
-.dataTable-table>tbody>tr:hover>* {
-    --bs-table-accent-bg: var(--bs-table-hover-bg);
-    color: var(--bs-table-hover-color);
-}
-
-.table-primary {
-    --bs-table-bg: #cfe2ff;
-    --bs-table-striped-bg: #c5d7f2;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #bacbe6;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #bfd1ec;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #bacbe6;
-}
-
-.table-secondary {
-    --bs-table-bg: #e2e3e5;
-    --bs-table-striped-bg: #d7d8da;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #cbccce;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #d1d2d4;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #cbccce;
-}
-
-.table-success {
-    --bs-table-bg: #d1e7dd;
-    --bs-table-striped-bg: #c7dbd2;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #bcd0c7;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #c1d6cc;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #bcd0c7;
-}
-
-.table-info {
-    --bs-table-bg: #cff4fc;
-    --bs-table-striped-bg: #c5e8ef;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #badce3;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #bfe2e9;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #badce3;
-}
-
-.table-warning {
-    --bs-table-bg: #fff3cd;
-    --bs-table-striped-bg: #f2e7c3;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #e6dbb9;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #ece1be;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #e6dbb9;
-}
-
-.table-danger {
-    --bs-table-bg: #f8d7da;
-    --bs-table-striped-bg: #eccccf;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #dfc2c4;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #e5c7ca;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #dfc2c4;
-}
-
-.table-light {
-    --bs-table-bg: #f8f9fa;
-    --bs-table-striped-bg: #ecedee;
-    --bs-table-striped-color: #000;
-    --bs-table-active-bg: #dfe0e1;
-    --bs-table-active-color: #000;
-    --bs-table-hover-bg: #e5e6e7;
-    --bs-table-hover-color: #000;
-    color: #000;
-    border-color: #dfe0e1;
-}
-
-.table-dark {
-    --bs-table-bg: #212529;
-    --bs-table-striped-bg: #2c3034;
-    --bs-table-striped-color: #fff;
-    --bs-table-active-bg: #373b3e;
-    --bs-table-active-color: #fff;
-    --bs-table-hover-bg: #323539;
-    --bs-table-hover-color: #fff;
-    color: #fff;
-    border-color: #373b3e;
-}
-
-.table-responsive,
-.dataTable-wrapper .dataTable-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-@media (max-width: 575.98px) {
-    .table-responsive-sm {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .table-responsive-md {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-@media (max-width: 991.98px) {
-    .table-responsive-lg {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-@media (max-width: 1199.98px) {
-    .table-responsive-xl {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-@media (max-width: 1399.98px) {
-    .table-responsive-xxl {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
 
 .form-label {
     margin-bottom: 0.5rem;
@@ -5847,7 +5804,6 @@ fieldset:disabled .btn {
     padding-right: 0.5rem;
     color: #6c757d;
     content: var(--bs-breadcrumb-divider, "/")
-        /* rtl: var(--bs-breadcrumb-divider, "/") */
     ;
 }
 
@@ -12735,11 +12691,11 @@ body {
     }
 
     .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
-        transform: translateX(-225px);
+        transform: translateX(-175px);
     }
 
     .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content {
-        margin-left: -225px;
+        margin-left: -180px;
     }
 
     .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
@@ -12791,7 +12747,7 @@ body {
 
 .nav .nav-link .sb-nav-link-icon,
 .sb-sidenav-menu .nav-link .sb-nav-link-icon {
-    margin-right: 0.5rem;
+    margin-left: auto;
 }
 
 .sb-topnav {
@@ -12845,12 +12801,12 @@ body {
 }
 
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
     display: inline-block;
-    margin-left: auto;
+    margin-right: 15px;
     transition: transform 0.15s ease;
 }
 
@@ -13128,6 +13084,11 @@ td {
     text-align: left;
 }
 
+#tcomplete th,
+td {
+  font-size: small;
+  text-align: center;
+}
 
 
 .batas {
@@ -13157,5 +13118,13 @@ td {
 .sort-down {
     position: absolute;
     margin-top: 8px;
+}
+
+.export:hover {
+    color: #00000069 !important;
+}
+
+.tabs {
+    --nav-tabs-border-color:#c4dcc0;
 }
 </style>

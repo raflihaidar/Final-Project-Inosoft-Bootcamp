@@ -60,7 +60,7 @@
                             class="bi bi-chevron-left"
                             style="color: #00bfbf"
                         ></i>
-                        <router-link to="/completed" style="color: #00bfbf"
+                        <router-link to="/" style="color: #00bfbf"
                             >Back</router-link
                         ></a
                     >
