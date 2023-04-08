@@ -300,8 +300,6 @@ export default {
         "Customer PO",
         "Status"
       ],
-      items: [],
-      search: ""
     }
   }
 }

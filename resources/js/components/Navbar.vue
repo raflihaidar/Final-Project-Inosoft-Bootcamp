@@ -2,10 +2,10 @@
   <div class="sb-nav-fixed">
     <nav id="warna" class="sb-topnav navbar navbar-expand navbar-dark shadow">
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" ><i
-                class="fas fa-bars"></i></button>
+        <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i
+                class="fas fa-bars"></i></button> -->
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html"><i class="fa-brands fa-github"> </i> Final Project</a>
+        <a class="navbar-brand ps-3" href="index.html"><i style="margin-right:20px" class="fa-brands fa-github"></i> Final Project</a>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <!-- Navbar-->
@@ -26,152 +26,171 @@
         </form>
     </nav>
     <div id="layoutSidenav">
-        <div class="shadow" id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark warna" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-gauge"></i></div>
-                            Dashboard
-                        </a>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseMarket" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-compass"></i></div>
-                            Market Index
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseMarket" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseQH"
-                            aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-helmet-safety"></i></div>
-                            Quality & HSE
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseQH" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseCommercial" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-coins"></i></div>
-                            Commercial
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseCommercial" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseProcure" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-person-walking-luggage"></i></div>
-                            Procurement
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseProcure" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseInventory" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-warehouse"></i></div>
-                            Inventory
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseInventory" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseVendor" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group"></i></div>
-                            Vendor Management
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseVendor" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/">3rd Party Instruction</a>
-                                <!-- <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseProduction" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-gears"></i></div>
-                            Production
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseProduction" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKPI"
-                            aria-expanded="false" aria-controls="collapseKPI">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-line"></i></div>
-                            KPI & Report
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseKPI" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fa-brands fa-maxcdn"></i></div>
-                            MI Share
-                        </a>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-                            Resources
-                        </a>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-industry"></i>
-                            </div>
-                            Mill Advisor
-                        </a>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKPI"
-                            aria-expanded="false" aria-controls="collapseSetup">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-line"></i></div>
-                            Set Up
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseSetup" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
-                            </nav>
-                        </div>
-
+        <!-- tempat sidenav -->
+    <div class="shadow" id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark warna" id="sidenavAccordion">
+            <div class="sb-sidenav-menu" id="sidebarToggle">
+            <div class="nav">
+                <a class="nav-link" href="index.html">
+                    Dashboard
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-gauge"></i></div>
+                </a>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseMarket" aria-expanded="false" aria-controls="collapseLayouts">
+                    Market Index
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-regular fa-compass"></i>
                     </div>
+                </a>
+                <div class="collapse" id="collapseMarket" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
                 </div>
-                <div class="sb-sidenav-footer">
-                    <div style="text-align: center;" class="small">2023 All rights reserved</div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseQH"
+                    aria-expanded="false" aria-controls="collapseLayouts">
+                    Quality & HSE
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-helmet-safety"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseQH" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
                 </div>
-            </nav>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseCommercial" aria-expanded="false" aria-controls="collapseLayouts">
+                    Commercial
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseCommercial" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseProcure" aria-expanded="false" aria-controls="collapseLayouts">
+                    Procurement
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-person-walking-luggage"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseProcure" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseInventory" aria-expanded="false" aria-controls="collapseLayouts">
+                    Inventory
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-warehouse"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseInventory" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseVendor" aria-expanded="false" aria-controls="collapseLayouts">
+                    Vendor
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseVendor" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="/">3rd Party Instruction</a>
+                        <!-- <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseProduction" aria-expanded="false" aria-controls="collapseLayouts">
+                    Production
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseProduction" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKPI"
+                    aria-expanded="false" aria-controls="collapseKPI">
+                    KPI & Report
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                </a>
+                <div class="collapse" id="collapseKPI" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+                <a class="nav-link" href="index.html">
+                    MI Share
+                    <div class="sb-nav-link-icon"><i class="fa-brands fa-maxcdn"></i></div>
+                </a>
+                <a class="nav-link" href="index.html">
+                    Resources
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                </a>
+                <a class="nav-link" href="index.html">
+                    Mill Advisor
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-industry"></i></div>
+                </a>
+                <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKPI"
+                    aria-expanded="false" aria-controls="collapseSetup">
+                    Set Up
+                    <div class="sb-nav-link-icon">
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                </a> -->
+                <div class="collapse" id="collapseSetup" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+                    </nav>
+                </div>
+
+            </div>
         </div>
+        
+        <!-- <div class="sb-sidenav-footer">
+            <div style="text-align: center;" class="small">2023 All rights reserved</div>
+        </div> -->
+    </nav>
+</div>
         <div id="layoutSidenav_content">
             <main>
                 <div class="card-header container-fluid px-4">
@@ -193,11 +212,11 @@
                     <div class="card mb-4 shadow">
                         <div class="card-body">
                             <ul class="tabs nav nav-tabs">
-                                <li class="nav-item">
-                                    <a role="button" class="aw teal nav-link active" id="open" v-on:click="pushOpen()">Open</a>
+                                <li id="switch1" class="nav-item active">
+                                    <span role="button" class="active aw teal" id="open" v-on:click="pushOpen()">Open</span>
                                 </li>
-                                <li class="nav-item">
-                                    <a role="button" class="aw customCompleted teal2 nav-link" id="completed" v-on:click="pushComplete()">Completed</a>
+                                <li id="switch2" class="nav-item">
+                                    <span role="button" class="aw customCompleted teal2 " id="completed" v-on:click="pushComplete()">Completed</span>
                                 </li>
                                 <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                                     <div class="input-group input-group-sm">
@@ -209,7 +228,7 @@
                                     </div>
                                 </form>
 
-                                <li class="nav-item" style="float: right;">
+                                <li class="nav-item" style="float: right; margin-bottom: 10px;">
                                     <button style="border-color:#d4d4d4; font-weight:bold" id="putih" class="export btn btn-outline-secondary btn-sm"
                                     v-on:click="ExportExcel('tcomplete', 'Tab-complete')"><i id="biru" class="fa-solid fa-file-export"></i>
                                     Export
@@ -254,10 +273,13 @@ window.addEventListener('DOMContentLoaded', event => {
         // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
         //     document.body.classList.toggle('sb-sidenav-toggled');
         // }
-        sidebarToggle.addEventListener('click', event => {
+        sidebarToggle.addEventListener('mouseover', event => {
             event.preventDefault();
-            document.body.classList.toggle('sb-sidenav-toggled');
-            localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+            document.body.classList.remove('sb-sidenav-toggled');
+        });
+        sidebarToggle.addEventListener('mouseleave', event => {
+            event.preventDefault();
+            document.body.classList.add('sb-sidenav-toggled');
         });
     }
 
@@ -282,6 +304,10 @@ export default {
       let open = document.getElementById("open");
         completed.classList.add("customCompleted");
         open.classList.remove("customOpen");
+      let open2 = document.getElementById("switch1");
+      let completed2 = document.getElementById("switch2");
+        completed2.classList.remove("active");
+        open2.classList.add("active");
     },
 
     pushComplete() {
@@ -289,8 +315,11 @@ export default {
       let completed = document.getElementById("completed");
       let open = document.getElementById("open");
         completed.classList.remove("customCompleted");
-        completed.classList.add("active");
         open.classList.add("customOpen");
+      let open2 = document.getElementById("switch1");
+      let completed2 = document.getElementById("switch2");
+        completed2.classList.add("active");
+        open2.classList.remove("active");
     },
 
     ExportExcel(tableID, filename = '') {
@@ -345,7 +374,7 @@ export default {
     },
     },   
     mounted(){
-      
+    document.body.classList.add('sb-sidenav-toggled');  
     this.panggil();
     this.fetchData();
 
@@ -363,29 +392,37 @@ export default {
 <style scope>    
 .teal {
     color: #00bfbf;
-    font-weight: bold;
-    margin-right: 20px;
+    font-weight:500;
+    font-size: large;
+    margin-right: 30px;
     margin-left: 20px;
 }
 
 .teal2 {
     color: #00bfbf;
-    font-weight: bold;
+    font-weight:500;
+    font-size: large;
 }
- 
+
+.nav li.active {
+    border-bottom: #00bfbf 3px solid;
+}
+
 .aw:hover{
   color: #00bfbf !important;
 }
 
 .customCompleted {
- font-weight: bold;
- color: #adadad;
+    font-weight:500;
+    font-size: large;
+    color: #adadad;
 }
 
 .customOpen {
     color: #adadad;
-    font-weight: bold;
-    margin-right: 20px;
+    font-weight:500;
+    font-size: large;
+    margin-right: 30px;
     margin-left: 20px;
   }
   
@@ -5750,7 +5787,6 @@ fieldset:disabled .btn {
     padding-right: 0.5rem;
     color: #6c757d;
     content: var(--bs-breadcrumb-divider, "/")
-        /* rtl: var(--bs-breadcrumb-divider, "/") */
     ;
 }
 
@@ -12638,11 +12674,11 @@ body {
     }
 
     .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
-        transform: translateX(-225px);
+        transform: translateX(-175px);
     }
 
     .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content {
-        margin-left: -225px;
+        margin-left: -180px;
     }
 
     .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
@@ -12694,7 +12730,7 @@ body {
 
 .nav .nav-link .sb-nav-link-icon,
 .sb-sidenav-menu .nav-link .sb-nav-link-icon {
-    margin-right: 0.5rem;
+    margin-left: auto;
 }
 
 .sb-topnav {
@@ -12748,12 +12784,12 @@ body {
 }
 
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
     display: inline-block;
-    margin-left: auto;
+    margin-right: 15px;
     transition: transform 0.15s ease;
 }
 
