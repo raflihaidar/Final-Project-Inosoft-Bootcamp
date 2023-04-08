@@ -47,6 +47,10 @@ Vue.component(
     "input-field",
     require("./components/InputFieldComponent.vue").default
 );
+Vue.component(
+    "attachment-notes",
+    require("./components/AttachmentAndNotes.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -56,11 +60,11 @@ Vue.component(
 
 
 
-// import Vue from "vue";
-// // import Vuex from "vuex";
-// // import store from "./store"
-// import VueRouter from "vue-router";
-// import { routes } from "./routes";
+import Vue from "vue";
+// import Vuex from "vuex";
+// import store from "./store"
+import VueRouter from "vue-router";
+import { routes } from "./routes";
 
 
 Vue.use(VueRouter);
