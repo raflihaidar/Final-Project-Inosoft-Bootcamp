@@ -288,18 +288,6 @@ export default {
 
     data() {
     return {
-      term: '',
-      fields: [
-        "Instruction ID",
-        "Link To",
-        "Instruction Type",
-        "Issued To",
-        "Issued Date",
-        "Attention Of",
-        "Quotation No.",
-        "Customer PO",
-        "Status"
-      ],
     }
   }
 }
@@ -378,7 +366,7 @@ td {
   padding-right: 30px;
   border-radius: 50px;
   color: white;
-  background-color: #0a9d5c;
+  background-color: #3da576;
 }
 
 #btn-cancel {

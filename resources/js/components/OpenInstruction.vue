@@ -1,5 +1,16 @@
 <template>
   <div class="overflow-auto">
+                                
+    <div class="dropdown-center" style="float: right; margin-bottom: 20px; margin-top: 20px; margin-right: 3px;">
+      <button type="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-color:#00bfbf; background-color: #00bfbf; font-weight: 500;" class="btn btn-primary btn-sm">                 
+      + Create 3rd Party Instruction                  
+      </button>
+      <ul class="dropdown-menu" style="width: 210px;">
+        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="createLi()"><i id="biru" class="bi bi-truck icon" style="margin-right: 15px; font-size: larger;"></i>Logistic Instruction</a></li>
+        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="createSi()"><i id="biru" class="bi bi-person-fill-gear icon" style="margin-right: 15px; font-size: larger;"></i>Service Instruction</a>
+        </li>
+      </ul>               
+    </div>
         <!-- <div class="table-responsive ">   -->
 
         <table id="tcomplete" class="sortable batas table table-hovers text-nowrap">
@@ -171,12 +182,20 @@ export default {
     //     });
     // },
 
+    createLi(){
+      this.$router.push({ path: "/createLi" })
+    },
+
+    createSi(){
+      this.$router.push({ path: "/createSi" })
+    },
+
     pushProgress(index) {
-      this.$router.push({ path: "/detailprogress", query: { InstructionID: index } })
+      this.$router.push({ path: "/details_rafli", query: { InstructionID: index } })
     },
 
     pushDraft(index) {
-      this.$router.push({ path: "/detaildraft", query: { InstructionID: index } })
+      this.$router.push({ path: "/details_rafli", query: { InstructionID: index } })
     },
 
     addToggleIconListener(buttonClass) {
@@ -271,18 +290,6 @@ export default {
 
     data() {
     return {
-      term: '',
-      fields: [
-        "Instruction ID",
-        "Link To",
-        "Instruction Type",
-        "Issued To",
-        "Issued Date",
-        "Attention Of",
-        "Quotation No.",
-        "Customer PO",
-        "Status"
-      ],
     }
   }
 }

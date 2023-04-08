@@ -1,6 +1,6 @@
 <template>
   <div class="sb-nav-fixed">
-    <nav id="warna" class="sb-topnav navbar navbar-expand navbar-dark shadow">
+    <nav id="warna" class="sb-topnav navbar navbar-expand navbar-dark">
         <!-- Sidebar Toggle-->
         <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i
                 class="fas fa-bars"></i></button> -->
@@ -195,10 +195,28 @@
             <main>
                 <div class="card-header container-fluid px-4">
                     <h3 class="mt-4">3rd Party Instruction</h3>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Vendor Management</li>
-                        <li id="biru" class="breadcrumb-item active">3rd Party Instruction</li>
+                    <nav
+                    style="--bs-breadcrumb-divider: '>'"
+                    aria-label="breadcrumb"
+                >
+                    <ol class="breadcrumb" style="font-size: 0.8em">
+                        <li class="breadcrumb-item">
+                            <a
+                                id="biru"
+                                href="#"
+                                style="text-decoration: none; color: #adadad"
+                                >Vendor Management</a
+                            >
+                        </li>
+                        <li
+                            class="breadcrumb-item active"
+                            aria-current="page"
+                            id="biru"
+                        >
+                            3rd Party Instruction
+                        </li>
                     </ol>
+                </nav>
                     
                     <!-- <ul class="nav">
                         <li class="nav-item">
@@ -209,7 +227,7 @@
                         </li>
                     </ul> -->
 
-                    <div class="card mb-4 shadow">
+                    <div style="margin-top:30px;" class="card mb-4 shadow">
                         <div class="card-body">
                             <ul class="tabs nav nav-tabs">
                                 <li id="switch1" class="nav-item active">
@@ -354,7 +372,6 @@ export default {
     panggil(){
         // saat halaman index dijalankan langsung memanggil children component tab open secara default
         this.$router.push({ path: "/open" })
-        console.log(this.$router);  
     },
 
     async fetchData() {
