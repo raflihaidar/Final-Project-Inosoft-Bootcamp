@@ -867,7 +867,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 /* .bi1 a {
   text-decoration: none;
 }

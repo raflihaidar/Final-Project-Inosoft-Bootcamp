@@ -542,7 +542,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 #collapseExample2 .card {
     border: none;
 }

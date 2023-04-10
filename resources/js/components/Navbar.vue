@@ -238,22 +238,23 @@
                                 </li>
                                 <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                                     <div class="input-group input-group-sm">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">
+                                        <span style="background-color:#f6f6f5;" class="input-group-text" id="inputGroup-sizing-sm">
                                             <i id="biru" class="fas fa-search">
                                             </i>
                                         </span>
-                                        <input class="form-control"  type="text" v-model="search" id="search" placeholder="Search" @input="fetchData" />
+                                        <input class="form-control" style="background-color: #f6f6f5;"  type="text" v-model="search" id="search" placeholder="Search" @input="fetchData" />
                                     </div>
                                 </form>
 
                                 <li class="nav-item" style="float: right; margin-bottom: 10px;">
                                     <button style="border-color:#d4d4d4; font-weight:bold" id="putih" class="export btn btn-outline-secondary btn-sm"
-                                    v-on:click="ExportExcel('tcomplete', 'Tab-complete')"><i id="biru" class="fa-solid fa-file-export"></i>
+                                    v-on:click="ExportExcel()"><i id="biru" class="fa-solid fa-file-export"></i>
                                     Export
                                     </button>
                                 </li>
                             </ul>
                                 <router-view  :items="list"/>
+                                <completed :items="list" hidden></completed>
                         </div>
                     </div>
 
@@ -266,11 +267,6 @@
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Final Project 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
                     </div>
                 </div>
             </footer>
@@ -340,32 +336,23 @@ export default {
         open2.classList.remove("active");
     },
 
-    ExportExcel(tableID, filename = '') {
-      var downloadLink;
-      var dataType = 'application/vnd.ms-excel';
-      var tableSelect = document.getElementById(tableID);
-      var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    pushExcel() {
+      this.$router.push({ path: "/export" , query: { date : 'tgl sekarang' } })
+    },
 
-      filename = filename ? filename + '.xls' : 'excel_data.xls';
+    ExportExcel(type, fn, dl) {
+        var date = new Date().toLocaleDateString();
+        var workbook = XLSX.utils.book_new();
 
-      downloadLink = document.createElement("a");
-
-      document.body.appendChild(downloadLink);
-
-      if (navigator.msSaveOrOpenBlob) {
-        var blob = new Blob(['\ufeff', tableHTML], {
-          type: dataType
-        });
-        navigator.msSaveOrOpenBlob(blob, filename);
-      }
-
-      else {
-        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-
-        downloadLink.download = filename;
-
-        downloadLink.click();
-      }
+        var ws1 = XLSX.utils.table_to_sheet(document.getElementById('topen'));
+        XLSX.utils.book_append_sheet(workbook, ws1, "Open Instruction");
+          
+        var ws2 =  XLSX.utils.table_to_sheet(document.getElementById('tcomplete'));
+        XLSX.utils.book_append_sheet(workbook, ws2, "Complete Instruction");
+         
+        return dl ?
+        XLSX.write(workbook, { bookType: type, bookSST: true, type: 'base64' }) :
+        XLSX.writeFile(workbook,fn || ('Instruction - '+date+ '.' + (type || 'xlsx')));
 
     },
 
@@ -406,7 +393,7 @@ export default {
 }
 </script>
 
-<style scope>    
+<style>    
 .teal {
     color: #00bfbf;
     font-weight:500;
@@ -13076,18 +13063,6 @@ body {
 #putih {
     background-color: white;
     color: black;
-}
-
-#tcomplete th,
-td {
-    font-size: small;
-    text-align: left;
-}
-
-#tcomplete th,
-td {
-  font-size: small;
-  text-align: center;
 }
 
 

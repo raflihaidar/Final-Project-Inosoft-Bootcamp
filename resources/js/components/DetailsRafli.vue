@@ -443,7 +443,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .border-custom {
     border-left: 1px dotted gray;
 }

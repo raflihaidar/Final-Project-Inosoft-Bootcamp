@@ -3,7 +3,7 @@
                                 
     <div class="dropdown-center" style="float: right; margin-bottom: 20px; margin-top: 20px; margin-right: 3px;">
       <button type="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-color:#00bfbf; background-color: #00bfbf; font-weight: 500;" class="btn btn-primary btn-sm">                 
-      + Create 3rd Party Instruction                  
+      &plus; Create 3rd Party Instruction                  
       </button>
       <ul class="dropdown-menu" style="width: 210px;">
         <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="createLi()"><i id="biru" class="bi bi-truck icon" style="margin-right: 15px; font-size: larger;"></i>Logistic Instruction</a></li>
@@ -13,7 +13,7 @@
     </div>
         <!-- <div class="table-responsive ">   -->
 
-        <table id="tcomplete" class="sortable batas table table-hovers text-nowrap">
+        <table id="topen" class="sortable batas table table-hovers text-nowrap">
 
             <thead style="background-color: #b6bbc1; color:white">
             <tr>
@@ -295,7 +295,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .table-hovers tbody tr:hover td,
 .table-hover tbody tr:hover th {
@@ -342,7 +342,7 @@ td {
   color: black;
 }
 
-#tcomplete th,
+#topen th,
 td {
   font-size: small;
   text-align: center;

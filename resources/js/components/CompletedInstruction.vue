@@ -293,7 +293,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .table-hovers tbody tr:hover td,
 .table-hover tbody tr:hover th {
