@@ -8207,14 +8207,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
       completed2.classList.add("active");
       open2.classList.remove("active");
     },
-    pushExcel: function pushExcel() {
-      this.$router.push({
-        path: "/export",
-        query: {
-          date: 'tgl sekarang'
-        }
-      });
-    },
     ExportExcel: function ExportExcel(type, fn, dl) {
       var date = new Date().toLocaleDateString();
       var workbook = XLSX.utils.book_new();

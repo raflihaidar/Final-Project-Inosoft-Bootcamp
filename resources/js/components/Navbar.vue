@@ -336,10 +336,6 @@ export default {
         open2.classList.remove("active");
     },
 
-    pushExcel() {
-      this.$router.push({ path: "/export" , query: { date : 'tgl sekarang' } })
-    },
-
     ExportExcel(type, fn, dl) {
         var date = new Date().toLocaleDateString();
         var workbook = XLSX.utils.book_new();
