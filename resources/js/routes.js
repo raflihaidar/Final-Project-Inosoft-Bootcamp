@@ -1,10 +1,10 @@
-import DetailsRafli from "./components/DetailsRafli.vue";
+import DetailsRafli from "./components/ExampleComponent.vue";
 import completedInstruction from "./components/CompletedInstruction.vue";
 import openInstruction from "./components/OpenInstruction.vue";
 import detailCompleted from "./components/DetailCompleted.vue";
 import detailCancelled from "./components/DetailCancelled.vue";
 import navbar from "./components/Navbar.vue";
-import newInstruction from "./components/newInstructionPages.vue"
+import newInstruction from "./components/newInstructionPages.vue";
 
 export const routes = [
     {

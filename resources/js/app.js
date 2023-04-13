@@ -51,6 +51,26 @@ Vue.component(
     "attachment-notes",
     require("./components/AttachmentAndNotes.vue").default
 );
+Vue.component(
+    "scope-of-work-table-component",
+    require("./components/ScopeOfWorkComponent.vue").default
+);
+Vue.component(
+    "cost-detail-component",
+    require("./components/CostDetailComponent.vue").default
+);
+Vue.component(
+    "header-component",
+    require("./components/HeaderComponent.vue").default
+);
+Vue.component(
+    "item-component",
+    require("./components/ItemComponenet.vue").default
+);
+Vue.component(
+    "transport-component",
+    require("./components/TransportComponent.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -58,14 +78,11 @@ Vue.component(
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-
-
 import Vue from "vue";
 // import Vuex from "vuex";
 // import store from "./store"
 import VueRouter from "vue-router";
 import { routes } from "./routes";
-
 
 Vue.use(VueRouter);
 const router = new VueRouter({
