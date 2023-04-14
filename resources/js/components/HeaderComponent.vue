@@ -14,6 +14,12 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a class="dropdown-item" href="#"
+                                ><i class="bi bi-people"></i> Logistic
+                                Instruction</a
+                            >
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"
                                 ><i class="bi bi-cart-plus-fill"></i> Service
                                 Instruction</a
                             >
@@ -111,7 +117,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {},
+};
 </script>
 
 <style></style>

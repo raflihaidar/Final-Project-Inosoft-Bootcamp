@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "bootstrap-icons": "^1.10.4",
+        "bootstrap-select": "^1.13.18",
         "vue-router": "^3.6.5"
     }
 }

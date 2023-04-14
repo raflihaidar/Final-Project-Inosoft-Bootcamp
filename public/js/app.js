@@ -8011,8 +8011,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {}
+});
 
 /***/ }),
 
@@ -9233,8 +9241,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -9244,7 +9250,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     handleClick: function handleClick() {
-      console.log('Button clicked!');
+      console.log("Button clicked!");
     }
   }
 });
@@ -14964,7 +14970,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.containe[data-v-027196ca]{\r\n  display: flex;\r\n  justify-content: center;\r\n  background-color: #fbf8fd;\n}\n.boxi[data-v-027196ca]{\r\n  width: 1400px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 30px;\r\n  /* optional width, padding, margin */\r\n  background-color: #fefefe;\n}\n.containe[data-v-027196ca] {\r\n  min-height: 100vh;\n}\n.boxi[data-v-027196ca] {\r\n  min-height: 80vh;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.containe[data-v-027196ca] {\r\n    display: flex;\r\n    justify-content: center;\r\n    background-color: #fbf8fd;\n}\n.boxi[data-v-027196ca] {\r\n    width: 1400px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    padding: 30px;\r\n    /* optional width, padding, margin */\r\n    background-color: #fefefe;\n}\n.containe[data-v-027196ca] {\r\n    min-height: 100vh;\n}\n.boxi[data-v-027196ca] {\r\n    min-height: 80vh;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -39421,6 +39427,19 @@ var staticRenderFns = [
                     "a",
                     { staticClass: "dropdown-item", attrs: { href: "#" } },
                     [
+                      _c("i", { staticClass: "bi bi-people" }),
+                      _vm._v(
+                        " Logistic\n                            Instruction"
+                      ),
+                    ]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "a",
+                    { staticClass: "dropdown-item", attrs: { href: "#" } },
+                    [
                       _c("i", { staticClass: "bi bi-cart-plus-fill" }),
                       _vm._v(
                         " Service\n                            Instruction"
@@ -41797,9 +41816,15 @@ var render = function () {
       "div",
       { staticClass: "boxi" },
       [
-        _c("scope-of-work"),
+        _c("header-component"),
         _vm._v(" "),
-        _c("cost-detail"),
+        _c("item-component"),
+        _vm._v(" "),
+        _c("transport-component"),
+        _vm._v(" "),
+        _c("scope-of-work-table-component"),
+        _vm._v(" "),
+        _c("cost-detail-component"),
         _vm._v(" "),
         _c("attachment-notes"),
         _vm._v(" "),
