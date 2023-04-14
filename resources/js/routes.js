@@ -6,7 +6,6 @@ import detailCancelled from "./components/DetailCancelled.vue";
 import navbar from "./components/Navbar.vue";
 import newInstruction from "./components/newInstructionPages.vue"
 import notFound from "./components/Hello.vue";
-import logistic from "./components/CreateLogistic.vue";
 
 export const routes = [
     {
@@ -42,11 +41,6 @@ export const routes = [
         path: "/new",
         name: "new instruction",
         component: newInstruction,
-    },
-    {
-        path: "/logistic",
-        component: logistic,
-        name: logistic,
     },
     {
         path: "*",
