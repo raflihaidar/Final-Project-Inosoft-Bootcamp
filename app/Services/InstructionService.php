@@ -10,7 +10,7 @@ class InstructionService
 {
   private $instructionRepository;
 
-  public function _construct(InstructionRepository $instructionRepository)
+  public function __construct(InstructionRepository $instructionRepository)
   {
     $this->instructionRepository = $instructionRepository;
   }
@@ -34,6 +34,8 @@ class InstructionService
       'customer_contract' => $request->customer_contract,
       'note' => $request->note,
       'attachment' => $request->attachment,
+      'instruction_id' => $request->instruction_id,
+      'status' => $request->status,
     ];
 
     return $this->instructionRepository->createInstruction($dataInstruction);
@@ -42,6 +44,19 @@ class InstructionService
   public function detailInstruction($id)
   {
     return $this->instructionRepository->detailInstruction($id);
+  }
+
+  public function listOnProgress()
+  {
+    return $this->instructionRepository->listOnProgress();
+  }
+  public function listDraft()
+  {
+    return $this->instructionRepository->listDraft();
+  }
+  public function listTerminate()
+  {
+    return $this->instructionRepository->listTerminate();
   }
 
 
@@ -59,15 +74,40 @@ class InstructionService
       'customer_contract' => $request->customer_contract,
       'note' => $request->note,
       'attachment' => $request->attachment,
+      'instruction_id' => $request->instruction_id,
+      'status' => $request->status,
     ];
 
     return $this->instructionRepository->updateInstruction($dataInstruction, $id);
+  }
+
+  public function draftInstruction(Request $request, $id)
+  {
+    $dataDraft = [
+      'status' => $request->status
+    ];
+
+    return $this->instructionRepository->draftInstruction($dataDraft, $id);
+  }
+
+  public function terminateInstruction(Request $request, $id)
+  {
+    $dataTerminate = [
+      'status' => $request->status
+    ];
+
+    return $this->instructionRepository->terminateInstruction($dataTerminate, $id);
   }
 
 
   public function deleteInstruction($id)
   {
     return $this->instructionRepository->deleteInstruction($id);
+  }
+
+  public function search($query)
+  {
+      return $this->instructionRepository->searchInstructions($query);
   }
 }
 

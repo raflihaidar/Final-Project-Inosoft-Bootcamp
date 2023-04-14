@@ -26,6 +26,8 @@ class CreateInstructionsTable extends Migration
             $collection->string('customer_contract');
             $collection->string('note');
             $collection->string('attachment');
+            $collection->string('status');
+            $collection->string('instruction_id');
             $collection->timestamps();
         });
     }

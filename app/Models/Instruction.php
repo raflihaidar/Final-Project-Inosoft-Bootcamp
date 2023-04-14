@@ -22,6 +22,9 @@ class Instruction extends Model
         'customer_po',
         'customer_contract',
         'note',
+        'instruction_id',
+        'status',
         'attachment'
     ];
 }
+
