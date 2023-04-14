@@ -167,14 +167,14 @@
                     Mill Advisor
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-industry"></i></div>
                 </a>
-                <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKPI"
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKPI"
                     aria-expanded="false" aria-controls="collapseSetup">
                     Set Up
                     <div class="sb-nav-link-icon">
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        <i class="fa-solid fa-chart-line"></i>
+                        <i class="bi bi-wrench-adjustable"></i>
                     </div>
-                </a> -->
+                </a>
                 <div class="collapse" id="collapseSetup" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
@@ -242,18 +242,19 @@
                                             <i id="biru" class="fas fa-search">
                                             </i>
                                         </span>
-                                        <input class="form-control" style="background-color: #f6f6f5;"  type="text" v-model="search" id="search" placeholder="Search" @input="fetchData" />
+                                        <input class="form-control" style="background-color: #f6f6f5; width:250px;"  type="text" v-model="search" id="search" placeholder="Search" @input="fetchData" />
                                     </div>
                                 </form>
 
                                 <li class="nav-item" style="float: right; margin-bottom: 10px;">
-                                    <button style="border-color:#d4d4d4; font-weight:bold" id="putih" class="export btn btn-outline-secondary btn-sm"
+                                    <button style="border-color:#d4d4d4; width:100px; border-radius: 5px; font-weight:bold" id="putih" class="export btn btn-outline-secondary btn-sm"
                                     v-on:click="ExportExcel()"><i id="biru" class="fa-solid fa-file-export"></i>
                                     Export
                                     </button>
                                 </li>
                             </ul>
                                 <router-view  :items="list"/>
+                                <open :items="list" hidden></open>
                                 <completed :items="list" hidden></completed>
                         </div>
                     </div>
@@ -12700,9 +12701,9 @@ body {
     padding-top: 56px;
 }
 
-.sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav .sb-sidenav-menu {
+/* .sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav .sb-sidenav-menu {
     overflow-y: auto;
-}
+} */
 
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
     padding-left: 225px;

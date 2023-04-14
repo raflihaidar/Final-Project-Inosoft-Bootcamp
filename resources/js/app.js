@@ -24,6 +24,10 @@ Vue.component(
     require("./components/CompletedInstruction.vue").default
 );
 Vue.component(
+    "open",
+    require("./components/OpenInstruction.vue").default
+);
+Vue.component(
     "detail-completed",
     require("./components/DetailCompleted.vue").default
 );
@@ -46,6 +50,14 @@ Vue.component(
 Vue.component(
     "input-field",
     require("./components/InputFieldComponent.vue").default
+);
+Vue.component(
+    "attachment-notes",
+    require("./components/AttachmentAndNotes.vue").default
+);
+Vue.component(
+    "Logistic",
+    require("./components/CreateLogistic.vue").default
 );
 /**
  * Next, we will create a fresh Vue application instance and attach it to

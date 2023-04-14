@@ -99,14 +99,14 @@
                 <i v-else class="bi bi-person-fill-gear icon"></i>
                 {{ item.instruction_type }}
               </td>
-              <td v-if="item.status=='Completed'||item.status=='Cancelled'"> {{ item.invoice_to }}</td>
+              <td v-if="item.status=='Completed'||item.status=='Cancelled'"> {{ item.assigned_vendor }}</td>
               <td v-if="item.status=='Completed'||item.status=='Cancelled'"> {{ item.attachment[0].created_at }}</td>
               <td v-if="item.status=='Completed'||item.status=='Cancelled'"> {{ item.attention_of }}</td>
               <td v-if="item.status=='Completed'||item.status=='Cancelled'"> {{ item.quotation_no }}</td>
               <td v-if="item.status=='Completed'||item.status=='Cancelled'"> {{ item.customer_po }}</td>
               <td v-if="item.status=='Completed'||item.status=='Cancelled'">
                 <p id="btn-complete" v-if="item.status == 'Completed'" class="btn badge badge-pill"
-                  v-on:click="pushComplete(item.instruction_id)">{{ item.status }}</p>
+                  v-on:click="pushComplete(item._id)">{{ item.status }}</p>
                 <!-- <button style="font-size: x-small;" id="btn-cancel" v-if="item[8]=='Completed'" class="btn btn-success btn-sm">{{ item[8] }}</button> -->
 
                 <span style="margin-bottom: 0px; position:relative" v-if="item.status == 'Cancelled'">
@@ -189,11 +189,11 @@ export default {
     // },
 
     pushComplete(index) {
-      this.$router.push({ path: "/detailcomplete", query: { InstructionID: index } })
+      this.$router.push({ path: "/detailcomplete", query: { ID: index } })
     },
 
     pushCancel(index) {
-      this.$router.push({ path: "/detailcancel", query: { InstructionID: index } })
+      this.$router.push({ path: "/detailcancel", query: { ID: index } })
     },
 
     addToggleIconListener(buttonClass) {
@@ -302,7 +302,7 @@ export default {
 
 td {
   font-weight: 600;
-  color: #949494;
+  color: #5c5c5c;
 }
 
 .teal {
@@ -362,18 +362,18 @@ td {
 
 #btn-complete {
   --bs-btn-padding-y: none;
-  padding-left: 30px;
-  padding-right: 30px;
+  width: 120px;
   border-radius: 50px;
+  height:20px;
   color: white;
   background-color: #3da576;
 }
 
 #btn-cancel {
   --bs-btn-padding-y: none;
-  padding-left: 30px;
-  padding-right: 30px;
+  width: 120px;
   border-radius: 50px;
+  height:20px;
   color: white;
   background-color: #a2aab2;
 }

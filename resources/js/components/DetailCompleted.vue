@@ -74,42 +74,42 @@
                                     <p>
                                         <b>
                                             <i class="bi bi-truck icon"></i>
-                                            Logistic Intruction</b
+                                            {{list[0].instruction_type}}</b
                                         >
                                     </p>
                                 </div>
                                 <div class="col">
                                     <span>LI No.</span>
-                                    <p><b>LI-2022-0060</b></p>
+                                    <p><b>{{list[0].instruction_id}}</b></p>
                                 </div>
                                 <div class="col">
                                     <span>Attention Of</span>
-                                    <p><b>MR Customer X</b></p>
+                                    <p><b>{{list[0].attention_of}}</b></p>
                                 </div>
                             </div>
                             <div class="row ms-3 mt-5">
                                 <div class="col">
                                     <span>Issued To</span>
-                                    <p><b>ALPHA - ALPHATRANS PTE LTD</b></p>
+                                    <p><b>{{list[0].assigned_vendor}}</b></p>
                                 </div>
                                 <div class="col">
                                     <span>Vendor Reference No.</span>
-                                    <p><b>Q12345</b></p>
+                                    <p><b>{{list[0].quotation_no}}</b></p>
                                 </div>
                                 <div class="col">
                                     <span>Vendor Address</span>
-                                    <p><b>Big Street 1 </b></p>
+                                    <p><b>{{list[0].vendor_address}}</b></p>
                                 </div>
                             </div>
                             <div class="row ms-3 mt-5">
                                 <div class="col">
                                     <span>Invoice To</span>
-                                    <p><b>MITA</b></p>
+                                    <p><b>{{list[0].invoice_to}}</b></p>
                                 </div>
                                 <div class="col"><span>Base</span></div>
                                 <div class="col">
                                     <span>Delivery Date</span>
-                                    <p><b>26/09/2022</b></p>
+                                    <p><b>{{ list[0].attachment[0].created_at }}</b></p>
                                 </div>
                             </div>
                         </div>
@@ -119,8 +119,7 @@
                                     <span>Customer</span>
                                     <p>
                                         <b
-                                            >ACCLTD - AUTHENTIC CONSTRUCTION
-                                            COMPANY LIMITED</b
+                                            >{{list[0].customer_contract}}</b
                                         >
                                     </p>
                                 </div>
@@ -133,13 +132,13 @@
                                         style="position: relative"
                                     >
                                         <a href="#" class="btn-yoga1"
-                                            >Completed</a
+                                            >{{list[0].status}}</a
                                         >
                                     </p>
                                 </div>
                                 <div class="mb-5">
                                     <span>Customer PO</span>
-                                    <p><b>CPO23456</b></p>
+                                    <p><b>{{list[0].customer_po}}</b></p>
                                 </div>
                                 <div class="mb-4">
                                     <span>Customer Ref</span>
@@ -561,6 +560,7 @@
                                     data-bs-target="#collapseExample3"
                                     aria-expanded="false"
                                     aria-controls="collapseExample"
+                                    v-on:click="jumlah()"
                                 >
                                     <i class="bi bi-chevron-down"></i>
                                 </button>
@@ -571,7 +571,7 @@
                             id="collapseExample3"
                         >
                             <div class="card card-body">
-                                <table class="table">
+                                <table id="costable" class="table">
                                     <thead class="text-bg-secondary">
                                         <tr>
                                             <th>Description</th>
@@ -586,27 +586,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Sea trans</td>
-                                            <td>1</td>
-                                            <td>SHP</td>
-                                            <td>1,500.00</td>
-                                            <td>10</td>
-                                            <td>USD</td>
-                                            <td>150.00</td>
-                                            <td>1,500.00</td>
-                                            <td>1,650.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Land trans</td>
-                                            <td>1</td>
-                                            <td>SHP</td>
-                                            <td>500.00</td>
-                                            <td>10</td>
-                                            <td>USD</td>
-                                            <td>50.00</td>
-                                            <td>500.00</td>
-                                            <td>550.00</td>
+                                        <tr v-for="(item, index) in cost" v-bind:key="index">
+                                            <td>{{item.description}}</td>
+                                            <td>{{ item.qty }}</td>
+                                            <td>{{item.uom}}</td>
+                                            <td>{{item.unit_price}}</td>
+                                            <td>{{item.gst_vat}}</td>
+                                            <td>{{item.currency}}</td>
+                                            <td>{{ item.gst_vat/100*item.unit_price*item.qty }}</td>
+                                            <td>{{item.qty*item.unit_price}}</td>
+                                            <td>{{(item.gst_vat/100*item.unit_price*item.qty)+(item.qty*item.unit_price)}}</td>
                                         </tr>
                                         <tr>
                                             <td
@@ -625,15 +614,11 @@
                                                 style="border-bottom: #e4e4e4"
                                             ></td>
                                             <td class="table-active">
-                                                USD(total)
+                                                {{cost[0].currency}}(total)
                                             </td>
-                                            <td class="table-active">200.00</td>
-                                            <td class="table-active">
-                                                2,000.00
-                                            </td>
-                                            <td class="table-active">
-                                                2,200.00
-                                            </td>
+                                            <td id="vat" class="table-active"></td>
+                                            <td id="sub" class="table-active"></td>
+                                            <td id="total" class="table-active"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -768,6 +753,9 @@
                             <div class="mt-3 mb-3">
                                 <span>Attachment</span>
                             </div>
+                            <div>
+                                <span>{{ list[0].attachment[0].file }}</span>
+                            </div>
                             <div class="input mb-3" style="width: 170px">
                                 <label
                                     class="form-control"
@@ -864,7 +852,41 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+    return {
+      list: [],
+      cost:[],
+    };
+    },
+    methods:{
+        jumlah(){
+            var table = document.getElementById("costable"),vat=0,sub=0,total=0;
+            
+            for(var i = 1; i < table.rows.length-1; i++)
+            {
+                vat = vat + parseInt(table.rows[i].cells[6].innerHTML);
+                sub = sub + parseInt(table.rows[i].cells[7].innerHTML);
+                total = total + parseInt(table.rows[i].cells[8].innerHTML);
+            }
+            
+            document.getElementById("vat").innerHTML = vat;
+            document.getElementById("sub").innerHTML = sub;
+            document.getElementById("total").innerHTML = total;
+        },
+        async fetchData(){
+            let a = "http://127.0.0.1:8000/api/instruction/"
+            let b = this.$route.query.ID;
+            const response = await axios.get(a+b);
+            this.list = response.data.data;
+            this.cost = response.data.data[0].cost_detail;
+        },
+        
+    },
+    mounted(){
+        this.fetchData();
+    },
+}
 </script>
 
 <style scoped>
