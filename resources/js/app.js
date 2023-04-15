@@ -44,6 +44,10 @@ Vue.component(
     "detail-cancelled",
     require("./components/DetailCancelled.vue").default
 );
+Vue.component(
+    "open",
+    require("./components/OpenInstruction.vue").default
+);
 
 import Vue from "vue";
 // import Vuex from "vuex";
