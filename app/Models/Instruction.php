@@ -3,28 +3,28 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Jenssegers\Mongodb\Eloquent\Model;
 
-class Instruction extends Eloquent
+class Instruction extends Model
 {
     use HasFactory;
+    protected $connection = 'mongodb';
+    protected $collection = 'instructions';
 
-    protected $collection = 'instruction';
-    protected $id = '_id';
     protected $fillable = [
-        'instruction_id',
         'link_to',
         'instruction_type',
         'assigned_vendor',
+        'vendor_address',
         'attention_of',
         'quotation_no',
+        'invoice_to',
         'customer_po',
-        'status',
-        'cost_detail',
-        'attachment',
+        'customer_contract',
         'note',
-        'link_to',
-        'vendor_invoice'
+        'instruction_id',
+        'status',
+        'attachment'
     ];
 }
+

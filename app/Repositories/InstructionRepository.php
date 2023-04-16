@@ -1,131 +1,133 @@
-<?php
+<?php 
 
 namespace App\Repositories;
-
+use Illuminate\Http\Request;
 use App\Models\Instruction;
-use App\Models\NotesByInternals;
-use App\Helpers\MongoModel;
-use App\Helpers\UploadHelper;
-use Carbon\Carbon;
 
 class InstructionRepository
 {
-    private MongoModel $instructionModel;
-    private MongoModel $vendorInvoiceModel;
-    private UploadHelper $uploadHelper;
+  private $instruction;
 
-    public function __construct()
-    {
-        $this->instructionModel = new MongoModel('instruction');
-        $this->vendorInvoiceModel = new MongoModel('vendor_invoice');
-        $this->uploadHelper = new UploadHelper();
+  public function __construct(Instruction $instruction)
+  {
+      $this->instruction = $instruction;
+  }
+
+  public function listInstruction()
+  {
+    return $this->instruction->get();
+  }
+
+  public function createInstruction(array $data)
+  {
+    $instruction = new Instruction();
+    $instruction->link_to = $data['link_to'];
+    $instruction->instruction_type = $data['instruction_type'];
+    $instruction->assigned_vendor = $data['assigned_vendor'];
+    $instruction->vendor_address = $data['vendor_address'];
+    $instruction->attention_of = $data['attention_of'];
+    $instruction->quotation_no = $data['quotation_no'];
+    $instruction->invoice_to = $data['invoice_to'];
+    $instruction->customer_po = $data['customer_po'];
+    $instruction->customer_contract = $data['customer_contract'];
+    $instruction->note = $data['note'];
+    $instruction->instruction_id = $data['instruction_id'];
+    $instruction->status = $data['status'];
+
+    if (isset($data['attachment'])) {
+        $path = $data['attachment']->store('attachments');
+        $instruction->attachment = $path;
     }
 
-    public function getAll()
-    {
-        $instructions = $this->instructionModel->get([]);
-        return $instructions;
-    }
+    $instruction->save();
 
-    public function getById($id)
-    {
-        $instruction = $this->instructionModel->get(['_id' => $id]);
-        return $instruction;
-    }
+    return $instruction;
+  }
 
-    public function delete(string $id)
-    {
-        $instruction = $this->instructionModel->deleteQuery(['_id' => $id]);
-        return $instruction;
-    }
+  public function detailInstruction($id)
+  {
+    $dataInstruction = $this->instruction->find($id);
 
-    public function create(array $data)
-    {
-        $newData = [
-            'instruction_id' => $data['instruction_id'],
-            'link_to' => $data['link_to'],
-            'instruction_type' => $data['instruction_type'],
-            'assigned_vendor' => $data['assigned_vendor'],
-            'vendor_address' => $data['vendor_address'],
-            'attention_of' => $data['attention_of'],
-            'quotation_no' => $data['quotation_no'],
-            'invoice_to' => $data['invoice_to'],
-            'customer_po' => $data['customer_po'],
-            'customer_contract' => $data['customer_contract'],
-            'status' => $data['status'],
-            'cost_detail' => $data['detail_cost'],
-            'attachment' => null,
-            'note' => $data['note'],
-        ];
+    return $dataInstruction;
+  }
 
-        if ($data['attachment'] !== null) {
-            $attachments = [];
-            foreach($data['attachment'] as $file) {
-                $filename = $this->uploadHelper->uploadFile($file);  
-                $user = auth()->user()->name;
-                $created_at = Carbon::now();
-                $data = [
-                    "_id" => (string) new \MongoDB\BSON\ObjectId(),
-                    "user" => $user,
-                    "created_at" => $created_at->toDateTimeString(),
-                    "file" => $filename
-                ];
-                array_push($attachments, $data);       
-            } 
-        
-            $newData["attachment"] = $attachments;            
-        }
+  public function listOnProgress()
+  {
+    return $this->instruction->where('status', '=', 'progress')->get();
+  }
+  public function listDraft()
+  {
+    return $this->instruction->where('status', '=', 'draft')->get();
+  }
+  public function listTerminate()
+  {
+    return $this->instruction->where('status', '=', 'terminate')->get();
+  }
 
-		$id = $this->instructionModel->save($newData);
+  public function updateInstruction(array $data, $id)
+  {
+    $instruction = $this->instruction->findOrFail($id);
+    $instruction->update([
+        'link_to' => $data['link_to'],
+        'instruction_type' => $data['instruction_type'],
+        'assigned_vendor' => $data['assigned_vendor'],
+        'vendor_address' => $data['vendor_address'],
+        'attention_of' => $data['attention_of'],
+        'quotation_no' => $data['quotation_no'],
+        'invoice_to' => $data['invoice_to'],
+        'customer_po' => $data['customer_po'],
+        'customer_contract' => $data['customer_contract'],
+        'note' => $data['note'],
+        'instruction_id' => $data['instruction_id'],
+        'status' => $data['status']
+    ]);
 
-        return $id;
-    }
-
-    public function setTerminated(array $data)
-    {
-        $id = $this->instructionModel->save($data);
-        return $id;
-    }
-
-    public function setOnProgress(array $data)
-    {
-        $id = $this->instructionModel->save($data);
-        return $id;
-    }
-
-    public function getByStatus(string $key)
-    {
-        $instruction = $this->instructionModel->get(['status' => $key]);
-        return $instruction;
-    }
-
-    public function search(string $key)
-    {
-        return Instruction::query()
-                ->where('instruction_id', 'LIKE','%'.$key.'%')
-                ->orWhere('link_to', 'LIKE','%'.$key.'%')
-                ->orWhere('instruction_type', 'LIKE','%'.$key.'%')
-                ->orWhere('assigned_vendor', 'LIKE','%'.$key.'%')
-                ->orWhere('attention_of', 'LIKE','%'.$key.'%')
-                ->orWhere('quotation_no', 'LIKE','%'.$key.'%')
-                ->orWhere('customer_po', 'LIKE','%'.$key.'%')
-                ->get();
-    }
-
-    public function getInstructionNo(string $key)
-    {
-        return Instruction::query()
-                ->where('instruction_id','LIKE','%'.$key.'%')
-                ->orderByDesc('instruction_id')                
-                ->first();
-    }
-
-    public function save(array $editedData)
-    {
-        $instruction = new Instruction();
-        $instruction->fill($editedData);
+    if (isset($data['attachment'])) {
+        $path = $data['attachment']->store('attachments');
+        $instruction->attachment = $path;
         $instruction->save();
-        return $instruction->id;
     }
 
+    return $instruction;
+  }
+
+  public function draftInstruction(array $data, $id)
+  {
+      $instruction = $this->instruction->find($id);
+      $instruction->update([
+          'status' => $data['status']
+      ]);
+      return $instruction;
+  }
+  
+  public function terminateInstruction(array $data, $id)
+  {
+    $dataInstruction = $this->instruction->find($id);
+    $dataInstruction->update($data);
+
+    return $dataInstruction;
+  }
+  
+  public function deleteInstruction($id)
+  {
+    $dataInstruction = $this->instruction->find($id);
+    $dataInstruction->delete();
+
+    return 'data berhasil di delete!';
+  }
+
+ 
+
+
+  public function searchInstructions($query)
+  {
+      $instructions = $this->instruction->where('instruction_type', 'LIKE', "%{$query}%")
+                                        ->orWhere('assigned_vendor', 'LIKE', "%{$query}%")
+                                        ->orWhere('customer_po', 'LIKE', "%{$query}%")
+                                        ->orWhere('customer_contract', 'LIKE', "%{$query}%")
+                                        ->get();
+      return $instructions;
+  }
 }
+
+?>
