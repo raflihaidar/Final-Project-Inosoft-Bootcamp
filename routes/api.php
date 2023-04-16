@@ -20,7 +20,6 @@ Route::group([
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class,'me']);
 
-    // voting process
     Route::group([
       'middleware' => 'auth:api'
     ], function () {
