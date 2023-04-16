@@ -1,70 +1,13 @@
 <template>
-    <body style="background-color: rgba(0, 0, 0, 0.03)">
-        <div class="container">
-            <header class="pt-5" style="width: 100%">
-                <h1>3rd Party Instruction</h1>
-                <nav
-                    style="--bs-breadcrumb-divider: '>'"
-                    aria-label="breadcrumb"
-                >
-                    <ol class="breadcrumb" style="font-size: 0.8em">
-                        <li class="breadcrumb-item">
-                            <a
-                                href="#"
-                                style="text-decoration: none; color: slategray"
-                                >Vendor Management</a
-                            >
-                        </li>
-                        <li
-                            class="breadcrumb-item active"
-                            aria-current="page"
-                            style="color: #00bfbf"
-                        >
-                            3rd Party Instruction
-                        </li>
-                    </ol>
-                </nav>
-                <div class="d-flex flex-row-reverse">
-                    <div>
-                        <button
-                            type="button"
-                            class="btn"
-                            style="
-                                background-color: white;
-                                border: 1px solid #e4e4e4;
-                            "
-                        >
-                            <b> Export </b>
-                        </button>
-                    </div>
-                    <div class="me-3">
-                        <button
-                            type="button"
-                            class="btn"
-                            style="
-                                background-color: white;
-                                border: 1px solid #e4e4e4;
-                            "
-                        >
-                            <b> Send Email </b>
-                        </button>
-                    </div>
-                </div>
-            </header>
-        </div>
-        <div class="container shadow-lg pb-5" style="background-color: white">
+        <div class="container shadow-lg pb-5" style=" margin-top:30px; background-color: white">
             <article class="container">
-                <div class="mb-5 mt-3 pt-3 bi1">
-                    <a>
-                        <i
-                            class="bi bi-chevron-left"
-                            style="color: #00bfbf"
-                        ></i>
-                        <router-link to="/" style="color: #00bfbf"
-                            >Back</router-link
-                        ></a
-                    >
-                </div>
+                <nav class="grid" style="margin-bottom: 30px;">
+                    <div class="row" style="margin-top:30px;">
+                        <div class="col-10 flex align-items-center gap-1">
+                            <button-component v-on:click="push()" cursor text="Back" icon="bi bi-chevron-left" warna="#00bfbf" color="none" style="margin-top: 10px; font-size:medium; color:black" bold/>
+                        </div>
+                    </div>
+                </nav>
                 <section class="mb-3 bdrtop bdrbottom bdrleft bdrright">
                     <div class="row">
                         <div class="col-8" style="">
@@ -72,8 +15,12 @@
                                 <div class="col">
                                     <span>Type</span>
                                     <p>
-                                        <b>
-                                            <i class="bi bi-truck icon"></i>
+                                        <b v-if="list[0].instruction_type=='Logistic Instruction'">
+                                            <i style="color:#00bfbf" class="bi bi-truck icon"></i>
+                                            {{list[0].instruction_type}}</b
+                                        >
+                                        <b v-else>
+                                            <i style="color:#00bfbf" class="bi bi-person-fill-gear icon"></i>
                                             {{list[0].instruction_type}}</b
                                         >
                                     </p>
@@ -128,12 +75,41 @@
                                         >Status</span
                                     >
                                     <p
+                                        v-if="list[0].status=='Completed'"
                                         id="btn-cancel"
                                         style="position: relative"
                                     >
                                         <a href="#" class="btn-yoga1"
                                             >{{list[0].status}}</a
                                         >
+                                    </p>
+                                    <p
+                                        v-else
+                                        id="btn-cancel"
+                                        style="position: relative"
+                                    >
+                                        <a href="#" class="btn-yoga disabled"
+                                            >{{list[0].status}}</a
+                                        >
+                                        <a
+                                            href="#"
+                                            data-bs-toggle="popover"
+                                            data-bs-placement="top"
+                                            data-bs-content="Intinya mah cancel, jangan banyak tanya kamu ! xixi"
+                                            style="
+                                                position: absolute;
+                                                margin-left: -28px;
+                                                margin-top: 2px;
+                                                background-color: blue;
+                                                border: 1px solid black;
+                                                border-radius: 50%;
+                                                width: 25px;
+                                                font-size: 14px;
+                                                text-align: center;
+                                                text-decoration: none;
+                                                color: white;
+                                            "
+                                            >i</a>
                                     </p>
                                 </div>
                                 <div class="mb-5">
@@ -142,7 +118,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <span>Customer Ref</span>
-                                    <p><b>CREF23456</b></p>
+                                    <p><b></b></p>
                                 </div>
                             </div>
                         </div>
@@ -157,35 +133,46 @@
                             <div class="form-check me-3">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault13"
                                 >
                                     Yes
                                 </label>
                                 <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    name="flexRadioDefault13"
-                                    id="flexRadioDefault13"
-                                    checked
-                                />
-                            </div>
-                            <div class="form-check">
-                                <input
+                                    v-if="cost[0]._id!=null"
                                     class="form-check-input"
                                     disabled
                                     type="radio"
-                                    name="flexRadioDefault"
-                                    id="flexRadioDefault1"
+                                    checked
                                 />
+                                <input
+                                    v-else
+                                    class="form-check-input"
+                                    disabled
+                                    type="radio"
+                                />
+                            </div>
+                            <div class="form-check">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault1"
                                 >
                                     No
                                 </label>
+                                <input
+                                    v-if="cost[0]._id==null"
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
+                                    checked
+                                />
+                                <input
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
+                                />
                             </div>
                             <div style="margin-left: auto; margin-top: -7px">
                                 <button
+                                    v-if="cost[0]._id!=null"
                                     class="btn btn6 btn-outline-success"
                                     type="button"
                                     data-bs-toggle="collapse"
@@ -227,7 +214,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div v-if="list[0].instruction_type!='Service Instruction'">
                         <div class="d-flex pt-3 bdrtop">
                             <div class="me-3">
                                 <p><b>Transport</b></p>
@@ -235,35 +222,47 @@
                             <div class="form-check me-3">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault12"
                                 >
                                     Yes
                                 </label>
-                                <input
+                                <input 
+                                    v-if="cost[0]._id!=null"
                                     class="form-check-input"
                                     type="radio"
-                                    name="flexRadioDefault12"
-                                    id="flexRadioDefault12"
-                                    checked
+                                    disabled
+                                    checked                                    
+                                />
+                                <input 
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
+                                    
                                 />
                             </div>
                             <div class="form-check">
-                                <input
-                                    class="form-check-input"
-                                    disabled
-                                    type="radio"
-                                    name="flexRadioDefault"
-                                    id="flexRadioDefault1"
-                                />
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault1"
                                 >
                                     No
                                 </label>
+                                <input
+                                    v-if="cost[0]._id==null"
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
+                                    checked
+                                />
+                                <input
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
+                                />
                             </div>
                             <div style="margin-left: auto; margin-top: -7px">
                                 <button
+                                    v-if="cost[0]._id!=null"
                                     class="btn btn7 btn-outline-success"
                                     type="button"
                                     data-bs-toggle="collapse"
@@ -309,35 +308,46 @@
                             <div class="form-check me-3">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault18"
                                 >
                                     Yes
                                 </label>
                                 <input
+                                    v-if="cost[0]._id!=null"
                                     class="form-check-input"
                                     type="radio"
-                                    name="flexRadioDefault18"
-                                    id="flexRadioDefault18"
+                                    disabled
                                     checked
+                                />
+                                <input
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
                                 />
                             </div>
                             <div class="form-check">
                                 <input
+                                    v-if="cost[0]._id==null"
                                     class="form-check-input"
                                     disabled
                                     type="radio"
-                                    name="flexRadioDefault"
-                                    id="flexRadioDefault1"
+                                    checked
+                                />
+                                <input
+                                    v-else
+                                    class="form-check-input"
+                                    disabled
+                                    type="radio"
                                 />
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault1"
                                 >
                                     No
                                 </label>
                             </div>
                             <div style="margin-left: auto; margin-top: -7px">
                                 <button
+                                    v-if="cost[0]._id!=null"
                                     class="btn btn5 btn-outline-success"
                                     type="button"
                                     data-bs-toggle="collapse"
@@ -525,35 +535,46 @@
                             <div class="form-check me-3">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault1"
                                 >
                                     Yes
                                 </label>
-                                <input
+                                <input 
+                                    v-if="cost[0]._id!=null"
                                     class="form-check-input"
                                     type="radio"
-                                    name="flexRadioDefault"
-                                    id="flexRadioDefault1"
+                                    disabled
                                     checked
+                                />
+                                <input 
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
                                 />
                             </div>
                             <div class="form-check">
                                 <input
+                                    v-if="cost[0]._id==null"
                                     class="form-check-input"
                                     type="radio"
-                                    name="flexRadioDefault14"
-                                    id="flexRadioDefault14"
+                                    disabled
+                                    checked
+                                />
+                                <input 
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
                                     disabled
                                 />
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault14"
                                 >
                                     No
                                 </label>
                             </div>
                             <div style="margin-left: auto; margin-top: -7px">
                                 <button
+                                    v-if="cost[0]._id!=null"
                                     class="btn btn4 btn-outline-success"
                                     type="button"
                                     data-bs-toggle="collapse"
@@ -848,7 +869,6 @@
                 </section>
             </article>
         </div>
-    </body>
 </template>
 
 <script>
@@ -860,6 +880,9 @@ export default {
     };
     },
     methods:{
+        push(){
+            this.$router.go(-1)
+        },
         jumlah(){
             var table = document.getElementById("costable"),vat=0,sub=0,total=0;
             
@@ -881,7 +904,13 @@ export default {
             this.list = response.data.data;
             this.cost = response.data.data[0].cost_detail;
         },
-        
+        // getChecked(){
+        //     let item = true;
+        //     let item_yes = document.getElementById("flexRadioDefault13");
+        //     if (this.list[0].instruction_type=="Logistic Instruction"){
+        //         item_yes.checked=true;
+        //     }
+        // },
     },
     mounted(){
         this.fetchData();
@@ -959,9 +988,21 @@ export default {
     padding-top: 2px;
     padding-bottom: 5px;
     border-radius: 50px;
-    border: 1px solid green;
-    background-color: green;
+    border: 1px solid #3da576;
+    background-color: #3da576;
     text-decoration: none;
     color: white;
 }
+.btn-yoga {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    border-radius: 50px;
+    border: 1px solid rgb(164, 163, 163);
+    background-color: rgb(164, 162, 162);
+    text-decoration: none;
+    color: white;
+}
+
 </style>

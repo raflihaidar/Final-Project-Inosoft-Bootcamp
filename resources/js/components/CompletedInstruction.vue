@@ -1,6 +1,50 @@
 <template>
-  <div class="overflow-auto">
-        <!-- <div class="table-responsive ">   -->
+  <div style="margin-top:30px;" class="card mb-4 shadow">
+                        <div class="card-body">
+                            <ul class="tabs nav nav-tabs">
+                                <li id="switch1" class="nav-item active">
+                                    <span role="button" class="aw active customOpen " id="open" v-on:click="tabOpen()">Open</span>
+                                </li>
+                                <li id="switch2" class="nav-item">
+                                    <span role="button" class="aw customCompleted teal2 " id="completed" v-on:click="tabComplete()">Completed</span>
+                                </li>
+                                <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                    <div class="input-group input-group-sm">
+                                        <span style="background-color:#f6f6f5;" class="input-group-text" id="inputGroup-sizing-sm">
+                                            <i id="biru" class="fas fa-search">
+                                            </i>
+                                        </span>
+                                        <input class="form-control" style="background-color: #f6f6f5; width:250px;"  type="text" v-model="search" id="search" placeholder="Search" @input="fetchData" />
+                                    </div>
+                                </form>
+
+                                <li class="nav-item" style="float: right; margin-bottom: 10px;">
+                                    <button style="border-color:#d4d4d4; width:100px; border-radius: 5px; font-weight:bold" id="putih" class="export btn btn-outline-secondary btn-sm"
+                                    v-on:click="ExportExcel()"><i id="biru" class="fa-solid fa-file-export"></i>
+                                    Export
+                                    </button>
+                                </li>
+                            </ul>
+                                <!-- tempat tabel -->
+        <div class="overflow-auto">
+        <!-- <div class="table-responsive ">   -->    
+
+    <div id="btn-create" class="dropdown-center" style="float: right; margin-top: 20px; margin-right: 3px;">
+      <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
+        style="border-color:#00bfbf; width:230px; height:35px; border-radius: 5px; background-color: #00bfbf; font-weight: 500;"
+        class="btn btn-primary btn-sm">
+        <i class="fa fa-plus"></i> Create 3rd Party Instruction
+      </button>
+      <ul class="dropdown-menu" style="width: 230px;">
+        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="createLi()"><i
+              id="biru" class="bi bi-truck icon" style="margin-right: 15px; font-size: larger;"></i>Logistic
+            Instruction</a></li>
+        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="createSi()"><i
+              id="biru" class="bi bi-person-fill-gear icon" style="margin-right: 15px; font-size: larger;"></i>Service
+            Instruction</a>
+        </li>
+      </ul>
+    </div>
 
         <table id="tcomplete" class="sortable batas table table-hovers text-nowrap">
 
@@ -111,8 +155,8 @@
 
                 <span style="margin-bottom: 0px; position:relative" v-if="item.status == 'Cancelled'">
                   <p id="btn-cancel" class="btn badge badge-pill"
-                    v-on:click="pushCancel(item.instruction_id)">{{ item.status }}
-                    <a data-bs-toggle="popover" data-bs-placement="top" style="
+                    v-on:click="pushComplete(item._id)">{{ item.status }}
+                    <!-- <a data-bs-toggle="popover" data-bs-placement="top" style="
                                                   position: absolute;
                                                   margin-left: 10px;
                                                   margin-top: -1px;
@@ -125,7 +169,7 @@
                                                   text-decoration: none;
                                                   color: white;
                                               ">i
-                    </a>
+                    </a> -->
                   </p>
                 </span>
               </td>
@@ -137,57 +181,163 @@
 
         </table>
 
+      <table id="topen" class="sortable batas table table-hovers text-nowrap">
+
+      <thead style="background-color: #b6bbc1; color:white">
+        <tr>
+          <th>Instruction ID
+            <div class="btn-group-vertical cursor-pointer" role="group">
+              <div style="font-size: xx-small; padding-left: 2px;" class="btn1 btn-group-vertical" role="group"
+                aria-label="Vertical radio toggle button group">
+                <i style="color:white" class="bi bi-caret-up-fill sort-up" v-on:click="sortRecordsAsc(0)"></i>
+                <a style="color:white" class="bi bi-caret-down-fill sort-down" v-on:click="sortRecordsDesc(0)"></a>
+              </div>
+            </div>
+          </th>
+          <th>Link To
+            <div class="btn-group-vertical cursor-pointer" role="group">
+              <div style="font-size: xx-small; padding-left: 5px;" class="btn2 btn-group-vertical" role="group"
+                aria-label="Vertical radio toggle button group">
+                <i style="color:white" class="bi bi-caret-up-fill sort-up" v-on:click="sortRecordsAsc(1)"></i>
+                <a style="color:white" class="bi bi-caret-down-fill sort-down" v-on:click="sortRecordsDesc(1)"></a>
+              </div>
+            </div>
+          </th>
+          <th>Instruction Type
+            <div class=" btn-group-vertical cursor-pointer" role="group">
+              <div style="font-size: xx-small; padding-left: 5px;" class="btn3 btn-group-vertical" role="group"
+                aria-label="Vertical radio toggle button group">
+                <i style="color:white" class="bi bi-caret-up-fill sort-up" v-on:click="sortRecordsAsc(2)"></i>
+                <a style="color:white" class="bi bi-caret-down-fill sort-down" v-on:click="sortRecordsDesc(2)"></a>
+              </div>
+            </div>
+          </th>
+          <th>Issued To
+            <div class=" btn-group-vertical cursor-pointer" role="group">
+              <div style="font-size: xx-small; padding-left: 5px;" class="btn4 btn-group-vertical" role="group"
+                aria-label="Vertical radio toggle button group">
+                <i style="color:white" class="bi bi-caret-up-fill sort-up" v-on:click="sortRecordsAsc(3)"></i>
+                <a style="color:white" class="bi bi-caret-down-fill sort-down" v-on:click="sortRecordsDesc(3)"></a>
+              </div>
+            </div>
+          </th>
+          <th>Issued Date
+            <div class=" btn-group-vertical cursor-pointer" role="group">
+              <div style="font-size: xx-small; padding-left: 5px;" class="btn5 btn-group-vertical" role="group"
+                aria-label="Vertical radio toggle button group">
+                <i style="color:white" class="bi bi-caret-up-fill sort-up" v-on:click="sortRecordsAsc(4)"></i>
+                <a style="color:white" class="bi bi-caret-down-fill sort-down" v-on:click="sortRecordsDesc(4)"></a>
+              </div>
+            </div>
+          </th>
+          <th>Attention Of
+            <div class=" btn-group-vertical cursor-pointer" role="group">
+              <div style="font-size: xx-small; padding-left: 5px;" class="btn6 btn-group-vertical" role="group"
+                aria-label="Vertical radio toggle button group">
+                <i style="color:white" class="bi bi-caret-up-fill sort-up" v-on:click="sortRecordsAsc(5)"></i>
+                <a style="color:white" class="bi bi-caret-down-fill sort-down" v-on:click="sortRecordsDesc(5)"></a>
+              </div>
+            </div>
+          </th>
+          <th>Quotation No.
+            <div class=" btn-group-vertical cursor-pointer" role="group">
+              <div style="font-size: xx-small; padding-left: 5px;" class="btn7 btn-group-vertical" role="group"
+                aria-label="Vertical radio toggle button group">
+                <i style="color:white" class="bi bi-caret-up-fill sort-up" v-on:click="sortRecordsAsc(6)"></i>
+                <a style="color:white" class="bi bi-caret-down-fill sort-down" v-on:click="sortRecordsDesc(6)"></a>
+              </div>
+            </div>
+          </th>
+          <th>Customer PO
+            <div class=" btn-group-vertical cursor-pointer" role="group">
+              <div style="font-size: xx-small; padding-left: 5px;" class="btn8 btn-group-vertical" role="group"
+                aria-label="Vertical radio toggle button group">
+                <i style="color:white" class="bi bi-caret-up-fill sort-up" v-on:click="sortRecordsAsc(7)"></i>
+                <a style="color:white" class="bi bi-caret-down-fill sort-down" v-on:click="sortRecordsDesc(7)"></a>
+              </div>
+            </div>
+          </th>
+          <th style="text-align: center;">Status
+            <div class=" btn-group-vertical cursor-pointer" role="group">
+              <div style="font-size: xx-small; padding-left: 5px;" class="btn9 btn-group-vertical" role="group"
+                aria-label="Vertical radio toggle button group">
+                <i style="color:white" class="bi bi-caret-up-fill sort-up" v-on:click="sortRecordsAsc(8)"></i>
+                <a style="color:white" class="bi bi-caret-down-fill sort-down" v-on:click="sortRecordsDesc(8)"></a>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="cursor-pointer">
+        <tr v-for="(item, index) in items" v-bind:key="index">
+          <td v-if="item.status == 'In Progress' || item.status == 'Draft'"> {{ item.instruction_id }}</td>
+          <td v-if="item.status == 'In Progress' || item.status == 'Draft'"> {{ item.link_to }}</td>
+          <td v-if="item.status == 'In Progress' || item.status == 'Draft'" class="mid">
+            <i v-if="item.instruction_type == 'Logistic Instruction'" class="bi bi-truck icon"></i>
+            <i v-else class="bi bi-person-fill-gear icon"></i>
+            {{ item.instruction_type }}
+          </td>
+          <td v-if="item.status == 'In Progress' || item.status == 'Draft'"> {{ item.assigned_vendor }}</td>
+          <td v-if="item.status == 'In Progress' || item.status == 'Draft'"> {{ item.attachment[0].created_at }}</td>
+          <td v-if="item.status == 'In Progress' || item.status == 'Draft'"> {{ item.attention_of }}</td>
+          <td v-if="item.status == 'In Progress' || item.status == 'Draft'"> {{ item.quotation_no }}</td>
+          <td v-if="item.status == 'In Progress' || item.status == 'Draft'"> {{ item.customer_po }}</td>
+          <td v-if="item.status == 'In Progress' || item.status == 'Draft'">
+            <p id="btn-progress" v-if="item.status == 'In Progress'" class="btn badge badge-pill"
+              v-on:click="pushProgress(item._id)">{{ item.status }}</p>
+            <!-- <button style="font-size: x-small;" id="btn-cancel" v-if="item[8]=='Completed'" class="btn btn-success btn-sm">{{ item[8] }}</button> -->
+            <p id="btn-draft" v-if="item.status == 'Draft'" class="btn badge badge-pill"
+              v-on:click="pushDraft(item._id)">{{ item.status }}</p>
+
+          </td>
+          <!-- <td v-for="(rowItem, rowIndex) in item" v-bind:key="rowIndex">                           
+                {{ rowItemb }}                       
+              </td>         -->
+        </tr>
+      </tbody>
+
+      </table>
+
       </div>
+    </div>
+ </div>
+  
 </template>
 
 <script>
 export default {
 
-  props: {
-    items: {
-      type: Array,
-      default: () => {
-        return [];
-      },
+  data() {
+    return {
+      search: "",
+      items: [],
+    };
     },
-  },
 
   mounted() {
-    // this.fetchData();
+    this.fetchData();
+    this.tabOpen();
     // this.fetchTemplates();
   },
 
     methods: {
 
-    // async fetchData() {
-    //   if (this.search.length === 0) {
-    //     // Jika input kosong, ambil data dari API show
-    //     const response = await axios.get("http://127.0.0.1:8000/api/instruction/");
-    //     this.items = response.data.data;
-    //   } else {
-    //     // Jika input tidak kosong, ambil data dari API search
-    //     const response = await axios.get("http://127.0.0.1:8000/api/instruction/search/", {
-    //       params: {
-    //         key: this.search,
-    //       },
-    //     });
-    //     this.items = response.data.data;
-    //   }
-    // },
-    
-
-    // fetchTemplates() {
-    //   axios.get('http://127.0.0.1:8000/api/instruction')
-    //     .then(response => {
-    //       console.log(response.data.data);
-    //       this.items=response.data.data;
-    //       // this.items=response.data.data;
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-    // },
-
+    async fetchData() {
+      if (this.search.length === 0) {
+        // Jika input kosong, ambil data dari API show
+        const response = await axios.get("http://127.0.0.1:8000/api/instruction/");
+        this.items = response.data.data;
+      } else {
+        // Jika input tidak kosong, ambil data dari API search
+        const response = await axios.get("http://127.0.0.1:8000/api/instruction/search/", {
+          params: {
+            key: this.search,
+          },
+        });
+        this.items = response.data.data;
+      }
+    },
     pushComplete(index) {
       this.$router.push({ path: "/detailcomplete", query: { ID: index } })
     },
@@ -196,6 +346,55 @@ export default {
       this.$router.push({ path: "/detailcancel", query: { ID: index } })
     },
 
+    createLi() {
+      this.$router.push({ path: "/new" })
+    },
+
+    createSi() {
+      this.$router.push({ path: "/createSi" })
+    },
+
+    pushProgress(index) {
+      this.$router.push({ path: "/details_rafli", query: { ID: index } })
+    },
+
+    pushDraft(index) {
+      this.$router.push({ path: "/details_rafli", query: { ID: index } })
+    },
+    tabOpen(){
+      const x = document.getElementById('topen');
+      const y = document.getElementById('tcomplete');
+      const z = document.getElementById('btn-create');
+			x.style.display = 'inline-table';
+      y.style.display = 'none';
+      z.style.display = 'block';
+
+      let completed = document.getElementById("completed");
+      let open = document.getElementById("open");
+        completed.classList.add("customCompleted");
+        open.classList.add("teal");
+      let open2 = document.getElementById("switch1");
+      let completed2 = document.getElementById("switch2");
+        completed2.classList.remove("active");
+        open2.classList.add("active");
+    },
+    tabComplete(){
+      const x = document.getElementById('topen');
+      const y = document.getElementById('tcomplete');
+      const z = document.getElementById('btn-create');
+			x.style.display = 'none';
+      y.style.display = 'inline-table';
+      z.style.display = 'none';
+
+      let completed = document.getElementById("completed");
+      let open = document.getElementById("open");
+        completed.classList.remove("customCompleted");
+        open.classList.remove("teal");
+      let open2 = document.getElementById("switch1");
+      let completed2 = document.getElementById("switch2");
+        completed2.classList.add("active");
+        open2.classList.remove("active");
+    },
     addToggleIconListener(buttonClass) {
       const button = document.querySelector(buttonClass);
       button.addEventListener("click", function () {
@@ -218,36 +417,6 @@ export default {
         icon2.classList.remove("bi-caret-down-fill");
       });
     },
-
-
-    // ExportExcel(tableID, filename = '') {
-    //   var downloadLink;
-    //   var dataType = 'application/vnd.ms-excel';
-    //   var tableSelect = document.getElementById(tableID);
-    //   var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-
-    //   filename = filename ? filename + '.xls' : 'excel_data.xls';
-
-    //   downloadLink = document.createElement("a");
-
-    //   document.body.appendChild(downloadLink);
-
-    //   if (navigator.msSaveOrOpenBlob) {
-    //     var blob = new Blob(['\ufeff', tableHTML], {
-    //       type: dataType
-    //     });
-    //     navigator.msSaveOrOpenBlob(blob, filename);
-    //   }
-
-    //   else {
-    //     downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-
-    //     downloadLink.download = filename;
-
-    //     downloadLink.click();
-    //   }
-
-    // },
 
 
     sortRecordsAsc(index) {
@@ -284,16 +453,62 @@ export default {
         }
       )
     },
+    ExportExcel(type, fn, dl) {
+        var date = new Date().toLocaleDateString();
+        var workbook = XLSX.utils.book_new();
+
+        var ws1 = XLSX.utils.table_to_sheet(document.getElementById('topen'));
+        XLSX.utils.book_append_sheet(workbook, ws1, "Open Instruction");
+          
+        var ws2 =  XLSX.utils.table_to_sheet(document.getElementById('tcomplete'));
+        XLSX.utils.book_append_sheet(workbook, ws2, "Complete Instruction");
+         
+        return dl ?
+        XLSX.write(workbook, { bookType: type, bookSST: true, type: 'base64' }) :
+        XLSX.writeFile(workbook,fn || ('Instruction - '+date+ '.' + (type || 'xlsx')));
+
+    },
   },
 
-    data() {
-    return {
-    }
-  }
 }
 </script>
 
 <style scoped>
+.teal {
+    color: #00bfbf;
+    font-weight:500;
+    font-size: large;
+    margin-right: 30px;
+    margin-left: 20px;
+}
+
+.teal2 {
+    color: #00bfbf;
+    font-weight:500;
+    font-size: large;
+}
+
+.nav li.active {
+    border-bottom: #00bfbf 3px solid;
+}
+
+.aw:hover{
+  color: #00bfbf !important;
+}
+
+.customCompleted {
+    font-weight:500;
+    font-size: large;
+    color: #adadad;
+}
+
+.customOpen {
+    color: #adadad;
+    font-weight:500;
+    font-size: large;
+    margin-right: 30px;
+    margin-left: 20px;
+  }
 
 .table-hovers tbody tr:hover td,
 .table-hover tbody tr:hover th {
@@ -346,10 +561,14 @@ td {
   text-align: center;
 }
 
-
+#topen th,
+td {
+  font-size: small;
+  text-align: center;
+}
 
 .batas {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .cursor-pointer {
@@ -378,6 +597,24 @@ td {
   background-color: #a2aab2;
 }
 
+#btn-progress {
+  --bs-btn-padding-y: none;
+  width: 120px;
+  border-radius: 50px;
+  height: 20px;
+  color: #5a5a5a;
+  background-color: #e1e7f3;
+}
+
+#btn-draft {
+  --bs-btn-padding-y: none;
+  width: 120px;
+  border-radius: 50px;
+  height: 20px;
+  color: #5a5a5a;
+  background-color: #f5f5f5;
+}
+
 #btn-complete:hover{
   color:none;
   background-color:#0a9d5bc9;
@@ -396,5 +633,9 @@ td {
 .sort-down {
   position: absolute;
   margin-top: 8px;
+}
+
+.export:hover {
+    color: #00000069 !important;
 }
 </style>

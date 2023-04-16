@@ -18,8 +18,8 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Submit</button>
+                    <button type="button" style="background-color:none; border: none;" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" style="background-color:#01bebe; border: none;" class="btn btn-secondary">Submit</button>
                 </div>
             </div>
         </div>

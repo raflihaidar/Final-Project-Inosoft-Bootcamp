@@ -28,7 +28,7 @@ class InstructionController extends Controller
     /*
     * Menampilkan semua instruction
     */
-     public function showInstructions()
+    public function showInstructions()
     {
         $instructions = $this->instructionService->getInstructions();
         return $this->responseMessage(true, 'Instructions', $instructions, 200);
@@ -147,13 +147,13 @@ class InstructionController extends Controller
         if (!$instruction) {
             return $this->responseMessage(false, 'Instruction not found', null, 200);
         }
-        
+
         // menampung data request kedalam $formData
         $formData = $request->all();
         $formData['id'] = $instructionId;
-        
+
         $this->instructionService->editData($instruction, $formData);
-        
+
         // mencari data instruction sesuai id
         $instruction = $this->instructionService->getById($instructionId);
 
@@ -180,13 +180,13 @@ class InstructionController extends Controller
     {
         $req = (array) $request->all();
         $setStatus = 'On Progress';
-        
+
         try {
             $kondisi = true;
             $statusCode = 200;
             $message = "Berhasil menambah instruksi";
             $data = $this->instructionService->create($req, $setStatus);
-            $history = array_column($data,'_id');
+            $history = array_column($data, '_id');
             $this->historyService->create($history, $setStatus);
         } catch (Exception $e) {
             $kondisi = false;
@@ -194,7 +194,7 @@ class InstructionController extends Controller
             $message = "Gagal menambah instruksi";
             $data = json_decode($e->getMessage());
         }
-        return $this->responseMessage($kondisi, $message, $data, $statusCode);        
+        return $this->responseMessage($kondisi, $message, $data, $statusCode);
     }
 
     /*
@@ -204,13 +204,13 @@ class InstructionController extends Controller
     {
         $req = (array) $request->all();
         $setStatus = 'Draft';
-        
+
         try {
             $kondisi = true;
             $statusCode = 200;
             $message = "Instruksi dimasukkan ke dalam Draft";
             $data = $this->instructionService->create($req, $setStatus);
-            $history = array_column($data,'_id');
+            $history = array_column($data, '_id');
             $this->historyService->create($history, $setStatus);
         } catch (Exception $e) {
             $kondisi = false;
@@ -284,7 +284,7 @@ class InstructionController extends Controller
         // pesan setelah status instruction berhasil diubah
         return $this->responseMessage(true, 'Status changed to on progress', null, 201);
     }
-    
+
     /*
     * Menampilkan daftar instruction yang memiliki status draft
     */
@@ -294,7 +294,7 @@ class InstructionController extends Controller
         $instruction = $this->instructionService->getByStatus($key);
         return $this->responseMessage(true, 'Instructions on Draft', $instruction, 200);
     }
-    
+
     /*
     * Menampilkan daftar instruction yang memiliki status on progress
     */

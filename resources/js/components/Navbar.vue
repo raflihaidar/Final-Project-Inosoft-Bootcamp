@@ -227,37 +227,8 @@
                         </li>
                     </ul> -->
 
-                    <div style="margin-top:30px;" class="card mb-4 shadow">
-                        <div class="card-body">
-                            <ul class="tabs nav nav-tabs">
-                                <li id="switch1" class="nav-item active">
-                                    <span role="button" class="active aw teal" id="open" v-on:click="pushOpen()">Open</span>
-                                </li>
-                                <li id="switch2" class="nav-item">
-                                    <span role="button" class="aw customCompleted teal2 " id="completed" v-on:click="pushComplete()">Completed</span>
-                                </li>
-                                <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                                    <div class="input-group input-group-sm">
-                                        <span style="background-color:#f6f6f5;" class="input-group-text" id="inputGroup-sizing-sm">
-                                            <i id="biru" class="fas fa-search">
-                                            </i>
-                                        </span>
-                                        <input class="form-control" style="background-color: #f6f6f5; width:250px;"  type="text" v-model="search" id="search" placeholder="Search" @input="fetchData" />
-                                    </div>
-                                </form>
-
-                                <li class="nav-item" style="float: right; margin-bottom: 10px;">
-                                    <button style="border-color:#d4d4d4; width:100px; border-radius: 5px; font-weight:bold" id="putih" class="export btn btn-outline-secondary btn-sm"
-                                    v-on:click="ExportExcel()"><i id="biru" class="fa-solid fa-file-export"></i>
-                                    Export
-                                    </button>
-                                </li>
-                            </ul>
-                                <router-view  :items="list"/>
-                                <open :items="list" hidden></open>
-                                <completed :items="list" hidden></completed>
-                        </div>
-                    </div>
+                    <!-- tempat konten -->
+                    <router-view></router-view>
 
                     <!-- tempat tabel -->
                     
@@ -303,8 +274,8 @@ window.addEventListener('DOMContentLoaded', event => {
 export default {
     data() {
     return {
-      search: "",
-      list: [],
+    //   search: "",
+    //   list: [],
     };
   },
   created() {
@@ -313,71 +284,71 @@ export default {
   },
     methods: {
 
-    pushOpen() {
-      this.$router.push({ path: "/open" })
-      let completed = document.getElementById("completed");
-      let open = document.getElementById("open");
-        completed.classList.add("customCompleted");
-        open.classList.remove("customOpen");
-      let open2 = document.getElementById("switch1");
-      let completed2 = document.getElementById("switch2");
-        completed2.classList.remove("active");
-        open2.classList.add("active");
-    },
+    // pushOpen() {
+    //   this.$router.push({ path: "/open" })
+    //   let completed = document.getElementById("completed");
+    //   let open = document.getElementById("open");
+    //     completed.classList.add("customCompleted");
+    //     open.classList.remove("customOpen");
+    //   let open2 = document.getElementById("switch1");
+    //   let completed2 = document.getElementById("switch2");
+    //     completed2.classList.remove("active");
+    //     open2.classList.add("active");
+    // },
 
-    pushComplete() {
-      this.$router.push({ path: "/completed" })
-      let completed = document.getElementById("completed");
-      let open = document.getElementById("open");
-        completed.classList.remove("customCompleted");
-        open.classList.add("customOpen");
-      let open2 = document.getElementById("switch1");
-      let completed2 = document.getElementById("switch2");
-        completed2.classList.add("active");
-        open2.classList.remove("active");
-    },
+    // pushComplete() {
+    //   this.$router.push({ path: "/completed" })
+    //   let completed = document.getElementById("completed");
+    //   let open = document.getElementById("open");
+    //     completed.classList.remove("customCompleted");
+    //     open.classList.add("customOpen");
+    //   let open2 = document.getElementById("switch1");
+    //   let completed2 = document.getElementById("switch2");
+    //     completed2.classList.add("active");
+    //     open2.classList.remove("active");
+    // },
 
-    ExportExcel(type, fn, dl) {
-        var date = new Date().toLocaleDateString();
-        var workbook = XLSX.utils.book_new();
+    // ExportExcel(type, fn, dl) {
+    //     var date = new Date().toLocaleDateString();
+    //     var workbook = XLSX.utils.book_new();
 
-        var ws1 = XLSX.utils.table_to_sheet(document.getElementById('topen'));
-        XLSX.utils.book_append_sheet(workbook, ws1, "Open Instruction");
+    //     var ws1 = XLSX.utils.table_to_sheet(document.getElementById('topen'));
+    //     XLSX.utils.book_append_sheet(workbook, ws1, "Open Instruction");
           
-        var ws2 =  XLSX.utils.table_to_sheet(document.getElementById('tcomplete'));
-        XLSX.utils.book_append_sheet(workbook, ws2, "Complete Instruction");
+    //     var ws2 =  XLSX.utils.table_to_sheet(document.getElementById('tcomplete'));
+    //     XLSX.utils.book_append_sheet(workbook, ws2, "Complete Instruction");
          
-        return dl ?
-        XLSX.write(workbook, { bookType: type, bookSST: true, type: 'base64' }) :
-        XLSX.writeFile(workbook,fn || ('Instruction - '+date+ '.' + (type || 'xlsx')));
+    //     return dl ?
+    //     XLSX.write(workbook, { bookType: type, bookSST: true, type: 'base64' }) :
+    //     XLSX.writeFile(workbook,fn || ('Instruction - '+date+ '.' + (type || 'xlsx')));
 
-    },
+    // },
 
     panggil(){
         // saat halaman index dijalankan langsung memanggil children component tab open secara default
-        this.$router.push({ path: "/open" })
+        this.$router.push({ path: "/completed" })
     },
 
-    async fetchData() {
-      if (this.search.length === 0) {
-        // Jika input kosong, ambil data dari API show
-        const response = await axios.get("http://127.0.0.1:8000/api/instruction/");
-        this.list = response.data.data;
-      } else {
-        // Jika input tidak kosong, ambil data dari API search
-        const response = await axios.get("http://127.0.0.1:8000/api/instruction/search/", {
-          params: {
-            key: this.search,
-          },
-        });
-        this.list = response.data.data;
-      }
-    },
+    // async fetchData() {
+    //   if (this.search.length === 0) {
+    //     // Jika input kosong, ambil data dari API show
+    //     const response = await axios.get("http://127.0.0.1:8000/api/instruction/");
+    //     this.list = response.data.data;
+    //   } else {
+    //     // Jika input tidak kosong, ambil data dari API search
+    //     const response = await axios.get("http://127.0.0.1:8000/api/instruction/search/", {
+    //       params: {
+    //         key: this.search,
+    //       },
+    //     });
+    //     this.list = response.data.data;
+    //   }
+    // },
     },   
     mounted(){
     document.body.classList.add('sb-sidenav-toggled');  
     this.panggil();
-    this.fetchData();
+    // this.fetchData();
 
     // let completed = document.getElementById("completed");
     //   let open = document.getElementById("open");
@@ -391,41 +362,7 @@ export default {
 </script>
 
 <style>    
-.teal {
-    color: #00bfbf;
-    font-weight:500;
-    font-size: large;
-    margin-right: 30px;
-    margin-left: 20px;
-}
 
-.teal2 {
-    color: #00bfbf;
-    font-weight:500;
-    font-size: large;
-}
-
-.nav li.active {
-    border-bottom: #00bfbf 3px solid;
-}
-
-.aw:hover{
-  color: #00bfbf !important;
-}
-
-.customCompleted {
-    font-weight:500;
-    font-size: large;
-    color: #adadad;
-}
-
-.customOpen {
-    color: #adadad;
-    font-weight:500;
-    font-size: large;
-    margin-right: 30px;
-    margin-left: 20px;
-  }
   
 :root {
     --bs-blue: #0d6efd;

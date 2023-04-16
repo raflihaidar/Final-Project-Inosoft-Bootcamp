@@ -1,430 +1,793 @@
 <template>
-    <div class="container mx-auto bg-light">
-        <div class="w-100 bg-white p-4">
-
-            <!-- TITLE START -->
-            <p class="fs-3 fw-semibold mb-0">3rd Party Instruction</p>
-            <div class="d-flex align-items-center gap-2">
-                <div>Vendor Management</div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                </svg>
-                <div>3rd Party Instruction</div>
-            </div>
-            <!-- TITLE END -->
-
-
-            <div class="mt-5 p-3 bg-white d-grid gap-4">
-
-                <!-- NAVIGATION START -->
-                <nav class="grid">
-                    <div class="row">
+    <div class="container shadow-lg pb-5" style=" margin-top:30px; background-color: white">
+        <article class="container">
+            <nav class="grid" style="margin-bottom: 30px;">
+                    <div class="row" style="margin-top:30px;">
                         <div class="col-10 flex align-items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                            </svg>
-                            Back
+                            <button-component v-on:click="push()" cursor text="Back" icon="bi bi-chevron-left" warna="#00bfbf" color="none" style="margin-top: 10px; font-size:medium; color:black" bold/>
                         </div>
                         <div class="col-2 flex justify-content-end gap-5">
-                            <button class="bg-white">complete</button>
-                            <button class="bg-white">delete</button>
-                            <button class="bg-white" data-bs-toggle="modal" data-bs-target="#modalTerminate">
-                                Terminate
-                            </button>
-                            <button class="bg-white">Modify</button>
+                            <button-component cursor text="Complete" icon="fa-regular fa-circle-check" bold warna="#01bebe" color="none" style="color:black" v-if="list[0].status=='In Progress'"/>
+                            <button-component cursor text="Terminate" icon="fa-solid fa-ban" bold warna="rgba(255, 0, 0, 0.747)" color="none" style="color:black" data-bs-toggle="modal" data-bs-target="#modalTerminate" v-if="list[0].status=='In Progress'"/>
+                            <button-component cursor text="Delete" icon="fa-solid fa-trash" bold warna="rgba(255, 0, 0, 0.747)" color="none" style="color:black" v-if="list[0].status=='Draft'"/>
+                            <button-component cursor text="Modify" icon="fa-solid fa-pen" bold warna="#01bebe" color="none" style="color:black"/>
                         </div>
                     </div>
                 </nav>
-                <!-- NAVIGATION END -->
-
-
-                <!-- HEADER START -->
-                <header class="grid border shadow-sm p-2">
-                    <section class="row">
-                        <div class="col-2">
-                            <p class="mb-0">Type</p>
-                            <p class="fw-bold fs-5">Logistic Instruction</p>
+            <section class="mb-3 bdrtop bdrbottom bdrleft bdrright">
+                <div class="row">
+                    <div class="col-8" style="">
+                        <div class="row mt-3 ms-3">
+                            <div class="col">
+                                <span>Type</span>
+                                <p>
+                                    <b v-if="list[0].instruction_type=='Logistic Instruction'">
+                                        <i style="color:#00bfbf" class="bi bi-truck icon"></i>
+                                        {{list[0].instruction_type}}</b
+                                    >
+                                    <b v-else>
+                                        <i style="color:#00bfbf" class="bi bi-person-fill-gear icon"></i>
+                                        {{list[0].instruction_type}}</b
+                                    >
+                                </p>
+                            </div>
+                            <div class="col">
+                                <span>LI No.</span>
+                                <p><b>{{list[0].instruction_id}}</b></p>
+                            </div>
+                            <div class="col">
+                                <span>Attention Of</span>
+                                <p><b>{{list[0].attention_of}}</b></p>
+                            </div>
                         </div>
-                        <div class="col-2">
-                            <p class="mb-0">LI No.</p>
-                            <p class="fw-bold fs-5">LI-2022-0058</p>
+                        <div class="row ms-3 mt-5">
+                            <div class="col">
+                                <span>Issued To</span>
+                                <p><b>{{list[0].assigned_vendor}}</b></p>
+                            </div>
+                            <div class="col">
+                                <span>Vendor Reference No.</span>
+                                <p><b>{{list[0].quotation_no}}</b></p>
+                            </div>
+                            <div class="col">
+                                <span>Vendor Address</span>
+                                <p><b>{{list[0].vendor_address}}</b></p>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <p class="mb-0">Attention Of</p>
-                            <p class="fw-bold fs-5">Evie Transfer</p>
-                        </div>
-                        <div class="col-2 border-custom">
-                            <p class="mb-0">Customer</p>
-                            <p class="fw-bold fs-5">ABSCT - ABSOLUTE COMPLETION TECHNOLOGIES PTE LTD</p>
-                        </div>
-                        <div class="col-2">
-                            <p class="mb-0">Status</p>
-                            <div class="btn bg-info rounded-pill px-4 py-0" style="--bs-bg-opacity: .5">In Progress</div>
-                        </div>
-                    </section>
-                    <section class="row">
-                        <div class="col-2">
-                            <p class="mb-0">Issued To</p>
-                            <p class="fw-bold fs-5">Priyesh Thattarath</p>
-                        </div>
-                        <div class="col-2">
-                            <p class="mb-0">Vendor Refrence No.</p>
-                            <p class="fw-bold fs-5">3034</p>
-                        </div>
-                        <div class="col-4">
-                            <p class="mb-0">Vendor Address</p>
-                            <p class="fw-bold fs-5">Evie Test</p>
-                        </div>
-                        <div class="col-2 border-custom">
-                            <p class="mb-0">Customer PO</p>
-                            <p class="fw-bold fs-5">PO - 003</p>
-                        </div>
-                    </section>
-                    <section class="row">
-                        <div class="col-2">
-                            <p class="mb-0">Invoice To</p>
-                            <p class="fw-bold fs-5">Inosoft</p>
-                        </div>
-                        <div class="col-2">
-                            <p class="mb-0">Base</p>
-                            <p class="fw-bold fs-5">
-                            </p>
-                        </div>
-                        <div class="col-4">
-                            <p class="mb-0">Delivery Data</p>
-                            <p class="fw-bold fs-5">04/01/04
-                            </p>
-                        </div>
-                        <div class="col-2 border-custom">
-                            <p class="mb-0">Customer Ref</p>
-                            <p class="fw-bold fs-5">REF - 003
-                            </p>
-                        </div>
-                    </section>
-                </header>
-                <!-- HEADER END -->
-
-                <!-- ITEM RADIO START -->
-                <div class="border-top py-3">
-                    <div class="flex gap-3 mb-3">
-                        <label class="fw-bold">Item</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexItemRadio" id="flexItemRadio">
-                            <label class="form-check-label" for="flexItemRadio">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check ">
-                            <input class="form-check-input" type="radio" name="flexItemRadio" id="flexItemRadio">
-                            <label class="form-check-label" for="flexItemRadio">
-                                No
-                            </label>
+                        <div class="row ms-3 mt-5">
+                            <div class="col">
+                                <span>Invoice To</span>
+                                <p><b>{{list[0].invoice_to}}</b></p>
+                            </div>
+                            <div class="col"><span>Base</span></div>
+                            <div class="col">
+                                <span>Delivery Date</span>
+                                <p><b>{{ list[0].attachment[0].created_at }}</b></p>
+                            </div>
                         </div>
                     </div>
-
-                    <table class="table border">
-                        <thead class="bg-secondary text-white fw-semibold">
-                            <tr>
-                                <th>Item Description</th>
-                                <th>Lot No</th>
-                                <th>Qty(pcs)</th>
-                                <th>Estimate Footage</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </td>
-                                <td><input type="text" class="form-control"></td>
-                                <td><input type="text" class="form-control"></td>
-                                <td><input type="text" class="form-control"></td>
-                                <td>
-                                    <button class="btn btn-light">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                            class="bi bi-dash" viewBox="0 0 16 16">
-                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-light" type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                            class="bi bi-plus" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- ITEM RADIO END -->
-
-                <!-- TRANSPORT RADIO START -->
-                <div class="border-top py-3">
-                    <div class="flex gap-3 mb-3">
-                        <label class="fw-bold">Transport</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexTransportRadio" id="flexTransportRadio">
-                            <label class="form-check-label" for="flexTransportRadio">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexTransportRadio" id="flexTransportRadio">
-                            <label class="form-check-label" for="flexTransportRadio">
-                                No
-                            </label>
+                    <div class="col-4" style="">
+                        <div class="row bdr-pts mt-3">
+                            <div class="col">
+                                <span>Customer</span>
+                                <p>
+                                    <b
+                                        >{{list[0].customer_contract}}</b
+                                    >
+                                </p>
+                            </div>
+                            <div class="col">
+                                <span style="margin-left: 30px;"
+                                    >Status</span
+                                >
+                                <p
+                                    v-if="list[0].status=='In Progress'"
+                                    id="btn-cancel"
+                                    style="position:absolute;"
+                                >
+                                    <a href="#" class="btn-yoga1"
+                                        >{{list[0].status}}</a
+                                    >
+                                </p>
+                                <p
+                                    v-else
+                                    id="btn-cancel"
+                                    style="position: relative"
+                                >
+                                    <a href="#" class="btn-yoga disabled"
+                                        >{{list[0].status}}</a
+                                    >
+                                    
+                                </p>
+                            </div>
+                            <div class="mb-5">
+                                <span>Customer PO</span>
+                                <p><b>{{list[0].customer_po}}</b></p>
+                            </div>
+                            <div class="mb-4">
+                                <span>Customer Ref</span>
+                                <p><b></b></p>
+                            </div>
                         </div>
                     </div>
-
-                    <table class="table border">
-                        <thead class="bg-secondary text-white fw-semibold">
-                            <tr>
-                                <th>Item Description</th>
-                                <th>Type</th>
-                                <th>Description</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="flex gap-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexTransportRadio"
-                                                id="flexTransportRadio">
-                                            <label class="form-check-label" for="flexTransportRadio">
-                                                Sea
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexTransportRadio"
-                                                id="flexTransportRadio">
-                                            <label class="form-check-label" for="flexTransportRadio">
-                                                Land
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexTransportRadio"
-                                                id="flexTransportRadio">
-                                            <label class="form-check-label" for="flexTransportRadio">
-                                                Air
-                                            </label>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </td>
-                                <td><input type="text" class="form-control"></td>
-                                <td>
-                                    <button class="btn btn-light">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                            class="bi bi-dash" viewBox="0 0 16 16">
-                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                                <td><button class="btn btn-light">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                            class="bi bi-plus" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
-                <!-- TRANSPORT RADIO END -->
-
-                <!-- SCOPE OF WORK START -->
-                <div class="border-top py-3">
-                    <div class="flex gap-3 mb-3 ">
-                        <label class="fw-bold">Scope of Work</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexTransportRadio" id="flexTransportRadio">
-                            <label class="form-check-label" for="flexTransportRadio">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexTransportRadio" id="flexTransportRadio">
-                            <label class="form-check-label" for="flexTransportRadio">
-                                No
-                            </label>
-                        </div>
-                    </div>
-
-                    <table class="table border">
-                        <thead class="bg-secondary text-white fw-semibold">
-                            <tr>
-                                <th>Scope of Work</th>
-                                <th>Scope</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <button class="btn btn-light">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                            class="bi bi-dash" viewBox="0 0 16 16">
-                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                                <td><input type="text" class="form-control"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- SCOPE OF WORK END -->
-
-
-                <!-- COST DETAIL START -->
+            </section>
+            <section>
                 <div>
-                    <div class="flex gap-3 border-top py-3 mb-3">
-                        <label class="fw-bold">Cost Detail</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexItemRadio" id="flexItemRadio">
-                            <label class="form-check-label" for="flexItemRadio">
+                    <div class="d-flex pt-3 bdrtop">
+                        <div class="me-3">
+                            <p><b>Item</b></p>
+                        </div>
+                        <div class="form-check me-3">
+                            <label
+                                class="form-check-label"
+                            >
                                 Yes
                             </label>
+                            <input
+                                v-if="cost[0]._id!=null"
+                                class="form-check-input"
+                                disabled
+                                type="radio"
+                                checked
+                            />
+                            <input
+                                v-else
+                                class="form-check-input"
+                                disabled
+                                type="radio"
+                            />
                         </div>
-                        <div class="form-check ">
-                            <input class="form-check-input" type="radio" name="flexItemRadio" id="flexItemRadio">
-                            <label class="form-check-label" for="flexItemRadio">
+                        <div class="form-check">
+                            <label
+                                class="form-check-label"
+                            >
+                                No
+                            </label>
+                            <input
+                                v-if="cost[0]._id==null"
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                                checked
+                            />
+                            <input
+                                v-else
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                            />
+                        </div>
+                        <div style="margin-left: auto; margin-top: -7px">
+                            <button
+                                v-if="cost[0]._id!=null"
+                                class="btn btn6 btn-outline-success"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseExample5"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                            >
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="collapse" id="collapseExample5">
+                        <div class="card card-body">
+                            <table class="table bdrleft bdrright">
+                                <thead class="text-bg-secondary">
+                                    <tr>
+                                        <th>Item Description</th>
+                                        <th class="text-end">Lot No.</th>
+                                        <th class="text-end">Qty (PCS)</th>
+                                        <th class="text-end">
+                                            Estimate Footage
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Tubing, 4 1/2"", 12 PPF, 13CR80,
+                                            JFE BEAR, R1
+                                        </td>
+                                        <td class="text-end">
+                                            PO-200013-A
+                                        </td>
+                                        <td class="text-end">5.00</td>
+                                        <td class="text-end">64.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="list[0].instruction_type!='Service Instruction'">
+                    <div class="d-flex pt-3 bdrtop">
+                        <div class="me-3">
+                            <p><b>Transport</b></p>
+                        </div>
+                        <div class="form-check me-3">
+                            <label
+                                class="form-check-label"
+                            >
+                                Yes
+                            </label>
+                            <input 
+                                v-if="cost[0]._id!=null"
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                                checked                                    
+                            />
+                            <input 
+                                v-else
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                                
+                            />
+                        </div>
+                        <div class="form-check">
+                            <label
+                                class="form-check-label"
+                            >
+                                No
+                            </label>
+                            <input
+                                v-if="cost[0]._id==null"
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                                checked
+                            />
+                            <input
+                                v-else
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                            />
+                        </div>
+                        <div style="margin-left: auto; margin-top: -7px">
+                            <button
+                                v-if="cost[0]._id!=null"
+                                class="btn btn7 btn-outline-success"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseExample6"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                            >
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="collapse" id="collapseExample6">
+                        <div class="card card-body">
+                            <table class="table bdrleft bdrright">
+                                <thead class="text-bg-secondary">
+                                    <tr>
+                                        <th>Transport Mode</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>sea</td>
+                                        <td>FCL - Container</td>
+                                        <td>Sea transportation</td>
+                                    </tr>
+                                    <tr>
+                                        <td>land</td>
+                                        <td>Truck</td>
+                                        <td>Land transportation</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-3 bdrtop">
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <p><b>Scope of Work</b></p>
+                        </div>
+                        <div class="form-check me-3">
+                            <label
+                                class="form-check-label"
+                            >
+                                Yes
+                            </label>
+                            <input
+                                v-if="cost[0]._id!=null"
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                                checked
+                            />
+                            <input
+                                v-else
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                            />
+                        </div>
+                        <div class="form-check">
+                            <input
+                                v-if="cost[0]._id==null"
+                                class="form-check-input"
+                                disabled
+                                type="radio"
+                                checked
+                            />
+                            <input
+                                v-else
+                                class="form-check-input"
+                                disabled
+                                type="radio"
+                            />
+                            <label
+                                class="form-check-label"
+                            >
                                 No
                             </label>
                         </div>
+                        <div style="margin-left: auto; margin-top: -7px">
+                            <button
+                                v-if="cost[0]._id!=null"
+                                class="btn btn5 btn-outline-success"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseExample4"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                            >
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                        </div>
                     </div>
-                    <table class="table table-borderless border py-2">
-                        <thead class="bg-secondary text-white fw-semibold">
-                            <tr>
-                                <th>Description</th>
-                                <th>QTY</th>
-                                <th>UOM</th>
-                                <th>Unit Price</th>
-                                <th>Discount(%)</th>
-                                <th>GST/VAT(%)</th>
-                                <th>Currency</th>
-                                <th>VAT AMOUNT</th>
-                                <th>Sub Total</th>
-                                <th>Total</th>
-                                <th>Change To</th>
-                            </tr>
-                        </thead>
-                        <tbody class="px-2">
-                            <tr>
-                                <td>Transportation from Rigsite</td>
-                                <td>1</td>
-                                <td>Trip</td>
-                                <td>1,400.00</td>
-                                <td>0</td>
-                                <td>5</td>
-                                <td>AED</td>
-                                <td>70.00</td>
-                                <td>1,400.00</td>
-                                <td>1,470.00</td>
-                                <td>MITME</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">Exchange Rate 1 USD = 3.6275 AED</td>
-                                <td class="text-bg-secondary">AED (Total)</td>
-                                <td class="text-bg-secondary">70.000</td>
-                                <td class="text-bg-secondary">1,400.00</td>
-                                <td class="text-bg-secondary">1,470.00</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6"></td>
-                                <td class="text-bg-secondary">USD (Total)</td>
-                                <td class="text-bg-secondary">19.06</td>
-                                <td class="text-bg-secondary">381.21</td>
-                                <td class="text-bg-secondary">400.27</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="fw-semibold">Attachment</td>
-                                <td>Notes</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    <div>
-                                        <p class="fw-semibold mb-0">RRN-2021-0054-DN.pdf</p>
-                                        <p>By james</p>
-                                    </div>
-                                    <button class="btn btn-success d-flex align-items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                            class="bi bi-plus-lg align-middle" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5H2a.5.5 0 0 1 0-1h5V2.5A.5.5 0 0 1 8 2z" />
-                                        </svg>
-                                        <span class="align-middle">Add Attachment</span>
-                                    </button>
-                                </td>
-                                <td colspan="7" class="bg-secondary">
-                                    <div>
-                                        <p>1x Desert Truck</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- COST DETAIL END -->
-            </div>
-        </div>
+                    <div class="collapse mb-3" id="collapseExample4">
+                        <div class="card card-body">
+                            <table class="table bdrleft bdrright">
+                                <thead class="text-bg-secondary">
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Qty</th>
+                                        <th>UOM</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border-bottom: #e4e4e4">
+                                            <b>Custom</b>
+                                        </td>
 
-        <!-- FOR INTERNAL ONLY START -->
-        <div class="bg-success px-4 py-2 w-100mb-2">
-            <p class="text-white fw-semibold">For Internal Only</p>
-        </div>
-        <div class="grid">
-            <div class="row">
-                <div class="border-end col-5 ps-3">
-                    <p>Attachment</p>
-                    <button class="btn btn-success d-flex align-items-center" type="file">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-plus-lg align-middle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5H2a.5.5 0 0 1 0-1h5V2.5A.5.5 0 0 1 8 2z" />
-                        </svg>
-                        <span>Add Attachment</span>
-                    </button>
+                                        <td style="border-bottom: #e4e4e4">
+                                            <b>Scopes</b>
+                                        </td>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            <button
+                                                class="btn btn-secondary disabled"
+                                            >
+                                                MHE & Equipment
+                                            </button>
+                                        </td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            test
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td>
+                                            <button
+                                                class="btn btn-secondary disabled"
+                                            >
+                                                Other
+                                            </button>
+                                        </td>
+                                        <td>test</td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            <b>Documents</b>
+                                        </td>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            <button
+                                                class="btn btn-secondary disabled"
+                                            >
+                                                Copy of BL
+                                            </button>
+                                        </td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            test
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            <button
+                                                class="btn btn-secondary disabled"
+                                            >
+                                                Surrender BL
+                                            </button>
+                                        </td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            test
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            <button
+                                                class="btn btn-secondary disabled"
+                                            >
+                                                Original BL
+                                            </button>
+                                        </td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            test
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            <button
+                                                class="btn btn-secondary disabled"
+                                            >
+                                                Invoice
+                                            </button>
+                                        </td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            test
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            <button
+                                                class="btn btn-secondary disabled"
+                                            >
+                                                Packing List
+                                            </button>
+                                        </td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            test
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            <button
+                                                class="btn btn-secondary disabled"
+                                            >
+                                                Storage Compound
+                                            </button>
+                                        </td>
+                                        <td style="border-bottom: #e4e4e4">
+                                            test
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <button
+                                                class="btn btn-secondary disabled"
+                                            >
+                                                Other
+                                            </button>
+                                        </td>
+                                        <td>test</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col-7 ps-3">
-                    <p>Internal Note</p>
-                    <button class="btn btn-success d-flex align-items-center" data-bs-toggle="modal"
+                <div class="pt-3 bdrtop">
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <p><b>Cost Detail</b></p>
+                        </div>
+                        <div class="form-check me-3">
+                            <label
+                                class="form-check-label"
+                            >
+                                Yes
+                            </label>
+                            <input 
+                                v-if="cost[0]._id!=null"
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                                checked
+                            />
+                            <input 
+                                v-else
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                            />
+                        </div>
+                        <div class="form-check">
+                            <input
+                                v-if="cost[0]._id==null"
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                                checked
+                            />
+                            <input 
+                                v-else
+                                class="form-check-input"
+                                type="radio"
+                                disabled
+                            />
+                            <label
+                                class="form-check-label"
+                            >
+                                No
+                            </label>
+                        </div>
+                        <div style="margin-left: auto; margin-top: -7px">
+                            <button
+                                v-if="cost[0]._id!=null"
+                                class="btn btn4 btn-outline-success"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseExample3"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                                v-on:click="jumlah()"
+                            >
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="collapse mb-3 bdrright bdrleft bdrbottom bdrtop"
+                        id="collapseExample3"
+                    >
+                        <div class="card card-body">
+                            <table id="costable" class="table">
+                                <thead class="text-bg-secondary">
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Qty</th>
+                                        <th>UOM</th>
+                                        <th>Unit Price</th>
+                                        <th>GST/VAT(%)</th>
+                                        <th>Currency</th>
+                                        <th>VAT Amount</th>
+                                        <th>Sub Total</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(item, index) in cost" v-bind:key="index">
+                                        <td>{{item.description}}</td>
+                                        <td>{{ item.qty }}</td>
+                                        <td>{{item.uom}}</td>
+                                        <td>{{item.unit_price}}</td>
+                                        <td>{{item.gst_vat}}</td>
+                                        <td>{{item.currency}}</td>
+                                        <td>{{ item.gst_vat/100*item.unit_price*item.qty }}</td>
+                                        <td>{{item.qty*item.unit_price}}</td>
+                                        <td>{{(item.gst_vat/100*item.unit_price*item.qty)+(item.qty*item.unit_price)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td
+                                            style="border-bottom: #e4e4e4"
+                                        ></td>
+                                        <td class="table-active">
+                                            {{cost[0].currency}}(total)
+                                        </td>
+                                        <td id="vat" class="table-active"></td>
+                                        <td id="sub" class="table-active"></td>
+                                        <td id="total" class="table-active"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div>
+                                <div class="row">
+                                    <div class="col">Attachment</div>
+                                    <div class="col">
+                                        <span>Notes</span>
+                                        <div>
+                                            <div
+                                                style="
+                                                    background-color: aliceblue;
+                                                    width: 100%;
+                                                    height: 100px;
+                                                "
+                                            >
+                                                <p
+                                                    style="
+                                                        color: aliceblue;
+                                                        border-bottom: 1px
+                                                            solid white;
+                                                    "
+                                                >
+                                                    p
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 pt-3 bdrtop">
+                    <div class="d-flex justify-content-between" style="">
+                        <div>
+                            <p>
+                                <b>Confirmation</b>
+                                <span class="badge bg-primary rounded-pill"
+                                    >1</span
+                                >
+                            </p>
+                        </div>
+                        <div
+                            class="input mb-3"
+                            style="width: 170px; margin-left: auto"
+                        >
+                            <label
+                                class="form-control"
+                                for="inputGroupFile03"
+                                style="
+                                    background-color: #00bfbf;
+                                    color: white;
+                                "
+                                >+ Add Confirmation</label
+                            >
+                            <input
+                                hidden
+                                type="file"
+                                class=""
+                                id="inputGroupFile03"
+                            />
+                        </div>
+                        <div style="">
+                            <button
+                                class="btn btn3 btn-outline-success"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseExample2"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                            >
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="collapse" id="collapseExample2">
+                        <div class="card card-body">
+                            <table class="table bdrright bdrleft">
+                                <thead class="text-bg-secondary">
+                                    <tr>
+                                        <th class="">No</th>
+                                        <th>Type</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <button
+                                                class="btn btn-sm btn-light"
+                                            >
+                                                icon LC-2022-0060-A
+                                            </button>
+                                        </td>
+                                        <td>Logistic Completed</td>
+                                        <td>02/11/2022</td>
+                                        <td>
+                                            <p
+                                                style="
+                                                    border-radius: 50px;
+                                                    text-align: center;
+                                                    width: 80%;
+                                                    background-color: rgb(
+                                                        201,
+                                                        236,
+                                                        201
+                                                    );
+                                                    color: green;
+                                                "
+                                            >
+                                                Submitted
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div
+                    class="py-3 text-light ps-3"
+                    style="background-color: rgb(36, 39, 43)"
+                >
+                    For Internal Only
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <div class="mt-3 mb-3">
+                            <span>Attachment</span>
+                        </div>
+                        <div>
+                            <span>{{ list[0].attachment[0].file }}</span>
+                        </div>
+                        <div class="input mb-3" style="width: 170px">
+                            <label
+                                class="form-control"
+                                for="inputGroupFile01"
+                                style="
+                                    background-color: #00bfbf;
+                                    color: white;
+                                "
+                                >+ Add Attachment</label
+                            >
+                            <input
+                                hidden
+                                type="file"
+                                class=""
+                                id="inputGroupFile01"
+                            />
+                        </div>
+                    </div>
+                    <div class="col-7 bdr-pts">
+                        <div class="mt-3 mb-3">
+                            <span>Internal Note</span>
+                        </div>
+                        <button style="background-color: #00bfbf;" class="btn btn-success d-flex align-items-center" data-bs-toggle="modal"
                         data-bs-target="#modalInternalNote">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-plus-lg align-middle" viewBox="0 0 16 16">
@@ -433,38 +796,213 @@
                         </svg>
                         <span>Add Internal Note</span>
                     </button>
+                        <!-- <div class="input mb-3" style="width: 170px">
+                            <label
+                                class="form-control"
+                                for="inputGroupFile01"
+                                style="
+                                    background-color: #00bfbf;
+                                    color: white;
+                                "
+                                >+ Add Internal Note</label
+                            >
+                            <input
+                                hidden
+                                type="file"
+                                class=""
+                                id="inputGroupFile01"
+                            />
+                        </div> -->
+                    </div>
                 </div>
-            </div>
-        </div>
-        <!-- FOR INTERNAL ONLY END -->
-        <!-- MODAL -->
+                <div>
+                    <div class="d-flex justify-content-between" style="">
+                        <div>
+                            <p><b>View Activity Log</b></p>
+                        </div>
+                        <div style="">
+                            <button
+                                class="btn btn1 btn-outline-success"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseExample"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                            >
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div
+                        class="collapse mb-3 text-center"
+                        id="collapseExample"
+                    >
+                        <div class="card card-body">No Activity Yet</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex justify-content-between" style="">
+                        <div>
+                            <p><b>View Transaction Revision</b></p>
+                        </div>
+                        <div style="">
+                            <button
+                                class="btn btn2 btn-outline-success"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseExample1"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                            >
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="collapse text-center" id="collapseExample1">
+                        <div class="card card-body">No Transaction</div>
+                    </div>
+                </div>
+            </section>
+        </article>
         <modal-terminate />
         <modal-internalNote />
     </div>
 </template>
 
-<style scoped>
-.border-custom {
-    border-left: 1px dotted gray;
-}
-</style>
-
 <script>
 export default {
-    data() {
-    return {
-      list: [],
-    };
+data() {
+return {
+  list: [],
+  cost:[],
+};
+},
+methods:{
+    push(){
+        this.$router.go(-1)
     },
-    mounted(){
-        this.fetch();
+    jumlah(){
+        var table = document.getElementById("costable"),vat=0,sub=0,total=0;
+        
+        for(var i = 1; i < table.rows.length-1; i++)
+        {
+            vat = vat + parseInt(table.rows[i].cells[6].innerHTML);
+            sub = sub + parseInt(table.rows[i].cells[7].innerHTML);
+            total = total + parseInt(table.rows[i].cells[8].innerHTML);
+        }
+        
+        document.getElementById("vat").innerHTML = vat;
+        document.getElementById("sub").innerHTML = sub;
+        document.getElementById("total").innerHTML = total;
     },
-    methods:{
-        async fetch(){
-            const response = await axios.get("http://127.0.0.1:8000/api/instruction/");
-            this.list = response.data.data;
-        },
-    }
+    async fetchData(){
+        let a = "http://127.0.0.1:8000/api/instruction/"
+        let b = this.$route.query.ID;
+        const response = await axios.get(a+b);
+        this.list = response.data.data;
+        this.cost = response.data.data[0].cost_detail;
+    },
+    // getChecked(){
+    //     let item = true;
+    //     let item_yes = document.getElementById("flexRadioDefault13");
+    //     if (this.list[0].instruction_type=="Logistic Instruction"){
+    //         item_yes.checked=true;
+    //     }
+    // },
+},
+mounted(){
+    this.fetchData();
+},
+}
+</script>
+
+<style scoped>
+/* .bi1 a {
+text-decoration: none;
+}
+.bi1 a:hover {
+border: 1px solid #00bfbf;
+border-color: #00bfbf;
+border-radius: 5px;
+} */
+
+#collapseExample2 .card {
+border: none;
 }
 
-</script>
+#collapseExample3 .card {
+border: none;
+}
+
+#collapseExample4 .card {
+border: none;
+}
+
+#collapseExample5 .card {
+border: none;
+}
+
+#collapseExample6 .card {
+border: none;
+}
+
+/* Custom */
+
+.bdrtop {
+border-top: 1px solid silver;
+}
+.bdrbottom {
+border-bottom: 1px solid silver;
+}
+.bdrleft {
+border-left: 1px solid silver;
+}
+.bdrright {
+border-right: 1px solid silver;
+}
+
+.bdr-pts {
+border-left: 1px dashed #e4e4e4;
+}
+
+.btn {
+border-color: #00bfbf;
+}
+
+.btn-outline-yoga {
+color: #00bfbf;
+border: 1px solid #00bfbf;
+}
+
+.btn-outline-yoga:hover {
+color: #fff;
+background-color: #00bfbf;
+border-color: #00bfbf;
+}
+
+.btn-yoga1 {
+padding-left: 28px;
+padding-right: 28px;
+padding-top: 2px;
+padding-bottom: 5px;
+border-radius: 50px;
+border: 1px solid #e1e7f3;
+background-color: #e1e7f3;
+text-decoration: none;
+font-size: small;
+color: #5a5a5a;
+}
+.btn-yoga {
+padding-left: 30px;
+padding-right: 30px;
+padding-top: 2px;
+padding-bottom: 5px;
+border-radius: 50px;
+border: 1px solid #f5f5f5;
+background-color: #f5f5f5;
+text-decoration: none;
+color: #5a5a5a;
+}
+
+</style>
