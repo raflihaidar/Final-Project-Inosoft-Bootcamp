@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="border-bottom py-3">
         <p>
             <strong style="font-size: large">Scope of Work</strong>
             <label>

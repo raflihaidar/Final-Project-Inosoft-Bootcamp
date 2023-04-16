@@ -359,9 +359,8 @@
                         <!-- tempat tabel -->
                         <div class="containe">
                             <div class="boxi">
-                                <header-component></header-component>
+                                <header-service-component></header-service-component>
                                 <item-component></item-component>
-                                <transport-component></transport-component>
                                 <scope-of-work-table-component></scope-of-work-table-component>
                                 <cost-detail-component></cost-detail-component>
                                 <attachment-notes></attachment-notes>

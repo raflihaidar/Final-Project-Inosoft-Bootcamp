@@ -27,11 +27,11 @@
             <div class="itemSOH">
                 <!-- Button trigger modal -->
                 <span
-                    class="btn"
+                    class="btn btn-success"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                 >
-                    <i class="bi bi-plus text-success"></i>
+                    <i class="bi bi-plus"></i>
                     Add Item From SOH
                 </span>
 
@@ -105,7 +105,12 @@
                         <!-- <td>  <input-field type="text" color="grey" width="150px" height="40px" placeholder="Enter description" v-model="item.description" /></td>
 					<td><input-field type="number" color="grey" width="100px" height="40px" placeholder="Enter a number" v-model="item.qty" /></td> -->
                         <td colspan="6">
-                            <select name="" id="" style="width: 100%">
+                            <select
+                                name="description"
+                                id="description"
+                                v-model="item.description"
+                                style="width: 100%"
+                            >
                                 <option value="">Enter Item Description</option>
                             </select>
                         </td>
@@ -113,26 +118,33 @@
                             <input
                                 style="width: 100%"
                                 class="qty"
-                                type="number"
+                                type="text"
+                                name="lotno"
+                                id="lotno"
                                 placeholder="Enter Lot No"
-                                v-model.number="item.qty"
+                                v-model.number="item.lotno"
                             />
                         </td>
                         <td>
                             <input
                                 style="width: 100%"
                                 class="qty"
+                                name="qty"
+                                id="qty"
                                 type="number"
                                 placeholder="0"
+                                v-model="item.qty"
                             />
                         </td>
                         <td>
                             <input
                                 style="width: 100%"
                                 class="unit-price"
+                                name="footage"
+                                id="footage"
                                 type="number"
                                 placeholder="0"
-                                v-model.number="item.unitPrice"
+                                v-model.number="item.footage"
                             />
                         </td>
 
@@ -176,11 +188,9 @@ export default {
             items: [
                 {
                     description: "",
+                    lotno: "",
                     qty: "",
-                    uom: "SHP",
-                    unitPrice: "",
-                    vatAmount: 0,
-                    currency: "USD",
+                    footage: "",
                 },
             ],
             latestIndex: 0,
@@ -213,11 +223,9 @@ export default {
         addRow() {
             this.items.push({
                 description: "",
-                qty: "",
-                uom: "SHP",
-                unitPrice: "",
-                vatAmount: 0,
-                currency: "USD",
+                lotno: "",
+                qty: "SHP",
+                footage: "",
             });
             this.latestIndex = this.items.length - 1;
         },

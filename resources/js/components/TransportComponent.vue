@@ -36,28 +36,75 @@
                         <!-- <td>  <input-field type="text" color="grey" width="150px" height="40px" placeholder="Enter description" v-model="item.description" /></td>
 					<td><input-field type="number" color="grey" width="100px" height="40px" placeholder="Enter a number" v-model="item.qty" /></td> -->
                         <td colspan="6">
-                            <input type="radio" name="" id="" /><label for=""
-                                >Sea</label
-                            >
-                            <input type="radio" name="" id="" /><label for=""
-                                >Land</label
-                            >
-                            <input type="radio" name="" id="" /><label for=""
-                                >Air</label
-                            >
+                            <input
+                                type="radio"
+                                name="transport"
+                                id="transport"
+                                value="Sea"
+                                v-model="item.transport"
+                            /><label for="">Sea</label>
+                            <input
+                                type="radio"
+                                name="transport"
+                                id="transport"
+                                value="Land"
+                                v-model="item.transport"
+                            /><label for="">Land</label>
+                            <input
+                                type="radio"
+                                name="transport"
+                                id="transport"
+                                value="Air"
+                                v-model="item.transport"
+                            /><label for="">Air</label>
                         </td>
-                        <td colspan="4">
-                            <select name="" id="" style="width: 100%">
+
+                        <td v-if="item.transport === 'Sea'" colspan="4">
+                            <select
+                                name=""
+                                id=""
+                                style="width: 100%"
+                                v-model="item.type"
+                            >
                                 <option value="">Select a type</option>
+                                <option value="BB">BB / BreadBluck</option>
+                                <option value="FCL">FCL / Container</option>
+                                <option value="LCL">LCL / SKID</option>
                             </select>
                         </td>
+                        <td v-else-if="item.transport === 'Land'" colspan="4">
+                            <select
+                                name=""
+                                id=""
+                                style="width: 100%"
+                                v-model="item.type"
+                            >
+                                <option value="">Select a type</option>
+                                <option value="car">Car</option>
+                                <option value="train">Train</option>
+                                <option value="truck">Truck</option>
+                            </select>
+                        </td>
+                        <td v-else-if="item.transport === 'Air'" colspan="4">
+                            <select
+                                name=""
+                                id=""
+                                style="width: 100%"
+                                v-model="item.type"
+                            >
+                                <option value="">Select a type</option>
+                                <option value="handcarry">Hand Carry</option>
+                                <option value="plane">Plane</option>
+                            </select>
+                        </td>
+
                         <td>
                             <input
                                 style="width: 100%"
                                 class="unit-price"
                                 type="text"
-                                placeholder="0"
-                                v-model.number="item.unitPrice"
+                                placeholder="Enter a Description"
+                                v-model="item.description"
                             />
                         </td>
 
@@ -100,12 +147,9 @@ export default {
         return {
             items: [
                 {
+                    transport: "Sea",
+                    type: "",
                     description: "",
-                    qty: "",
-                    uom: "SHP",
-                    unitPrice: "",
-                    vatAmount: 0,
-                    currency: "USD",
                 },
             ],
             latestIndex: 0,
@@ -137,12 +181,9 @@ export default {
         },
         addRow() {
             this.items.push({
+                transport: "Sea",
+                type: "",
                 description: "",
-                qty: "",
-                uom: "SHP",
-                unitPrice: "",
-                vatAmount: 0,
-                currency: "USD",
             });
             this.latestIndex = this.items.length - 1;
         },

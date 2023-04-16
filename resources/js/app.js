@@ -64,6 +64,10 @@ Vue.component(
     require("./components/HeaderComponent.vue").default
 );
 Vue.component(
+    "header-service-component",
+    require("./components/HeaderServiceComponent.vue").default
+);
+Vue.component(
     "item-component",
     require("./components/ItemComponenet.vue").default
 );

@@ -9,12 +9,14 @@
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                     >
-                        <i class="bi bi-people"></i> Logistic Instruction
+                        <i class="bi bi-cart-plus-fill"></i> Service Instruction
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                            <router-link class="dropdown-item" to="/new_service"
-                                ><i class="bi bi-cart-plus-fill"></i> Service
+                            <router-link
+                                class="dropdown-item"
+                                to="/new_logistic"
+                                ><i class="bi bi-people"></i> Logistic
                                 Instruction</router-link
                             >
                         </li>
