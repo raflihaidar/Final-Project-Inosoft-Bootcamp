@@ -4,7 +4,8 @@ import openInstruction from "./components/OpenInstruction.vue";
 import detailCompleted from "./components/DetailCompleted.vue";
 import detailCancelled from "./components/DetailCancelled.vue";
 import navbar from "./components/Navbar.vue";
-import newInstruction from "./components/newInstructionPages.vue"
+import newInstruction from "./components/newInstructionPages.vue";
+import NewServiceInstruction from "./components/NewServiceInstruction.vue";
 
 export const routes = [
     {
@@ -37,8 +38,13 @@ export const routes = [
         component: DetailsRafli,
     },
     {
-        path: "/new",
-        name: "new instruction",
+        path: "/new_logistic",
+        name: "new logistic instruction",
         component: newInstruction,
+    },
+    {
+        path: "/new_service",
+        name: "new service instruction",
+        component: NewServiceInstruction,
     },
 ];

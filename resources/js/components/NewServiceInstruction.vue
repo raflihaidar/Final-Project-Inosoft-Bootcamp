@@ -359,9 +359,8 @@
                         <!-- tempat tabel -->
                         <div class="container-box">
                             <div class="content-box">
-                                <header-component></header-component>
+                                <header-service-component></header-service-component>
                                 <item-component></item-component>
-                                <transport-component></transport-component>
                                 <div
                                     style="margin-bottom: 10px"
                                     class="scope-of-work py-3 border-bottom"
