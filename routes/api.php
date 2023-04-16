@@ -10,19 +10,19 @@ use App\Http\Controllers\AuthController;
 
 
 Route::group([
-  'prefix' => 'auth'
+  // 'prefix' => 'auth'
 ], function () {
   Route::post('register', [AuthController::class,'register']);
   Route::post('login', [AuthController::class,'login']);
   Route::group([
-    'middleware' => 'auth:api'
+    // 'middleware' => 'auth:api'
   ], function(){
     Route::post('logout', [AuthController::class,'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class,'me']);
 
     Route::group([
-      'middleware' => 'auth:api'
+      // 'middleware' => 'auth:api'
     ], function () {
         Route::get('instruction', [InstructionController::class,'listInstruction']);
         Route::post('instruction', [InstructionController::class,'createInstruction']);
