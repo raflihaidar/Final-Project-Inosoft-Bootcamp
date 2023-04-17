@@ -2,9 +2,9 @@ import DetailsRafli from "./components/DetailsRafli.vue";
 import completedInstruction from "./components/CompletedInstruction.vue";
 import openInstruction from "./components/OpenInstruction.vue";
 import detailCompleted from "./components/DetailCompleted.vue";
-import detailCancelled from "./components/DetailCancelled.vue";
 import navbar from "./components/Navbar.vue";
-import newInstruction from "./components/NewInstruction.vue"
+import newInstruction from "./components/NewInstructionPages.vue";
+import NewServiceInstruction from "./components/NewServiceInstruction.vue";
 import notFound from "./components/Hello.vue";
 
 export const routes = [
@@ -17,12 +17,12 @@ export const routes = [
                 component: openInstruction,
             },
             {
-                path: "/completed",
+                path: "/instruction",
                 component: completedInstruction,
             },
             {
                 path: "/detailcomplete",
-                name: detailCompleted,
+                name: "detailCompleted",
                 component: detailCompleted,
             },
             {
@@ -31,26 +31,14 @@ export const routes = [
                 component: DetailsRafli,
             },
             {
-                path: "/new",
-                name: "new instruction",
+                path: "/new_logistic",
                 component: newInstruction,
             },
+            {
+                path: "/new_service",
+                component: NewServiceInstruction,
+            },
         ],
-    },
-    {
-        path: "/detailcomplete",
-        name: detailCompleted,
-        component: detailCompleted,
-    },
-    {
-        path: "/detailcancel",
-        name: detailCancelled,
-        component: detailCancelled,
-    },
-    {
-        path: "/details_rafli",
-        name: "details rafli",
-        component: DetailsRafli,
     },
     {
         path: "*",

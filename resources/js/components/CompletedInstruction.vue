@@ -38,10 +38,10 @@
         <i class="fa fa-plus"></i> Create 3rd Party Instruction
       </button>
       <ul class="dropdown-menu" style="width: 230px;">
-        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="create('Logistic Instruction')"><i
+        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="createLI()"><i
               id="biru" class="bi bi-truck icon" style="margin-right: 15px; font-size: larger;"></i>Logistic
             Instruction</a></li>
-        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="create('Service Instruction')"><i
+        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="createSI()"><i
               id="biru" class="bi bi-person-fill-gear icon" style="margin-right: 15px; font-size: larger;"></i>Service
             Instruction</a>
         </li>
@@ -353,8 +353,12 @@ export default {
       this.$router.push({ path: "/detailcancel", query: { ID: index } })
     },
 
-    create(index) {
-      this.$router.push({ path: "/new", query: { Type: index } })
+    createLI() {
+      this.$router.push({ path: "/new_logistic" })
+    },
+
+    createSI() {
+      this.$router.push({ path: "/new_service" })
     },
 
     pushProgress(index) {

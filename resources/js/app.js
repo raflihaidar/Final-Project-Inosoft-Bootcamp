@@ -63,6 +63,26 @@ Vue.component(
     "input-field",
     require("./components/InputFieldComponent.vue").default
 );
+Vue.component(
+    "attachment-notes",
+    require("./components/AttachmentAndNotes.vue").default
+);
+Vue.component(
+    "header-component",
+    require("./components/HeaderComponent.vue").default
+);
+Vue.component(
+    "header-service-component",
+    require("./components/HeaderServiceComponent.vue").default
+);
+Vue.component(
+    "item-component",
+    require("./components/ItemComponenet.vue").default
+);
+Vue.component(
+    "transport-component",
+    require("./components/TransportComponent.vue").default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

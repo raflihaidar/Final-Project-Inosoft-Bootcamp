@@ -121,7 +121,7 @@
                 <div class="collapse" id="collapseVendor" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="/">3rd Party Instruction</a>
+                        <a class="nav-link" href="http://127.0.0.1:8000/">3rd Party Instruction</a>
                         <!-- <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
                     </nav>
                 </div>
@@ -326,7 +326,7 @@ export default {
 
     panggil(){
         // saat halaman index dijalankan langsung memanggil children component tab open secara default
-        this.$router.push({ path: "/completed" })
+        this.$router.push({ path: "/instruction" })
     },
 
     // async fetchData() {
