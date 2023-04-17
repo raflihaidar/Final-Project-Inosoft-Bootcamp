@@ -799,23 +799,15 @@
                             <div class="mt-3 mb-3">
                                 <span>Internal Note</span>
                             </div>
-                            <div class="input mb-3" style="width: 170px">
-                                <label
-                                    class="form-control"
-                                    for="inputGroupFile01"
-                                    style="
-                                        background-color: #00bfbf;
-                                        color: white;
-                                    "
-                                    >+ Add Internal Note</label
-                                >
-                                <input
-                                    hidden
-                                    type="file"
-                                    class=""
-                                    id="inputGroupFile01"
-                                />
-                            </div>
+                    <button style="background-color: #00bfbf;" class="btn btn-success d-flex align-items-center" data-bs-toggle="modal"
+                        data-bs-target="#modalInternalNote">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-plus-lg align-middle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5H2a.5.5 0 0 1 0-1h5V2.5A.5.5 0 0 1 8 2z" />
+                        </svg>
+                        <span>Add Internal Note</span>
+                    </button>
                         </div>
                     </div>
                     <div>
@@ -868,6 +860,7 @@
                     </div>
                 </section>
             </article>
+        <modal-internalNote />
         </div>
 </template>
 

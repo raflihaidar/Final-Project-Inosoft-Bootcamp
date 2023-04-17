@@ -17,6 +17,18 @@ Vue.component(
     "modal-internalNote",
     require("./components/ModalInternalNote.vue").default
 );
+Vue.component(
+    "modal-delete",
+    require("./components/ModalDelete.vue").default
+);
+Vue.component(
+    "modal-complete",
+    require("./components/ModalComplete.vue").default
+);
+Vue.component(
+    "modal-cancelled",
+    require("./components/ModalCancelled.vue").default
+);
 Vue.component("hello-component", require("./components/Hello.vue").default);
 Vue.component("navbar", require("./components/Navbar.vue").default);
 Vue.component(

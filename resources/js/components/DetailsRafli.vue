@@ -7,10 +7,10 @@
                             <button-component v-on:click="push()" cursor text="Back" icon="bi bi-chevron-left" warna="#00bfbf" color="none" style="margin-top: 10px; font-size:medium; color:black" bold/>
                         </div>
                         <div class="col-2 flex justify-content-end gap-5">
-                            <button-component cursor text="Complete" icon="fa-regular fa-circle-check" bold warna="#01bebe" color="none" style="color:black" v-if="list[0].status=='In Progress'"/>
+                            <button-component v-on:click="getDraft()" cursor text="Complete" icon="fa-regular fa-circle-check" bold warna="#01bebe" color="none" style="color:black" data-bs-toggle="modal" data-bs-target="#modalComplete" v-if="list[0].status=='In Progress'"/>
                             <button-component cursor text="Terminate" icon="fa-solid fa-ban" bold warna="rgba(255, 0, 0, 0.747)" color="none" style="color:black" data-bs-toggle="modal" data-bs-target="#modalTerminate" v-if="list[0].status=='In Progress'"/>
-                            <button-component cursor text="Delete" icon="fa-solid fa-trash" bold warna="rgba(255, 0, 0, 0.747)" color="none" style="color:black" v-if="list[0].status=='Draft'"/>
-                            <button-component cursor text="Modify" icon="fa-solid fa-pen" bold warna="#01bebe" color="none" style="color:black"/>
+                            <button-component cursor text="Delete" icon="fa-solid fa-trash" bold warna="rgba(255, 0, 0, 0.747)" color="none" style="color:black" data-bs-toggle="modal" data-bs-target="#modalDelete" v-if="list[0].status=='Draft'"/>
+                            <button-component v-on:click="pushEdit()" cursor text="Modify" icon="fa-solid fa-pen" bold warna="#01bebe" color="none" style="color:black"/>
                         </div>
                     </div>
                 </nav>
@@ -867,6 +867,8 @@
         </article>
         <modal-terminate />
         <modal-internalNote />
+        <modal-delete />
+        <modal-complete />
     </div>
 </template>
 
@@ -876,6 +878,7 @@ data() {
 return {
   list: [],
   cost:[],
+  test:[],
 };
 },
 methods:{
@@ -897,11 +900,22 @@ methods:{
         document.getElementById("total").innerHTML = total;
     },
     async fetchData(){
-        let a = "http://127.0.0.1:8000/api/instruction/"
+        let a = "http://127.0.0.1:8000/api/instruction/";
         let b = this.$route.query.ID;
         const response = await axios.get(a+b);
         this.list = response.data.data;
         this.cost = response.data.data[0].cost_detail;
+    },
+    async getDraft(){
+        let a = "http://127.0.0.1:8000/api/instruction/";
+        let b = this.$route.query.ID;
+        let c = "set_on_progress";
+        let d = "export";
+        const response = await axios.post(a+c);
+        // this.test = response.data.data;
+    },
+    async pushEdit(){
+        this.$router.push('/edit')
     },
     // getChecked(){
     //     let item = true;

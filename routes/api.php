@@ -38,6 +38,7 @@ Route::group([
     Route::get('/terminated', [InstructionController::class, 'getTerminated']); //menampilkan data instruction yang memiliki status terminated
     Route::get('/search', [InstructionController::class, 'search'])->name('search');
     Route::get('/{id}', [InstructionController::class, 'detailInstruction']); // menampilkan detail data instruction
+    Route::get('export', [InstructionController::class, 'export']);
 
     // invoice of instruction
     Route::get('/allInvoices/{id}', [VendorInvoiceController::class, 'getAllInstructionInvoice'])->name('allInvoices'); //mengambil semua invoices dari instruction id tertentu

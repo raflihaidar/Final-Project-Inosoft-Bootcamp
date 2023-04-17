@@ -1,6 +1,8 @@
 <template>
-  <div style="margin-top:30px;" class="card mb-4 shadow">
-                        <div class="card-body">
+<div style="margin-top:30px;" class="card mb-4 shadow">
+<div class="card-body">
+
+                        <!-- nav header -->
                             <ul class="tabs nav nav-tabs">
                                 <li id="switch1" class="nav-item active">
                                     <span role="button" class="aw active customOpen " id="open" v-on:click="tabOpen()">Open</span>
@@ -25,10 +27,10 @@
                                     </button>
                                 </li>
                             </ul>
-                                <!-- tempat tabel -->
-        <div class="overflow-auto">
-        <!-- <div class="table-responsive ">   -->    
 
+<div class="overflow-auto"> 
+
+    <!-- buttton create 3rd party -->
     <div id="btn-create" class="dropdown-center" style="float: right; margin-top: 20px; margin-right: 3px;">
       <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
         style="border-color:#00bfbf; width:230px; height:35px; border-radius: 5px; background-color: #00bfbf; font-weight: 500;"
@@ -36,16 +38,17 @@
         <i class="fa fa-plus"></i> Create 3rd Party Instruction
       </button>
       <ul class="dropdown-menu" style="width: 230px;">
-        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="createLi()"><i
+        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="create('Logistic Instruction')"><i
               id="biru" class="bi bi-truck icon" style="margin-right: 15px; font-size: larger;"></i>Logistic
             Instruction</a></li>
-        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="createSi()"><i
+        <li><a class="dropdown-item" role="button" style="font-size: small; font-weight: 500;" v-on:click="create('Service Instruction')"><i
               id="biru" class="bi bi-person-fill-gear icon" style="margin-right: 15px; font-size: larger;"></i>Service
             Instruction</a>
         </li>
       </ul>
     </div>
 
+        <!-- tempat tabel -->
         <table id="tcomplete" class="sortable batas table table-hovers text-nowrap">
 
           <thead style="background-color: #b6bbc1; color:white">
@@ -156,21 +159,21 @@
                 <span style="margin-bottom: 0px; position:relative" v-if="item.status == 'Cancelled'">
                   <p id="btn-cancel" class="btn badge badge-pill"
                     v-on:click="pushComplete(item._id)">{{ item.status }}
-                    <!-- <a data-bs-toggle="popover" data-bs-placement="top" style="
+                  </p>
+                  <a data-bs-toggle="modal" data-bs-target="#modalCancelled" style="
                                                   position: absolute;
-                                                  margin-left: 10px;
-                                                  margin-top: -1px;
+                                                  margin-left: -21px;
+                                                  margin-top: 3px;
                                                   background-color:#4594d6
                                                   border: 1px solid black;
                                                   border-radius: 50%;
-                                                  width: 15px;
+                                                  width: 20px;
                                                   font-size: 12px;
                                                   text-align: center;
                                                   text-decoration: none;
                                                   color: white;
                                               ">i
-                    </a> -->
-                  </p>
+                    </a>
                 </span>
               </td>
               <!-- <td v-for="(rowItem, rowIndex) in item" v-bind:key="rowIndex">                           
@@ -299,9 +302,13 @@
 
       </table>
 
-      </div>
-    </div>
- </div>
+</div>
+</div>
+
+    <!-- tempat modal -->
+    <modal-cancelled />
+
+</div>
   
 </template>
 
@@ -346,12 +353,8 @@ export default {
       this.$router.push({ path: "/detailcancel", query: { ID: index } })
     },
 
-    createLi() {
-      this.$router.push({ path: "/new" })
-    },
-
-    createSi() {
-      this.$router.push({ path: "/createSi" })
+    create(index) {
+      this.$router.push({ path: "/new", query: { Type: index } })
     },
 
     pushProgress(index) {

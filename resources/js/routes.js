@@ -30,6 +30,11 @@ export const routes = [
                 name: "details rafli",
                 component: DetailsRafli,
             },
+            {
+                path: "/new",
+                name: "new instruction",
+                component: newInstruction,
+            },
         ],
     },
     {
@@ -46,11 +51,6 @@ export const routes = [
         path: "/details_rafli",
         name: "details rafli",
         component: DetailsRafli,
-    },
-    {
-        path: "/new",
-        name: "new instruction",
-        component: newInstruction,
     },
     {
         path: "*",
