@@ -17,7 +17,7 @@ use App\Http\Controllers\VendorInvoiceController;
 |
 */
 
-
+Route::get('/getAllData', 'Mocking\Controllers\Controller@getData');
 Route::group([
     'prefix' => 'instruction',
 ],  function(){

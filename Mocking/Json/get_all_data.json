@@ -1,0 +1,55 @@
+{
+    "templates": [
+        {
+            "name": "Template 1",
+            "fields": [
+                {
+                    "scope": "Freight term",
+                    "description": "aaaa"
+                },
+                {
+                    "scope": "Custom clearance",
+                    "description": "bbbb"
+                },
+                {
+                    "scope": "Direct loading",
+                    "description": "ccc"
+                }
+            ]
+        },
+        {
+            "name": "Template 2",
+            "fields": [
+                {
+                    "scope": "MHE & equipment",
+                    "description": ""
+                },
+                {
+                    "scope": "Manpower",
+                    "description": ""
+                },
+                {
+                    "scope": "Copy of BL",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "Template 3",
+            "fields": [
+                {
+                    "scope": "Direct loading",
+                    "description": "ddd"
+                },
+                {
+                    "scope": "Manpower",
+                    "description": "eee"
+                },
+                {
+                    "scope": "Copy of BL",
+                    "description": "fff"
+                }
+            ]
+        }
+    ]
+}
