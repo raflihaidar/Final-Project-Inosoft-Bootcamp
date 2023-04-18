@@ -2,7 +2,6 @@
     <div class="border-bottom py-3">
         <div class="d-flex justify-content-sm-between">
             <div>
-                <p>{{ this.items }}</p>
                 <p>
                     <strong style="font-size: large">Item</strong>
                     <label>

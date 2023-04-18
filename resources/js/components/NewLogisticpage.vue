@@ -362,7 +362,7 @@
                                 <header-logistic @headerLogistic_update="headerItemUpdated"></header-logistic>
                                 <table-item @tableItem_update="tableItemUpdated"></table-item>
                                 <table-transport @tableTransport_update="transportItemUpdated"></table-transport>
-                                <scope-of-work @tableScopeOfWork_update="scopeOfWorkItemUpdated"></scope-of-work>
+                                <scope-of-work @scopeOfWork_update="scopeOfWorkItemUpdated"></scope-of-work>
                                 <cost-detail @costDetail_update="costDetailItemUpdated"></cost-detail>
                                 <attachment-notes @attachment_update="attachmentItemUpdated"></attachment-notes>
                                 <div class="buttons" style="display: flex; flex-direction: row; justify-content: flex-end; margin-top: 40px;">
@@ -419,6 +419,7 @@ export default {
     },
     scopeOfWorkItemUpdated(value){
     this.scopeOfWorkValue = value;
+    console.log("all value:", value)
     },
     costDetailItemUpdated(value) {
     this.costDetailValue = value;
@@ -432,11 +433,12 @@ export default {
         header: this.headerValue,
         table: this.tableValue,
         transport: this.transportValue,
+        scopeOfWorkValue: this.scopeOfWorkValue,
         costDetail: this.costDetailValue,
         attachment: this.attachmentValue,
     };
     
-    axios.post('/your-url', data)
+    axios.post('/api/postData', data)
         .then(response => {
         console.log(response);
         })
