@@ -413,6 +413,7 @@
         <router-view></router-view>
     </div>
     <script src="{{mix('js/app.js')}}"></script>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 </body>
 
 </html>
