@@ -1,70 +1,13 @@
 <template>
-    <body style="background-color: rgba(0, 0, 0, 0.03)">
-        <div class="container">
-            <header class="pt-5" style="width: 100%">
-                <h1>3rd Party Instruction</h1>
-                <nav
-                    style="--bs-breadcrumb-divider: '>'"
-                    aria-label="breadcrumb"
-                >
-                    <ol class="breadcrumb" style="font-size: 0.8em">
-                        <li class="breadcrumb-item">
-                            <a
-                                href="#"
-                                style="text-decoration: none; color: slategray"
-                                >Vendor Management</a
-                            >
-                        </li>
-                        <li
-                            class="breadcrumb-item active"
-                            aria-current="page"
-                            style="color: #00bfbf"
-                        >
-                            3rd Party Instruction
-                        </li>
-                    </ol>
-                </nav>
-                <div class="d-flex flex-row-reverse">
-                    <div>
-                        <button
-                            type="button"
-                            class="btn"
-                            style="
-                                background-color: white;
-                                border: 1px solid #e4e4e4;
-                            "
-                        >
-                            <b> Export </b>
-                        </button>
-                    </div>
-                    <div class="me-3">
-                        <button
-                            type="button"
-                            class="btn"
-                            style="
-                                background-color: white;
-                                border: 1px solid #e4e4e4;
-                            "
-                        >
-                            <b> Send Email </b>
-                        </button>
-                    </div>
-                </div>
-            </header>
-        </div>
-        <div class="container shadow-lg pb-5" style="background-color: white">
+        <div class="container shadow-lg pb-5" style=" margin-top:30px; background-color: white">
             <article class="container">
-                <div class="mb-5 mt-3 pt-3 bi1">
-                    <a>
-                        <i
-                            class="bi bi-chevron-left"
-                            style="color: #00bfbf"
-                        ></i>
-                        <router-link to="/completed" style="color: #00bfbf"
-                            >Back</router-link
-                        ></a
-                    >
-                </div>
+                <nav class="grid" style="margin-bottom: 30px;">
+                    <div class="row" style="margin-top:30px;">
+                        <div class="col-10 flex align-items-center gap-1">
+                            <button-component v-on:click="push()" cursor text="Back" icon="bi bi-chevron-left" warna="#00bfbf" color="none" style="margin-top: 10px; font-size:medium; color:black" bold/>
+                        </div>
+                    </div>
+                </nav>
                 <section class="mb-3 bdrtop bdrbottom bdrleft bdrright">
                     <div class="row">
                         <div class="col-8" style="">
@@ -72,44 +15,48 @@
                                 <div class="col">
                                     <span>Type</span>
                                     <p>
-                                        <b>
-                                            <i class="bi bi-truck icon"></i>
-                                            Logistic Intruction</b
+                                        <b v-if="list[0].instruction_type=='Logistic Instruction'">
+                                            <i style="color:#00bfbf" class="bi bi-truck icon"></i>
+                                            {{list[0].instruction_type}}</b
+                                        >
+                                        <b v-else>
+                                            <i style="color:#00bfbf" class="bi bi-person-fill-gear icon"></i>
+                                            {{list[0].instruction_type}}</b
                                         >
                                     </p>
                                 </div>
                                 <div class="col">
                                     <span>LI No.</span>
-                                    <p><b>LI-2022-0060</b></p>
+                                    <p><b>{{list[0].instruction_id}}</b></p>
                                 </div>
                                 <div class="col">
                                     <span>Attention Of</span>
-                                    <p><b>MR Customer X</b></p>
+                                    <p><b>{{list[0].attention_of}}</b></p>
                                 </div>
                             </div>
                             <div class="row ms-3 mt-5">
                                 <div class="col">
                                     <span>Issued To</span>
-                                    <p><b>ALPHA - ALPHATRANS PTE LTD</b></p>
+                                    <p><b>{{list[0].assigned_vendor}}</b></p>
                                 </div>
                                 <div class="col">
                                     <span>Vendor Reference No.</span>
-                                    <p><b>Q12345</b></p>
+                                    <p><b>{{list[0].quotation_no}}</b></p>
                                 </div>
                                 <div class="col">
                                     <span>Vendor Address</span>
-                                    <p><b>Big Street 1 </b></p>
+                                    <p><b>{{list[0].vendor_address}}</b></p>
                                 </div>
                             </div>
                             <div class="row ms-3 mt-5">
                                 <div class="col">
                                     <span>Invoice To</span>
-                                    <p><b>MITA</b></p>
+                                    <p><b>{{list[0].invoice_to}}</b></p>
                                 </div>
                                 <div class="col"><span>Base</span></div>
                                 <div class="col">
                                     <span>Delivery Date</span>
-                                    <p><b>26/09/2022</b></p>
+                                    <p><b>{{ list[0].attachment[0].created_at }}</b></p>
                                 </div>
                             </div>
                         </div>
@@ -119,8 +66,7 @@
                                     <span>Customer</span>
                                     <p>
                                         <b
-                                            >ACCLTD - AUTHENTIC CONSTRUCTION
-                                            COMPANY LIMITED</b
+                                            >{{list[0].customer_contract}}</b
                                         >
                                     </p>
                                 </div>
@@ -129,21 +75,50 @@
                                         >Status</span
                                     >
                                     <p
+                                        v-if="list[0].status=='Completed'"
                                         id="btn-cancel"
                                         style="position: relative"
                                     >
                                         <a href="#" class="btn-yoga1"
-                                            >Completed</a
+                                            >{{list[0].status}}</a
                                         >
+                                    </p>
+                                    <p
+                                        v-else
+                                        id="btn-cancel"
+                                        style="position: relative"
+                                    >
+                                        <a href="#" class="btn-yoga disabled"
+                                            >{{list[0].status}}</a
+                                        >
+                                        <a
+                                            href="#"
+                                            data-bs-toggle="popover"
+                                            data-bs-placement="top"
+                                            data-bs-content="Intinya mah cancel, jangan banyak tanya kamu ! xixi"
+                                            style="
+                                                position: absolute;
+                                                margin-left: -28px;
+                                                margin-top: 2px;
+                                                background-color: blue;
+                                                border: 1px solid black;
+                                                border-radius: 50%;
+                                                width: 25px;
+                                                font-size: 14px;
+                                                text-align: center;
+                                                text-decoration: none;
+                                                color: white;
+                                            "
+                                            >i</a>
                                     </p>
                                 </div>
                                 <div class="mb-5">
                                     <span>Customer PO</span>
-                                    <p><b>CPO23456</b></p>
+                                    <p><b>{{list[0].customer_po}}</b></p>
                                 </div>
                                 <div class="mb-4">
                                     <span>Customer Ref</span>
-                                    <p><b>CREF23456</b></p>
+                                    <p><b></b></p>
                                 </div>
                             </div>
                         </div>
@@ -158,35 +133,46 @@
                             <div class="form-check me-3">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault13"
                                 >
                                     Yes
                                 </label>
                                 <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    name="flexRadioDefault13"
-                                    id="flexRadioDefault13"
-                                    checked
-                                />
-                            </div>
-                            <div class="form-check">
-                                <input
+                                    v-if="cost[0]._id!=null"
                                     class="form-check-input"
                                     disabled
                                     type="radio"
-                                    name="flexRadioDefault"
-                                    id="flexRadioDefault1"
+                                    checked
                                 />
+                                <input
+                                    v-else
+                                    class="form-check-input"
+                                    disabled
+                                    type="radio"
+                                />
+                            </div>
+                            <div class="form-check">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault1"
                                 >
                                     No
                                 </label>
+                                <input
+                                    v-if="cost[0]._id==null"
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
+                                    checked
+                                />
+                                <input
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
+                                />
                             </div>
                             <div style="margin-left: auto; margin-top: -7px">
                                 <button
+                                    v-if="cost[0]._id!=null"
                                     class="btn btn6 btn-outline-success"
                                     type="button"
                                     data-bs-toggle="collapse"
@@ -228,7 +214,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div v-if="list[0].instruction_type!='Service Instruction'">
                         <div class="d-flex pt-3 bdrtop">
                             <div class="me-3">
                                 <p><b>Transport</b></p>
@@ -236,35 +222,47 @@
                             <div class="form-check me-3">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault12"
                                 >
                                     Yes
                                 </label>
-                                <input
+                                <input 
+                                    v-if="cost[0]._id!=null"
                                     class="form-check-input"
                                     type="radio"
-                                    name="flexRadioDefault12"
-                                    id="flexRadioDefault12"
-                                    checked
+                                    disabled
+                                    checked                                    
+                                />
+                                <input 
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
+                                    
                                 />
                             </div>
                             <div class="form-check">
-                                <input
-                                    class="form-check-input"
-                                    disabled
-                                    type="radio"
-                                    name="flexRadioDefault"
-                                    id="flexRadioDefault1"
-                                />
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault1"
                                 >
                                     No
                                 </label>
+                                <input
+                                    v-if="cost[0]._id==null"
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
+                                    checked
+                                />
+                                <input
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
+                                />
                             </div>
                             <div style="margin-left: auto; margin-top: -7px">
                                 <button
+                                    v-if="cost[0]._id!=null"
                                     class="btn btn7 btn-outline-success"
                                     type="button"
                                     data-bs-toggle="collapse"
@@ -310,35 +308,46 @@
                             <div class="form-check me-3">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault18"
                                 >
                                     Yes
                                 </label>
                                 <input
+                                    v-if="cost[0]._id!=null"
                                     class="form-check-input"
                                     type="radio"
-                                    name="flexRadioDefault18"
-                                    id="flexRadioDefault18"
+                                    disabled
                                     checked
+                                />
+                                <input
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
                                 />
                             </div>
                             <div class="form-check">
                                 <input
+                                    v-if="cost[0]._id==null"
                                     class="form-check-input"
                                     disabled
                                     type="radio"
-                                    name="flexRadioDefault"
-                                    id="flexRadioDefault1"
+                                    checked
+                                />
+                                <input
+                                    v-else
+                                    class="form-check-input"
+                                    disabled
+                                    type="radio"
                                 />
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault1"
                                 >
                                     No
                                 </label>
                             </div>
                             <div style="margin-left: auto; margin-top: -7px">
                                 <button
+                                    v-if="cost[0]._id!=null"
                                     class="btn btn5 btn-outline-success"
                                     type="button"
                                     data-bs-toggle="collapse"
@@ -526,41 +535,53 @@
                             <div class="form-check me-3">
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault1"
                                 >
                                     Yes
                                 </label>
-                                <input
+                                <input 
+                                    v-if="cost[0]._id!=null"
                                     class="form-check-input"
                                     type="radio"
-                                    name="flexRadioDefault"
-                                    id="flexRadioDefault1"
+                                    disabled
                                     checked
+                                />
+                                <input 
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
+                                    disabled
                                 />
                             </div>
                             <div class="form-check">
                                 <input
+                                    v-if="cost[0]._id==null"
                                     class="form-check-input"
                                     type="radio"
-                                    name="flexRadioDefault14"
-                                    id="flexRadioDefault14"
+                                    disabled
+                                    checked
+                                />
+                                <input 
+                                    v-else
+                                    class="form-check-input"
+                                    type="radio"
                                     disabled
                                 />
                                 <label
                                     class="form-check-label"
-                                    for="flexRadioDefault14"
                                 >
                                     No
                                 </label>
                             </div>
                             <div style="margin-left: auto; margin-top: -7px">
                                 <button
+                                    v-if="cost[0]._id!=null"
                                     class="btn btn4 btn-outline-success"
                                     type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#collapseExample3"
                                     aria-expanded="false"
                                     aria-controls="collapseExample"
+                                    v-on:click="jumlah()"
                                 >
                                     <i class="bi bi-chevron-down"></i>
                                 </button>
@@ -571,7 +592,7 @@
                             id="collapseExample3"
                         >
                             <div class="card card-body">
-                                <table class="table">
+                                <table id="costable" class="table">
                                     <thead class="text-bg-secondary">
                                         <tr>
                                             <th>Description</th>
@@ -586,27 +607,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Sea trans</td>
-                                            <td>1</td>
-                                            <td>SHP</td>
-                                            <td>1,500.00</td>
-                                            <td>10</td>
-                                            <td>USD</td>
-                                            <td>150.00</td>
-                                            <td>1,500.00</td>
-                                            <td>1,650.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Land trans</td>
-                                            <td>1</td>
-                                            <td>SHP</td>
-                                            <td>500.00</td>
-                                            <td>10</td>
-                                            <td>USD</td>
-                                            <td>50.00</td>
-                                            <td>500.00</td>
-                                            <td>550.00</td>
+                                        <tr v-for="(item, index) in cost" v-bind:key="index">
+                                            <td>{{item.description}}</td>
+                                            <td>{{ item.qty }}</td>
+                                            <td>{{item.uom}}</td>
+                                            <td>{{item.unit_price}}</td>
+                                            <td>{{item.gst_vat}}</td>
+                                            <td>{{item.currency}}</td>
+                                            <td>{{ item.gst_vat/100*item.unit_price*item.qty }}</td>
+                                            <td>{{item.qty*item.unit_price}}</td>
+                                            <td>{{(item.gst_vat/100*item.unit_price*item.qty)+(item.qty*item.unit_price)}}</td>
                                         </tr>
                                         <tr>
                                             <td
@@ -625,15 +635,11 @@
                                                 style="border-bottom: #e4e4e4"
                                             ></td>
                                             <td class="table-active">
-                                                USD(total)
+                                                {{cost[0].currency}}(total)
                                             </td>
-                                            <td class="table-active">200.00</td>
-                                            <td class="table-active">
-                                                2,000.00
-                                            </td>
-                                            <td class="table-active">
-                                                2,200.00
-                                            </td>
+                                            <td id="vat" class="table-active"></td>
+                                            <td id="sub" class="table-active"></td>
+                                            <td id="total" class="table-active"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -768,6 +774,9 @@
                             <div class="mt-3 mb-3">
                                 <span>Attachment</span>
                             </div>
+                            <div>
+                                <span>{{ list[0].attachment[0].file }}</span>
+                            </div>
                             <div class="input mb-3" style="width: 170px">
                                 <label
                                     class="form-control"
@@ -790,23 +799,15 @@
                             <div class="mt-3 mb-3">
                                 <span>Internal Note</span>
                             </div>
-                            <div class="input mb-3" style="width: 170px">
-                                <label
-                                    class="form-control"
-                                    for="inputGroupFile01"
-                                    style="
-                                        background-color: #00bfbf;
-                                        color: white;
-                                    "
-                                    >+ Add Internal Note</label
-                                >
-                                <input
-                                    hidden
-                                    type="file"
-                                    class=""
-                                    id="inputGroupFile01"
-                                />
-                            </div>
+                    <button style="background-color: #00bfbf;" class="btn btn-success d-flex align-items-center" data-bs-toggle="modal"
+                        data-bs-target="#modalInternalNote">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-plus-lg align-middle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5H2a.5.5 0 0 1 0-1h5V2.5A.5.5 0 0 1 8 2z" />
+                        </svg>
+                        <span>Add Internal Note</span>
+                    </button>
                         </div>
                     </div>
                     <div>
@@ -859,15 +860,58 @@
                     </div>
                 </section>
             </article>
+        <modal-internalNote />
         </div>
-    </body>
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+    return {
+      list: [],
+      cost:[],
+    };
+    },
+    methods:{
+        push(){
+            this.$router.go(-1)
+        },
+        jumlah(){
+            var table = document.getElementById("costable"),vat=0,sub=0,total=0;
+            
+            for(var i = 1; i < table.rows.length-1; i++)
+            {
+                vat = vat + parseInt(table.rows[i].cells[6].innerHTML);
+                sub = sub + parseInt(table.rows[i].cells[7].innerHTML);
+                total = total + parseInt(table.rows[i].cells[8].innerHTML);
+            }
+            
+            document.getElementById("vat").innerHTML = vat;
+            document.getElementById("sub").innerHTML = sub;
+            document.getElementById("total").innerHTML = total;
+        },
+        async fetchData(){
+            let a = "http://127.0.0.1:8000/api/instruction/"
+            let b = this.$route.query.ID;
+            const response = await axios.get(a+b);
+            this.list = response.data.data;
+            this.cost = response.data.data[0].cost_detail;
+        },
+        // getChecked(){
+        //     let item = true;
+        //     let item_yes = document.getElementById("flexRadioDefault13");
+        //     if (this.list[0].instruction_type=="Logistic Instruction"){
+        //         item_yes.checked=true;
+        //     }
+        // },
+    },
+    mounted(){
+        this.fetchData();
+    },
+}
 </script>
 
-<style>
+<style scoped>
 /* .bi1 a {
   text-decoration: none;
 }
@@ -937,9 +981,21 @@ export default {};
     padding-top: 2px;
     padding-bottom: 5px;
     border-radius: 50px;
-    border: 1px solid green;
-    background-color: green;
+    border: 1px solid #3da576;
+    background-color: #3da576;
     text-decoration: none;
     color: white;
 }
+.btn-yoga {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    border-radius: 50px;
+    border: 1px solid rgb(164, 163, 163);
+    background-color: rgb(164, 162, 162);
+    text-decoration: none;
+    color: white;
+}
+
 </style>
