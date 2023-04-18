@@ -1,8 +1,8 @@
 <template>
   <!-- <button-component icon="fa fa-minus" text="grey" width="50px"  height="50px" color="grey" @click="removeRow(index)" /> button example use-->
   <button :class="['button', { 'button-icon-only': !text }, color]" :style="{ width: width, height: height, color: fontColor, fontSize: fontSize + 'px' }" @click="buttonClick">
-    <i v-if="icon" :class="icon" style="margin-right: 5px;"></i>
-    <span v-if="text" :class="{'bold': bold}">{{ text }}</span>
+    <i v-if="icon" :class="icon" :style="{color: warna}" style="margin-right: 7px;"></i>
+    <span v-if="text" :class="{'bold': bold, 'cursor':cursor}">{{ text }}</span>
   </button>
 </template>
 <script>
@@ -17,6 +17,10 @@ export default {
       default: ''
     },
     bold: {
+      type: Boolean,
+      default: false
+    },
+    cursor: {
       type: Boolean,
       default: false
     },
@@ -39,6 +43,10 @@ export default {
     fontSize: {
       type: Number,
       default: 16
+    },
+    warna: {
+      type: String,
+      default: "white"
     }
   },
   methods:{
@@ -87,5 +95,13 @@ export default {
 
 .black{
   color: black;
+}
+
+.none{
+  background: transparent;
+}
+
+.cursor:hover {
+    color: #00000069 !important;
 }
 </style>
