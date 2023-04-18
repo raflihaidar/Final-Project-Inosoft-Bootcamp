@@ -425,15 +425,29 @@ export default
     },
     submitForm(status) {
     const data = {
+        link_to: this.headerValue.link_to,
+        instruction_type: this.headerValue.instruction_type,
+        assigned_vendor: this.headerValue.assigned_vendor,
+        vendor_address: this.headerValue.vendor_address,
+        attention_of: this.headerValue.attention_of,
+        quotation_no: this.headerValue.quotation_no,
+        invoice_to: this.headerValue.invoice_to,
+        customer_po: this.headerValue.customer_po,
+        customer_contract: this.headerValue.customer_contract,
+        note: this.attachmentValue.notes,
+        attachment: this.attachmentValue.filename,
         status: status,
-        header: this.headerValue,
-        table: this.tableValue,
-        scopeOfWorkValue: this.scopeOfWorkValue,
-        costDetail: this.costDetailValue,
-        attachment: this.attachmentValue,
+        instruction_id: this.headerValue.customer_ref
+        // status: status, 
+        // header: this.headerValue,
+        // table: this.tableValue,
+        // transport: this.transportValue,
+        // scopeOfWorkValue: this.scopeOfWorkValue,
+        // costDetail: this.costDetailValue,
+        // attachment: this.attachmentValue,
     };
     
-    axios.post('/api/postData', data)
+    axios.post('http://127.0.0.1:8000/api/instruction', data)
         .then(response => {
         console.log(response);
         })
