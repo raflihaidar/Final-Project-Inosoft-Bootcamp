@@ -4,8 +4,10 @@ import openInstruction from "./components/OpenInstruction.vue";
 import detailCompleted from "./components/DetailCompleted.vue";
 import detailCancelled from "./components/DetailCancelled.vue";
 import navbar from "./components/Navbar.vue";
+import notFound from "./components/Hello.vue";
 import newLogisticPage from "./components/NewLogisticPage.vue";
 import newServicePage from "./components/NewServicePage.vue";
+
 
 export const routes = [
     {
@@ -17,34 +19,34 @@ export const routes = [
                 component: openInstruction,
             },
             {
-                path: "/completed",
+                path: "/instruction",
                 component: completedInstruction,
+            },
+            {
+                path: "/detailcomplete",
+                name: "detailCompleted",
+                component: detailCompleted,
+            },
+            {
+                path: "/details_rafli",
+                name: "details rafli",
+                component: DetailsRafli,
+            },
+            {
+                path: "/new_logistic",
+                component: newLogisticPage,
+            },
+            {
+                path: "/new_service",
+                component: newServicePage
             },
         ],
     },
     {
-        path: "/detailcomplete",
-        name: detailCompleted,
-        component: detailCompleted,
-    },
-    {
-        path: "/detailcancel",
-        name: detailCancelled,
-        component: detailCancelled,
-    },
-    {
-        path: "/details_rafli",
-        name: "details rafli",
-        component: DetailsRafli,
-    },
-    {
-        path: "/new_logistic",
-        name: "new logistic instruction",
-        component: newLogisticPage,
-    },
-    {
-        path: "/new_service",
-        name: "new service instruction",
-        component: newServicePage
+
+        path: "*",
+        name: "404 Not Found",
+        component: notFound,
+
     },
 ];
