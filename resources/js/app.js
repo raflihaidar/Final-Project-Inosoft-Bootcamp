@@ -99,6 +99,18 @@ Vue.component(
     "table-transport",
     require("./components/TableTransport.vue").default
 );
+Vue.component(
+    "modal-delete",
+    require("./components/ModalDelete.vue").default
+);
+Vue.component(
+    "modal-complete",
+    require("./components/ModalComplete.vue").default
+);
+Vue.component(
+    "modal-cancelled",
+    require("./components/ModalCancelled.vue").default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
