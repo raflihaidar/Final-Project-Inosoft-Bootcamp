@@ -338,7 +338,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div style="text-align: center" class="small">
-                            2023 All rights reserveda
+                            2023 All rights reservedhs
                         </div>
                     </div>
                 </nav>
@@ -362,13 +362,13 @@
                                 <header-logistic @headerLogistic_update="headerItemUpdated"></header-logistic>
                                 <table-item @tableItem_update="tableItemUpdated"></table-item>
                                 <table-transport @tableTransport_update="transportItemUpdated"></table-transport>
-                                <scope-of-work></scope-of-work>
+                                <scope-of-work @tableScopeOfWork_update="scopeOfWorkItemUpdated"></scope-of-work>
                                 <cost-detail @costDetail_update="costDetailItemUpdated"></cost-detail>
                                 <attachment-notes @attachment_update="attachmentItemUpdated"></attachment-notes>
                                 <div class="buttons" style="display: flex; flex-direction: row; justify-content: flex-end; margin-top: 40px;">
-                                    <button-component  style="margin: 5px;" width="150px"  height="40px" color="white" :font-color="'black'" text="Cancel" @click="closemodal" />
-                                    <button-component style="border: 1px solid black; margin: 5px;" width="150px"  height="40px" color="white" :font-color="'black'" text="Save as Draft" @click="submitFormDraft" />
-                                    <button-component style=" margin: 5px;" width="150px"  height="40px" color="blue" text="Submit" @click="submitFormCompleted" />
+                                    <button-component  style="margin: 5px;" width="150px"  height="40px" color="white" :font-color="'black'" text="Cancel" />
+                                    <button-component style="border: 1px solid black; margin: 5px;" width="150px"  height="40px" color="white" :font-color="'black'" text="Save as Draft" @click="submitForm('draft')"/>
+                                    <button-component style=" margin: 5px;" width="150px"  height="40px" color="blue" text="Submit"  @click="submitForm('completed')"/>
                                 </div>
                             </div>
                         </div>
@@ -396,37 +396,56 @@
 </template>
 
 <script>
-
-export default 
-  {
+export default {
   data() {
     return {
-        allValues: []
+        headerValue: {},
+        tableValue: {},
+        transportValue: {},
+        scopeOfWorkValue:{},
+        costDetailValue: {},
+        attachmentValue: {},
     }
   },
-  methods:{
+  methods: {
     headerItemUpdated(value) {
-      this.allValues.push(value);
-      console.log("all value:", this.allValues)
+    this.headerValue = value;
     },
     tableItemUpdated(value) {
-      this.allValues.push(value);
-      console.log("all value:", this.allValues)
+    this.tableValue = value;
     },
     transportItemUpdated(value) {
-      this.allValues.push(value);
-      console.log("all value:", this.allValues)
+    this.transportValue = value;
+    },
+    scopeOfWorkItemUpdated(value){
+    this.scopeOfWorkValue = value;
     },
     costDetailItemUpdated(value) {
-      this.allValues.push(value);
-      console.log("all value:", this.allValues)
+    this.costDetailValue = value;
     },
     attachmentItemUpdated(value) {
-      this.allValues.push(value);
-      console.log("all value:", this.allValues)
-    }
+    this.attachmentValue = value;
+    },
+    submitForm(status) {
+    const data = {
+        status: status,
+        header: this.headerValue,
+        table: this.tableValue,
+        transport: this.transportValue,
+        costDetail: this.costDetailValue,
+        attachment: this.attachmentValue,
+    };
+    
+    axios.post('/your-url', data)
+        .then(response => {
+        console.log(response);
+        })
+        .catch(error => {
+        console.log(error);
+        });
+    },
   }
-  }
+}
 </script>
 
 
@@ -437,7 +456,7 @@ export default
     background-color: #fbf8fd;
 }
 
-.boxi {
+.boxi{
     width: 1400px;
     display: flex;
     flex-direction: column;
