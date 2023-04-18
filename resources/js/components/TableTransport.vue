@@ -1,7 +1,6 @@
 <template>
     <div class="py-3 border-bottom">
         <div>
-          <p>{{ this.items }}</p>
             <p>
                 <strong style="font-size: large">Transport</strong>
                 <label>
