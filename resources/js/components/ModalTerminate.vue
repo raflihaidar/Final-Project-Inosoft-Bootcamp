@@ -22,7 +22,7 @@
                     </div>
                     <div>
                         <p class="mb-0">Attachment</p>
-                        <button class="btn btn-primary d-flex align-items-center">
+                        <button style="background-color:#01bebe; border: none;" class="btn btn-secondary d-flex align-items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-plus-lg align-middle" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -33,8 +33,8 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Submit</button>
+                    <button type="button" style="background-color:none; border: none;" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" style="background-color:#01bebe; border: none;" class="btn btn-secondary">Submit</button>
                 </div>
             </div>
         </div>
