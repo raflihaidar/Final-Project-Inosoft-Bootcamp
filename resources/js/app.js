@@ -36,11 +36,11 @@ Vue.component(
     require("./components/ButtonComponent.vue").default
 );
 Vue.component(
-    "cost-detail",
+    "cost-detail-component",
     require("./components/CostDetailComponent.vue").default
 );
 Vue.component(
-    "scope-of-work",
+    "scope-of-work-component",
     require("./components/ScopeOfWorkComponent.vue").default
 );
 Vue.component(
@@ -67,7 +67,38 @@ Vue.component(
     "transport-component",
     require("./components/TransportComponent.vue").default
 );
-
+Vue.component(
+    "new-logistic-pages",
+    require("./components/NewLogisticPage.vue").default
+);
+Vue.component(
+    "new-service-pages",
+    require("./components/NewServicePage.vue").default
+);
+Vue.component(
+    "cost-detail",
+    require("./components/TableCostDetail.vue").default
+);
+Vue.component(
+    "header-logistic",
+    require("./components/TableHeaderLogistic.vue").default
+);
+Vue.component(
+    "header-service",
+    require("./components/TableHeaderService.vue").default
+);
+Vue.component(
+    "table-item",
+    require("./components/TableItem.vue").default
+);
+Vue.component(
+    "scope-of-work",
+    require("./components/TableScopeOfWork.vue").default
+);
+Vue.component(
+    "table-transport",
+    require("./components/TableTransport.vue").default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

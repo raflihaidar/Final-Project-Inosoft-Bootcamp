@@ -8,7 +8,8 @@ use App\Http\Controllers\AuthController;
 
 
 
-
+Route::get('/getAllData', 'Mocking\Controllers\Controller@getData');
+Route::post('/postData', 'Mocking\Controllers\Controller@postData');
 Route::group([
   // 'prefix' => 'auth'
 ], function () {
